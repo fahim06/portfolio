@@ -4,8 +4,8 @@
 .items-center {
   align-items: center;
 }
-.justify-between{
-    justify-content: space-between;
+.justify-between {
+  justify-content: space-between;
 }
 .btn {
   padding: 0.8rem 3rem;
@@ -19,25 +19,25 @@
 }
 .btn-primary {
   background: var(--primary);
-  color: var(--white);
+  color: var(--light);
 }
 .btn-primary:hover {
   background: transparent;
   border-color: var(--primary);
   color: var(--primary);
 }
-.btn-secondary{
+.btn-secondary {
   background: transparent;
   color: var(--primary);
   border-color: var(--primary);
 }
-.btn-secondary:hover{
+.btn-secondary:hover {
   background: var(--primary);
-  color: var(--white);
+  color: var(--light);
 }
-.flex-1{
+.flex-1 {
   flex: 1;
 }
-.justify-center{
+.justify-center {
   justify-content: center;
 }
