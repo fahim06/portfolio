@@ -15,7 +15,8 @@ export const personalInfo = {
 My approach combines solid engineering principles with cutting-edge AI research. I've worked on projects ranging from brain tumor detection systems achieving 95% accuracy to comprehensive student management platforms. I believe in building software that not only works but makes a meaningful difference.
 
 When I'm not coding, I'm usually exploring new ML architectures, contributing to open-source projects, or working on my next thesis research.`,
-  cvUrl: "/fahim-cv.pdf",
+  cvUrl: "/resume.pdf",
+  cvDownloadName: "Fahim-Yusuf-Resume.pdf",
 };
 
 // =============================================================================
@@ -52,8 +53,6 @@ export const engineeringValues = [
 export const skills = {
   languages: [
     "Python",
-    "JavaScript",
-    "TypeScript",
     "Java",
     "PHP",
     "C",
@@ -64,19 +63,16 @@ export const skills = {
   frameworks: [
     "Django",
     "Django REST Framework",
-    "React",
-    "Next.js",
+    "PyTorch",
     "TensorFlow",
     "Keras",
+    "Scikit-learn",
     "Bootstrap",
-    "Tailwind CSS",
-    "jQuery",
   ],
   databases: [
     "PostgreSQL",
     "MySQL",
     "SQLite",
-    "MongoDB",
   ],
   tools: [
     "Git",
@@ -118,13 +114,13 @@ export const experience: ExperienceEntry[] = [
     description:
       "Building web applications and machine learning solutions for various domains.",
     responsibilities: [
-      "Developed full-stack applications using Django, React, and modern web technologies",
+      "Developed full-stack applications using modern web technologies and frameworks",
       "Created deep learning models for image classification and medical diagnosis",
       "Implemented CI/CD pipelines and deployed applications on cloud platforms",
     ],
     impact:
       "Successfully delivered multiple projects including student management systems, task managers, and ML-based classification systems.",
-    technologies: ["Python", "Django", "React", "TensorFlow", "PostgreSQL", "Docker"],
+    technologies: ["Python", "Web Frameworks", "Deep Learning", "Databases", "DevOps"],
   },
 ];
 
@@ -138,7 +134,7 @@ export const education: ExperienceEntry[] = [
     company: "Jahangirnagar University",
     role: "M.Sc. in Computer Science & Engineering",
     location: "Dhaka, Bangladesh",
-    period: "2023 – 2024",
+    period: "2023 – 2025",
     type: "education",
     description:
       "Advanced studies in machine learning, deep learning, and computer vision.",
@@ -202,22 +198,42 @@ export interface Project {
     case_study?: string;
   };
   featured: boolean;
+  highlight?: boolean; // Indicates a project that should receive special emphasis due to strategic importance, recent achievements, or relevance to current goals. Unlike 'featured', which marks projects for general prominence, 'highlight' is used for projects that require additional attention or promotion.
 }
 
 export const projects: Project[] = [
+  {
+    id: "proj-3",
+    title: "Student Management System",
+    category: "Full Stack Web Development",
+    summary:
+      "Comprehensive web application for managing students, staff, courses, attendance, and feedback with role-based access control.",
+    problem:
+      "Educational institutions need a centralized system to manage multiple user roles (Admin, Staff, Students), track attendance, handle feedback, and streamline leave management processes.",
+    approach:
+      "Built a full-stack application with a modern admin dashboard for the frontend. Implemented role-based access control with dedicated portals for administrators, staff, and students. Created RESTful APIs, integrated relational database, and set up automated CI/CD pipelines.",
+    outcome:
+      "Delivered a production-ready system with features including user management, course/subject management, attendance tracking with interactive UI, feedback system, leave management, and profile management with secure authentication.",
+    stack: ["Python", "Django", "PostgreSQL", "React", "GitHub Actions (CI/CD)"],
+    links: {
+      github: "https://github.com/fahim06/student_management_system",
+    },
+    featured: true,
+    highlight: true,
+  },
   {
     id: "proj-1",
     title: "Brain Tumor Detection",
     category: "Machine Learning / Healthcare",
     summary:
-      "Deep learning system for automated brain tumor identification from MRI scans using CNN and VGG-16.",
+      "Deep learning system for automated brain tumor identification from MRI scans using neural network architectures.",
     problem:
       "Brain tumors account for 85-90% of all primary CNS tumors globally. Early and accurate detection using non-invasive methods like MRI is crucial for effective treatment, but manual analysis is time-consuming and prone to human error.",
     approach:
-      "Implemented and compared two deep learning architectures: a custom CNN and the pre-trained VGG-16 model. Applied rigorous data preprocessing, trained on a curated Kaggle dataset, and evaluated using confusion matrices and standard metrics including accuracy, precision, recall, and F1-score.",
+      "Implemented and compared two deep learning architectures: a custom neural network and a pre-trained model. Applied rigorous data preprocessing, trained on a curated dataset, and evaluated using confusion matrices and standard metrics including accuracy, precision, recall, and F1-score.",
     outcome:
-      "VGG-16 achieved 95.21% accuracy, 96.02% specificity, 90.53% precision, and 91.85% F1-score, demonstrating superior performance for medical image classification.",
-    stack: ["Python", "TensorFlow", "Keras", "VGG-16", "CNN", "Jupyter Notebook"],
+      "Achieved 95.21% accuracy, 96.02% specificity, 90.53% precision, and 91.85% F1-score, demonstrating superior performance for medical image classification.",
+    stack: ["Python", "Deep Learning", "Neural Networks", "Image Processing"],
     links: {
       github: "https://github.com/fahim06/Brain_Tumor",
     },
@@ -228,34 +244,16 @@ export const projects: Project[] = [
     title: "Citrus Genus Classification",
     category: "Machine Learning / Agriculture",
     summary:
-      "M.Sc. thesis project optimizing citrus genus identification using MobileNet and Inception V3 architectures.",
+      "M.Sc. thesis project optimizing citrus genus identification using deep learning architectures and transfer learning.",
     problem:
       "Traditional methods for citrus identification are slow, labor-intensive, and prone to human error. The citrus industry needs an automated, reliable system for accurate classification to optimize market value and quality control.",
     approach:
-      "Utilized a dataset of 22,348 images covering 8 citrus genera from Kaggle. Applied comprehensive data preprocessing and augmentation techniques. Fine-tuned MobileNet and Inception V3 pre-trained models using transfer learning for optimal feature extraction.",
+      "Utilized a dataset of 22,348 images covering 8 citrus genera. Applied comprehensive data preprocessing and augmentation techniques. Fine-tuned pre-trained models using transfer learning for optimal feature extraction.",
     outcome:
-      "MobileNet achieved exceptional results with 99.85% accuracy, 99.66% precision, 99.52% recall, and 0.99 F1-score, outperforming Inception V3 for this specific classification task.",
-    stack: ["Python", "TensorFlow", "Keras", "MobileNet", "Inception V3", "Jupyter Notebook"],
+      "Achieved exceptional results with 99.85% accuracy, 99.66% precision, 99.52% recall, and 0.99 F1-score for citrus classification.",
+    stack: ["Python", "Deep Learning", "Transfer Learning", "Image Classification"],
     links: {
       github: "https://github.com/fahim06/Citrus_Classification",
-    },
-    featured: true,
-  },
-  {
-    id: "proj-3",
-    title: "Student Management System",
-    category: "Full Stack Web Development",
-    summary:
-      "Comprehensive Django-based web application for managing students, staff, courses, attendance, and feedback.",
-    problem:
-      "Educational institutions need a centralized system to manage multiple user roles (Admin, Staff, Students), track attendance, handle feedback, and streamline leave management processes.",
-    approach:
-      "Built a full-stack application using Django with AdminLTE v4 for the frontend. Implemented role-based access control with dedicated portals for administrators, staff, and students. Created RESTful APIs, integrated MySQL database, and set up CI/CD with GitHub Actions.",
-    outcome:
-      "Delivered a production-ready system with features including user management, course/subject management, attendance tracking with interactive UI, feedback system, leave management, and profile management with secure authentication.",
-    stack: ["Python", "Django", "MySQL", "JavaScript", "jQuery", "Bootstrap", "GitHub Actions"],
-    links: {
-      github: "https://github.com/fahim06/student_management_system",
     },
     featured: true,
   },
@@ -264,14 +262,14 @@ export const projects: Project[] = [
     title: "Task Manager",
     category: "Full Stack Web Development",
     summary:
-      "RESTful task management application built with Django and Django REST Framework.",
+      "RESTful task management application with web interface and API endpoints.",
     problem:
       "Teams need a simple yet powerful task management tool with both a web interface and programmatic API access for integration with other tools.",
     approach:
-      "Built a Django application with Django REST Framework for API endpoints. Implemented CRUD operations, environment-based configuration for security, PostgreSQL database integration, and Django admin interface for easy management.",
+      "Built a full-stack application with REST API endpoints. Implemented CRUD operations, environment-based configuration for security, database integration, and admin interface for easy management.",
     outcome:
       "Created a clean, functional task manager with RESTful API endpoints, web interface, and secure configuration management suitable for personal and team use.",
-    stack: ["Python", "Django", "Django REST Framework", "PostgreSQL", "HTML", "CSS"],
+    stack: ["Python", "Web Framework", "REST API", "Database"],
     links: {
       github: "https://github.com/fahim06/Task-Manager",
     },
@@ -282,14 +280,14 @@ export const projects: Project[] = [
     title: "Object Detection System",
     category: "Computer Vision",
     summary:
-      "Real-time object detection application using YOLO (You Only Look Once) algorithm.",
+      "Real-time object detection application using state-of-the-art detection algorithms.",
     problem:
       "Need for real-time object detection capability for video streams and webcam feeds for various applications including surveillance and automation.",
     approach:
-      "Implemented YOLO-based object detection system capable of processing video files and live webcam feeds. Configured custom YOLO weights for optimized detection performance.",
+      "Implemented object detection system capable of processing video files and live webcam feeds. Configured custom model weights for optimized detection performance.",
     outcome:
       "Built a functional real-time object detection system that can identify and classify multiple objects in video streams with high accuracy.",
-    stack: ["Python", "YOLO", "OpenCV", "Deep Learning"],
+    stack: ["Python", "Computer Vision", "Deep Learning"],
     links: {
       github: "https://github.com/fahim06/Object-Detection",
     },
@@ -300,11 +298,11 @@ export const projects: Project[] = [
     title: "ChatBot",
     category: "Natural Language Processing",
     summary:
-      "Conversational AI chatbot built with Python for automated customer interactions.",
+      "Conversational AI chatbot for automated customer interactions.",
     problem:
       "Organizations need automated conversational agents to handle common queries and provide instant responses to users.",
     approach:
-      "Developed a Python-based chatbot with natural language understanding capabilities for handling user queries and providing appropriate responses.",
+      "Developed a chatbot with natural language understanding capabilities for handling user queries and providing appropriate responses.",
     outcome:
       "Created a functional chatbot capable of understanding and responding to user inputs in a conversational manner.",
     stack: ["Python", "NLP", "Machine Learning"],

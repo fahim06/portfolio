@@ -9,25 +9,35 @@ export const metadata: Metadata = {
 };
 
 // Project Card Component
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, isHighlighted = false }: { project: Project; isHighlighted?: boolean }) {
   return (
-    <article className="bg-background border border-border rounded-xl overflow-hidden hover:shadow-lg hover:border-border-hover transition-all duration-300">
+    <article className={`bg-background border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 ${
+      isHighlighted
+        ? "border-accent border-2 relative"
+        : "border-border hover:border-border-hover"
+    }`}>
+      {/* Highlight badge */}
+      {isHighlighted && (
+        <div className="absolute top-4 right-4 bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full z-10">
+          ⭐ Highlighted
+        </div>
+      )}
       {/* Header */}
-      <div className="p-6 md:p-8 border-b border-border">
+      <div className={`p-6 md:p-8 border-b ${isHighlighted ? "border-accent/30" : "border-border"}`}>
         <div className="flex items-start justify-between mb-4">
           <span className="text-xs font-medium text-accent uppercase tracking-wider">
             {project.category}
           </span>
-          {project.featured && (
+          {project.featured && !isHighlighted && (
             <span className="text-xs font-medium text-foreground-muted bg-background-secondary px-2 py-1 rounded">
               Featured
             </span>
           )}
         </div>
-        <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-3">
+        <h2 className={`font-semibold text-foreground mb-3 ${isHighlighted ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"}`}>
           {project.title}
         </h2>
-        <p className="text-foreground-secondary">{project.summary}</p>
+        <p className={`text-foreground-secondary ${isHighlighted ? "text-lg" : ""}`}>{project.summary}</p>
       </div>
 
       {/* Body - Case Study Format */}
@@ -171,7 +181,11 @@ export default function ProjectsPage() {
             </h3>
             <div className="grid gap-8">
               {featuredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+                <ProjectCard 
+                  key={project.id} 
+                  project={project} 
+                  isHighlighted={project.highlight}
+                />
               ))}
             </div>
           </div>

@@ -56,7 +56,7 @@ function HeroSection() {
               href={personalInfo.cvUrl}
               variant="secondary"
               size="lg"
-              isExternal
+              download={personalInfo.cvDownloadName}
             >
               <svg
                 className="mr-2 w-5 h-5"
@@ -117,7 +117,7 @@ function SkillsPreview() {
 
 // Featured Projects Section
 function FeaturedProjects() {
-  const featuredProjects = projects.filter((p) => p.featured).slice(0, 2);
+  const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
 
   return (
     <Section id="featured-projects">
@@ -153,23 +153,37 @@ function FeaturedProjects() {
         {featuredProjects.map((project) => (
           <article
             key={project.id}
-            className="group bg-background-secondary border border-border rounded-xl p-6 md:p-8 hover:border-border-hover hover:shadow-lg transition-all duration-300"
+            className={`group bg-background-secondary border rounded-xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 ${
+              project.highlight
+                ? "border-accent border-2 md:col-span-2 relative overflow-hidden"
+                : "border-border hover:border-border-hover"
+            }`}
           >
+            {/* Highlight badge for featured project */}
+            {project.highlight && (
+              <div className="absolute top-4 right-4 bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full">
+                ⭐ Highlighted
+              </div>
+            )}
             <div className="mb-4">
               <span className="text-xs font-medium text-accent uppercase tracking-wider">
                 {project.category}
               </span>
             </div>
-            <h3 className="text-xl md:text-2xl font-semibold mb-3 group-hover:text-accent transition-colors">
+            <h3 className={`font-semibold mb-3 group-hover:text-accent transition-colors ${
+              project.highlight ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"
+            }`}>
               {project.title}
             </h3>
-            <p className="text-foreground-secondary mb-6 line-clamp-2">
+            <p className={`text-foreground-secondary mb-6 ${
+              project.highlight ? "text-lg" : "line-clamp-2"
+            }`}>
               {project.summary}
             </p>
 
             {/* Stack */}
             <div className="flex flex-wrap gap-2 mb-6">
-              {project.stack.slice(0, 4).map((tech) => (
+              {project.stack.slice(0, project.highlight ? 6 : 4).map((tech) => (
                 <span
                   key={tech}
                   className="text-xs px-2.5 py-1 bg-background border border-border rounded-md text-foreground-secondary"

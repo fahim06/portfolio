@@ -10,15 +10,16 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   href?: string;
   isExternal?: boolean;
+  download?: string | boolean;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent text-white hover:bg-accent-hover shadow-sm hover:shadow-md",
+    "bg-accent text-white hover:bg-accent-hover shadow-sm hover:shadow-md active:shadow-sm",
   secondary:
-    "bg-background-secondary text-foreground border border-border hover:border-border-hover hover:bg-border",
+    "bg-background-secondary text-foreground border border-border hover:border-accent hover:text-accent hover:bg-accent-muted",
   ghost:
-    "bg-transparent text-foreground-secondary hover:text-foreground hover:bg-background-secondary",
+    "bg-transparent text-foreground-secondary hover:text-accent hover:bg-accent-muted",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -35,6 +36,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className = "",
       href,
       isExternal = false,
+      download,
       children,
       ...props
     },
@@ -52,6 +54,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className={combinedStyles}
           target={isExternal ? "_blank" : undefined}
           rel={isExternal ? "noopener noreferrer" : undefined}
+          download={download}
         >
           {children}
         </a>
