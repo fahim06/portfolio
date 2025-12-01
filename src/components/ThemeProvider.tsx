@@ -4,8 +4,8 @@ import {
   createContext,
   useContext,
   useEffect,
-  useState,
   useSyncExternalStore,
+  useCallback,
   ReactNode,
 } from "react";
 
@@ -19,7 +19,31 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-// Custom hook to safely check if component is mounted (client-side)
+// Store for theme state management
+let themeListeners: Array<() => void> = [];
+let currentTheme: Theme = "light";
+
+function getThemeSnapshot(): Theme {
+  return currentTheme;
+}
+
+function getThemeServerSnapshot(): Theme {
+  return "light"; // Always return light for SSR
+}
+
+function subscribeToTheme(callback: () => void) {
+  themeListeners.push(callback);
+  return () => {
+    themeListeners = themeListeners.filter((l) => l !== callback);
+  };
+}
+
+function setThemeValue(newTheme: Theme) {
+  currentTheme = newTheme;
+  themeListeners.forEach((listener) => listener());
+}
+
+// Hook to check if mounted (client-side)
 function useIsMounted() {
   return useSyncExternalStore(
     () => () => {},
@@ -30,27 +54,27 @@ function useIsMounted() {
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const mounted = useIsMounted();
-  const [theme, setTheme] = useState<Theme>(() => {
-    // Only access localStorage during initialization on client
-    if (typeof window !== "undefined") {
-      const savedTheme = localStorage.getItem("theme") as Theme | null;
-      if (savedTheme) return savedTheme;
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) return "dark";
-    }
-    return "light";
-  });
+  
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getThemeServerSnapshot
+  );
 
+  // Initialize theme from DOM on mount (reads what the inline script set)
   useEffect(() => {
-    // Sync theme to document on mount and theme changes
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
+    const domTheme = document.documentElement.getAttribute("data-theme") as Theme;
+    if (domTheme && domTheme !== currentTheme) {
+      setThemeValue(domTheme);
+    }
+  }, []);
 
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
+  const toggleTheme = useCallback(() => {
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    setThemeValue(newTheme);
     localStorage.setItem("theme", newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
-  };
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, mounted }}>
