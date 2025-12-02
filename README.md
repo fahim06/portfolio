@@ -90,8 +90,8 @@ To enable the contact form to send emails:
 1. Use a Gmail account
 2. Enable 2-Step Verification at <https://myaccount.google.com/security>
 3. Generate an App Password:
-   - Go to <https://myaccount.google.com/apppasswords>
-   - Select "Mail" and generate a password
+    - Go to <https://myaccount.google.com/apppasswords>
+    - Select "Mail" and generate a password
 
 4. Add these to your `.env.local`:
 
@@ -152,8 +152,8 @@ Place your CV PDF file in the `public` directory and update the `cvUrl` in `cont
 
 ```typescript
 export const personalInfo = {
-  // ...
-  cvUrl: "/your-cv-filename.pdf",
+    // ...
+    cvUrl: "/your-cv-filename.pdf",
 };
 ```
 
@@ -173,7 +173,7 @@ Alternatively, you can deploy to any platform that supports Next.js.
 
 ## 📄 License
 
-MIT License - feel free to use this as a starting point for your own portfolio.
+MIT License—feel free to use this as a starting point for your own portfolio.
 
 ## 🤝 Contact
 
