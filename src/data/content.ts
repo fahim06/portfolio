@@ -17,6 +17,16 @@ My approach combines solid engineering principles with cutting-edge AI research.
 When I'm not coding, I'm usually exploring new ML architectures, contributing to open-source projects, or working on my next thesis research.`,
   cvUrl: "/resume.pdf",
   cvDownloadName: "Fahim-Yusuf-Resume.pdf",
+  // Hero section photo (circular, professional headshot)
+  heroImage: {
+    url: "/images/fahim-hero.webp",
+    alt: "Fahim Yusuf - Software Engineer",
+  },
+  // About page photo (rectangular, casual/professional)
+  aboutImage: {
+    url: "/images/fahim-about.webp",
+    alt: "Fahim Yusuf",
+  },
 };
 
 // =============================================================================
