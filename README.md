@@ -173,7 +173,7 @@ Alternatively, you can deploy to any platform that supports Next.js.
 
 ## 📄 License
 
-MIT License - feel free to use this as a starting point for your own portfolio.
+MIT License—feel free to use this as a starting point for your own portfolio.
 
 ## 🤝 Contact
 
