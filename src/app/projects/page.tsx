@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Section, SectionHeader } from "@/components/ui";
+import { Section, SectionHeader, Button } from "@/components/ui";
 import { projects, Project } from "@/data";
 
 export const metadata: Metadata = {
@@ -214,12 +214,9 @@ export default function ProjectsPage() {
             I&apos;m always looking for new challenges and opportunities to build
             meaningful software. Let&apos;s discuss how I can contribute to your next project.
           </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-medium rounded-lg hover:bg-accent-hover transition-colors duration-200"
-          >
+          <Button href="/contact" size="lg">
             Get in Touch
-          </a>
+          </Button>
         </div>
       </Section>
     </>

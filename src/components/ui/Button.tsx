@@ -15,7 +15,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "bg-accent text-white hover:bg-accent-hover shadow-sm hover:shadow-md active:shadow-sm",
+    "bg-accent !text-white hover:bg-accent-hover hover:!text-white shadow-sm hover:shadow-md active:shadow-sm",
   secondary:
     "bg-background-secondary text-foreground border border-border hover:border-accent hover:text-accent hover:bg-accent-muted",
   ghost:
@@ -51,7 +51,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       return (
         <a
           href={href}
-          className={combinedStyles}
+          className={`btn-link ${combinedStyles}`}
           target={isExternal ? "_blank" : undefined}
           rel={isExternal ? "noopener noreferrer" : undefined}
           download={download}

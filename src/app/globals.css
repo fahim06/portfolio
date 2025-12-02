@@ -116,6 +116,12 @@
    Tailwind Theme Configuration
    ========================================================================== */
 
+/* Font variables are injected by Next.js font loader at runtime */
+:root {
+  --font-geist-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-geist-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
@@ -201,8 +207,17 @@ a {
   transition: color var(--transition-fast);
 }
 
-a:hover {
+a:hover:not(.btn-link) {
   color: var(--accent-hover);
+}
+
+/* Button links should not inherit anchor hover styles */
+a.btn-link {
+  color: inherit;
+}
+
+a.btn-link:hover {
+  color: inherit;
 }
 
 /* ==========================================================================
