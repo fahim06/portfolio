@@ -30,6 +30,28 @@ Outside of coding, I'm usually experimenting with new ML approaches, contributin
 };
 
 // =============================================================================
+// Navigation Links
+// =============================================================================
+
+export const navLinks = [
+    {href: "/", label: "Home"},
+    {href: "/about", label: "About"},
+    {href: "/projects", label: "Projects"},
+    {href: "/experience", label: "Experience"},
+    {href: "/contact", label: "Contact"},
+];
+
+// =============================================================================
+// Social Links
+// =============================================================================
+
+export const footerLinks = [
+    {href: "https://github.com/fahim06", label: "GitHub", external: true},
+    {href: "https://www.linkedin.com/in/fahim06/", label: "LinkedIn", external: true},
+    {href: "mailto:fahim.yusuf06@gmail.com", label: "Email", external: true},
+];
+
+// =============================================================================
 // Engineering Values
 // =============================================================================
 

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .font-heading {
-  font-family: var(--font-comforter-brush);
+    font-family: var(--font-comforter-brush);
 }
 
 /* ==========================================================================

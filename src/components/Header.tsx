@@ -3,14 +3,7 @@
 import {useState} from "react";
 import Link from "next/link";
 import {useTheme} from "./ThemeProvider";
-
-const navLinks = [
-    {href: "/", label: "Home"},
-    {href: "/about", label: "About"},
-    {href: "/projects", label: "Projects"},
-    {href: "/experience", label: "Experience"},
-    {href: "/contact", label: "Contact"},
-];
+import {navLinks} from "../data";
 
 function ThemeToggle() {
     const {theme, toggleTheme, mounted} = useTheme();
