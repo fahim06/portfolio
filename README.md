@@ -56,6 +56,15 @@ portfolio/
 - npm or yarn
 - Docker (optional, for containerization)
 
+### System Requirements
+
+To run this project locally, your system should meet the following requirements:
+
+- **Operating System**: Windows, macOS, or Linux
+- **RAM**: Minimum 4GB (8GB recommended)
+- **Disk Space**: At least 1GB of free space
+- **Processor**: Dual-core processor or better
+
 ### Installation
 
 1. Clone the repository:
@@ -191,11 +200,48 @@ Modify the CSS custom properties in `src/app/globals.css` to change the color sc
 2. Import the repository in [Vercel](https://vercel.com)
 3. Deploy with default settings
 
-### AWS (App Runner / ECS)
+### AWS Deployment Advice
 
-1. Build and push the Docker image to Amazon ECR.
-2. Deploy the image using AWS App Runner (simplest) or Amazon ECS.
-3. Ensure environment variables are configured in the service settings.
+This project is container-ready and can be easily deployed to AWS using services like **App Runner** or **ECS (Elastic Container Service)**.
+
+#### AWS Resource Requirements (Recommended)
+For optimal performance on AWS, we recommend the following configuration:
+
+- **vCPU**: 0.5 vCPU or 1 vCPU
+- **Memory**: 1 GB or 2 GB
+- **Instance Type (if using EC2)**: t3.micro or t3.small
+
+#### Option 1: AWS App Runner (Simplest)
+App Runner is a fully managed service that makes it easy to deploy containerized web applications.
+
+1.  **Push to ECR**: Build your Docker image and push it to Amazon Elastic Container Registry (ECR).
+    ```bash
+    # Login to ECR
+    aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account-id>.dkr.ecr.<region>.amazonaws.com
+    
+    # Build and Tag
+    docker build -t portfolio .
+    docker tag portfolio:latest <account-id>.dkr.ecr.<region>.amazonaws.com/portfolio:latest
+    
+    # Push
+    docker push <account-id>.dkr.ecr.<region>.amazonaws.com/portfolio:latest
+    ```
+2.  **Create Service**: Go to the AWS App Runner console and create a service using your ECR image.
+3.  **Configure**: Set the port to `3000` and add your environment variables (e.g., `EMAIL_USER`, `EMAIL_PASS`) in the configuration settings.
+
+#### Option 2: Amazon ECS (More Control)
+For more control over infrastructure or if you are already using ECS:
+
+1.  **Push to ECR**: Same as above.
+2.  **Task Definition**: Create a Task Definition in ECS.
+    *   Select **Fargate** launch type.
+    *   Add your container image URI.
+    *   Map port `3000`.
+    *   Define environment variables.
+3.  **Service**: Create a Service based on your Task Definition.
+4.  **Load Balancer**: Ideally, put an Application Load Balancer (ALB) in front of your service to handle SSL termination and traffic routing.
+
+**Note**: Since `NEXT_PUBLIC_` variables are inlined at build time, if you need different values for different environments, you should provide them as build arguments (`--build-arg`) during the Docker build process.
 
 ## 📄 License
 
@@ -203,6 +249,6 @@ MIT License—feel free to use this as a starting point for your own portfolio.
 
 ## 🤝 Contact
 
-- Email: <fahim.yusuf06@gmail.com>
+- Email: [fahim.yusuf06@gmail.com](mailto:fahim.yusuf06@gmail.com)
 - GitHub: [@fahim06](https://github.com/fahim06)
 - LinkedIn: [fahim06](https://www.linkedin.com/in/fahim06/)
