@@ -17,7 +17,7 @@ function BiographySection() {
         <Section>
             <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 items-center md:items-start">
                 {/* Photo Column - Responsive */}
-                <div className="flex-shrink-0 flex justify-center">
+                <div className="shrink-0 flex justify-center">
                     <div className="relative group">
                         {/* Decorative background - responsive */}
                         <div
@@ -31,7 +31,7 @@ function BiographySection() {
                                 src={personalInfo.aboutImage.url}
                                 alt={personalInfo.aboutImage.alt}
                                 fill
-                                className="object-cover"
+                                className="object-cover object-top"
                                 sizes="(max-width: 480px) 192px, (max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 224px, (max-width: 1280px) 256px, 288px"
                             />
                         </div>

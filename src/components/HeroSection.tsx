@@ -114,7 +114,7 @@ function HeroSectionWrapper() {
                                     alt={personalInfo.heroImage.alt}
                                     fill
                                     priority
-                                    className="object-cover"
+                                    className="object-cover object-top"
                                     sizes="(max-width: 480px) 160px, (max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, (max-width: 1280px) 288px, 320px"
                                 />
                             </div>
