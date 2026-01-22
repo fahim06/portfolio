@@ -6,7 +6,7 @@ const bundleAnalyzer = withBundleAnalyzer({
 });
 
 const nextConfig: NextConfig = {
-    output: 'standalone',
+    /* config options here */
 };
 
 export default bundleAnalyzer(nextConfig);
