@@ -8,7 +8,7 @@ export default function BackToTopButton() {
 
     useEffect(() => {
         const toggleVisibility = () => {
-            if (window.pageYOffset > 400) {
+            if (window.scrollY > 400) {
                 setIsVisible(true);
             } else {
                 setIsVisible(false);

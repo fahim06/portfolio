@@ -105,17 +105,17 @@ function HeroSectionWrapper() {
                         <div className="relative group">
                             {/* Decorative ring - responsive */}
                             <div
-                                className="absolute -inset-1.5 sm:-inset-2 md:-inset-3 bg-gradient-to-br from-accent/20 via-accent/10 to-transparent rounded-full blur-sm group-hover:from-accent/30 transition-all duration-300"/>
+                                className="absolute -inset-1.5 sm:-inset-2 md:-inset-3 bg-linear-to-br from-accent/20 via-accent/10 to-transparent rounded-full blur-sm group-hover:from-accent/30 transition-all duration-300"/>
                             {/* Photo container - fully responsive */}
                             <div
-                                className="relative w-36 h-36 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-72 xl:h-72 rounded-full overflow-hidden border-2 sm:border-4 border-background shadow-xl sm:shadow-2xl ring-1 sm:ring-2 ring-accent/20">
+                                className="relative w-40 h-40 xs:w-48 xs:h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-2 sm:border-4 border-background shadow-xl sm:shadow-2xl ring-1 sm:ring-2 ring-accent/20">
                                 <Image
                                     src={personalInfo.heroImage.url}
                                     alt={personalInfo.heroImage.alt}
                                     fill
                                     priority
-                                    className="object-cover"
-                                    sizes="(max-width: 480px) 144px, (max-width: 640px) 160px, (max-width: 768px) 192px, (max-width: 1024px) 224px, (max-width: 1280px) 256px, 288px"
+                                    className="object-cover object-top"
+                                    sizes="(max-width: 480px) 160px, (max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 256px, (max-width: 1280px) 288px, 320px"
                                 />
                             </div>
                         </div>
