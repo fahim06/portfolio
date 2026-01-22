@@ -19,12 +19,12 @@ Outside of coding, I'm usually experimenting with new ML approaches, contributin
     cvDownloadName: "Fahim-Yusuf-Resume.pdf",
     // Hero section photo (circular, professional headshot)
     heroImage: {
-        url: "/images/fahim-hero.webp",
+        url: "/images/fahim-hero.jpg",
         alt: "Fahim Yusuf - Software Engineer",
     },
     // About page photo (rectangular, casual/professional)
     aboutImage: {
-        url: "/images/fahim-about.webp",
+        url: "/images/fahim-about.jpg",
         alt: "Fahim Yusuf",
     },
 };

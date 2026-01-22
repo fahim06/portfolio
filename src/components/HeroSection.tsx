@@ -115,7 +115,7 @@ function HeroSectionWrapper() {
                                     fill
                                     priority
                                     className="object-cover"
-                                    sizes="(max-width: 480px) 144px, (max-width: 640px) 160px, (max-width: 768px) 192px, (max-width: 1024px) 224px, (max-width: 1280px) 256px, 288px"
+                                    sizes="(max-width: 480px) 125px, (max-width: 640px) 160px, (max-width: 768px) 192px, (max-width: 1024px) 224px, (max-width: 1280px) 256px, 288px"
                                 />
                             </div>
                         </div>

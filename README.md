@@ -10,6 +10,7 @@ A professional, modern personal portfolio website built with Next.js 15, TypeScr
 - **Semantic HTML**: Accessible markup with proper ARIA attributes
 - **Performance Optimized**: Fast load times with optimized assets
 - **Original Design**: Custom design system with no templates or UI kits
+- **Dockerized**: Ready for containerized deployment (AWS, etc.)
 
 ## 📁 Project Structure
 
@@ -42,7 +43,9 @@ portfolio/
 │   └── fahim-cv.pdf            # CV download (add your own)
 ├── package.json
 ├── tailwind.config.ts
-└── tsconfig.json
+├── tsconfig.json
+├── Dockerfile                  # Docker configuration
+└── .dockerignore
 ```
 
 ## 🛠️ Getting Started
@@ -51,6 +54,7 @@ portfolio/
 
 - Node.js 18.17 or later
 - npm or yarn
+- Docker (optional, for containerization)
 
 ### Installation
 
@@ -113,6 +117,24 @@ npm run build
 npm start
 ```
 
+## 🐳 Docker Support
+
+This project includes a multi-stage `Dockerfile` optimized for production.
+
+### Build the Image
+
+```bash
+docker build -t portfolio .
+```
+
+### Run the Container
+
+```bash
+docker run -p 3000:3000 portfolio
+```
+
+The application will be available at `http://localhost:3000`.
+
 ## 🎨 Design System
 
 ### Color Tokens
@@ -163,13 +185,17 @@ Modify the CSS custom properties in `src/app/globals.css` to change the color sc
 
 ## 🚢 Deployment
 
-This project is optimized for deployment on Vercel:
+### Vercel (Recommended)
 
 1. Push your code to GitHub
 2. Import the repository in [Vercel](https://vercel.com)
 3. Deploy with default settings
 
-Alternatively, you can deploy to any platform that supports Next.js.
+### AWS (App Runner / ECS)
+
+1. Build and push the Docker image to Amazon ECR.
+2. Deploy the image using AWS App Runner (simplest) or Amazon ECS.
+3. Ensure environment variables are configured in the service settings.
 
 ## 📄 License
 
