@@ -42,7 +42,6 @@ portfolio/
 ├── public/                     # Static assets
 │   └── fahim-cv.pdf            # CV download (add your own)
 ├── package.json
-├── tailwind.config.ts
 ├── tsconfig.json
 ├── Dockerfile                  # Docker configuration
 └── .dockerignore
