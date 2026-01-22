@@ -105,7 +105,7 @@ function HeroSectionWrapper() {
                         <div className="relative group">
                             {/* Decorative ring - responsive */}
                             <div
-                                className="absolute -inset-1.5 sm:-inset-2 md:-inset-3 bg-gradient-to-br from-accent/20 via-accent/10 to-transparent rounded-full blur-sm group-hover:from-accent/30 transition-all duration-300"/>
+                                className="absolute -inset-1.5 sm:-inset-2 md:-inset-3 bg-linear-to-br from-accent/20 via-accent/10 to-transparent rounded-full blur-sm group-hover:from-accent/30 transition-all duration-300"/>
                             {/* Photo container - fully responsive */}
                             <div
                                 className="relative w-40 h-40 xs:w-48 xs:h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-2 sm:border-4 border-background shadow-xl sm:shadow-2xl ring-1 sm:ring-2 ring-accent/20">
