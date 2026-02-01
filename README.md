@@ -224,6 +224,8 @@ This project includes a multi-stage `Dockerfile` optimized for production and a 
 
 The application will be available at `http://localhost:3000`.
 
+> **Note for Production:** For production deployments, consider setting up a reverse proxy (like nginx) in front of the application to handle SSL/TLS termination and serve on standard ports 80/443. This provides better security and allows you to serve the application over HTTPS. See the "Production Reverse Proxy Setup" section below for details.
+
 ### AWS Deployment (using Docker Compose)
 
 You can deploy this application to an AWS EC2 instance using Docker Compose.
@@ -259,6 +261,75 @@ Similar to AWS EC2:
 2.  Choose **Docker Compose** as the source.
 3.  Upload your `docker-compose.yml` file (or link to your registry).
 4.  Set your environment variables in the App Service configuration.
+
+### Production Reverse Proxy Setup
+
+For production deployments, it's recommended to use a reverse proxy like nginx to:
+- Handle SSL/TLS termination for HTTPS
+- Serve the application on standard ports (80/443)
+- Add an additional layer of security
+- Enable better caching and load balancing capabilities
+
+#### Example nginx Configuration
+
+1.  Install nginx on your server:
+    ```bash
+    sudo apt update
+    sudo apt install nginx
+    ```
+
+2.  Create an nginx configuration file (e.g., `/etc/nginx/sites-available/portfolio`):
+    ```nginx
+    server {
+        listen 80;
+        server_name yourdomain.com www.yourdomain.com;
+        
+        # Redirect HTTP to HTTPS
+        return 301 https://$host$request_uri;
+    }
+
+    server {
+        listen 443 ssl http2;
+        server_name yourdomain.com www.yourdomain.com;
+
+        # SSL certificates (use Let's Encrypt with certbot)
+        ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
+        
+        # SSL configuration (TLSv1.3 for maximum security)
+        # For broader compatibility, add TLSv1.2: ssl_protocols TLSv1.2 TLSv1.3;
+        ssl_protocols TLSv1.3;
+        ssl_prefer_server_ciphers off;
+
+        location / {
+            proxy_pass http://localhost:3000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            proxy_cache_bypass $http_upgrade;
+        }
+    }
+    ```
+
+3.  Enable the configuration and obtain SSL certificates:
+    ```bash
+    sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/
+    sudo apt install certbot python3-certbot-nginx
+    sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+    sudo nginx -t
+    sudo systemctl restart nginx
+    ```
+
+4.  Update your firewall/security group to allow ports 80 and 443:
+    - For AWS EC2: Update security group inbound rules
+    - For Azure VM: Update Network Security Group rules
+    - For local firewall: `sudo ufw allow 'Nginx Full'`
+
+With this setup, your application will be accessible via HTTPS at `https://yourdomain.com`, while nginx handles SSL/TLS termination and proxies requests to your Next.js application running on port 3000.
 
 ## 📄 License
 
