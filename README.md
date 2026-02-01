@@ -2,6 +2,27 @@
 
 A professional, modern personal portfolio website built with Next.js 15, TypeScript, and Tailwind CSS.
 
+## 📑 Table of Contents
+
+- [🚀 Features](#-features)
+- [📁 Project Structure](#-project-structure)
+- [🛠️ Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [System Requirements](#system-requirements)
+  - [Installation](#installation)
+  - [Email Setup (Contact Form)](#email-setup-contact-form)
+  - [Build for Production](#build-for-production)
+  - [Start Production Server](#start-production-server)
+- [🎨 Design System](#-design-system)
+- [📝 Customization](#-customization)
+- [🚢 Deployment](#-deployment)
+  - [Vercel (Recommended)](#vercel-recommended)
+  - [🐳 Docker Support](#-docker-support)
+  - [AWS Deployment (using Docker Compose)](#aws-deployment-using-docker-compose)
+  - [Azure Deployment (using Docker Compose)](#azure-deployment-using-docker-compose)
+- [📄 License](#-license)
+- [🤝 Contact](#-contact)
+
 ## 🚀 Features
 
 - **Modern Stack**: Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS
@@ -45,6 +66,7 @@ portfolio/
 ├── tailwind.config.ts
 ├── tsconfig.json
 ├── Dockerfile                  # Docker configuration
+├── docker-compose.yml          # Docker Compose configuration
 └── .dockerignore
 ```
 
@@ -126,24 +148,6 @@ npm run build
 npm start
 ```
 
-## 🐳 Docker Support
-
-This project includes a multi-stage `Dockerfile` optimized for production.
-
-### Build the Image
-
-```bash
-docker build -t portfolio .
-```
-
-### Run the Container
-
-```bash
-docker run -p 3000:3000 portfolio
-```
-
-The application will be available at `http://localhost:3000`.
-
 ## 🎨 Design System
 
 ### Color Tokens
@@ -200,91 +204,61 @@ Modify the CSS custom properties in `src/app/globals.css` to change the color sc
 2. Import the repository in [Vercel](https://vercel.com)
 3. Deploy with default settings
 
-### AWS Deployment Advice
+### 🐳 Docker Support
 
-This project is container-ready and can be easily deployed to AWS using services like **App Runner** or **ECS (Elastic Container Service)**.
+This project includes a multi-stage `Dockerfile` optimized for production and a `docker-compose.yml` file for easy deployment.
 
-#### AWS Resource Requirements (Recommended)
-For optimal performance on AWS, we recommend the following configuration:
+#### Build and Run with Docker Compose
 
-- **vCPU**: 0.5 vCPU or 1 vCPU
-- **Memory**: 1 GB or 2 GB
-- **Instance Type (if using EC2)**: t3.micro or t3.small
-
-#### Option 1: AWS App Runner (Simplest)
-App Runner is a fully managed service that makes it easy to deploy containerized web applications.
-
-1.  **Push to ECR**: Build your Docker image and push it to Amazon Elastic Container Registry (ECR).
-    ```bash
-    # Login to ECR
-    aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account-id>.dkr.ecr.<region>.amazonaws.com
-    
-    # Build and Tag
-    docker build -t portfolio .
-    docker tag portfolio:latest <account-id>.dkr.ecr.<region>.amazonaws.com/portfolio:latest
-    
-    # Push
-    docker push <account-id>.dkr.ecr.<region>.amazonaws.com/portfolio:latest
+1.  Create a `.env` file in the root directory with your environment variables:
+    ```env
+    EMAIL_USER=your-email@gmail.com
+    EMAIL_PASS=your-app-password
+    EMAIL_TO=your-email@gmail.com
     ```
-2.  **Create Service**: Go to the AWS App Runner console and create a service using your ECR image.
-3.  **Configure**: Set the port to `3000` and add your environment variables (e.g., `EMAIL_USER`, `EMAIL_PASS`) in the configuration settings.
 
-#### Option 2: Amazon ECS (More Control)
-For more control over infrastructure or if you are already using ECS:
-
-1.  **Push to ECR**: Same as above.
-2.  **Task Definition**: Create a Task Definition in ECS.
-    *   Select **Fargate** launch type.
-    *   Add your container image URI.
-    *   Map port `3000`.
-    *   Define environment variables.
-3.  **Service**: Create a Service based on your Task Definition.
-4.  **Load Balancer**: Ideally, put an Application Load Balancer (ALB) in front of your service to handle SSL termination and traffic routing.
-
-**Note**: Since `NEXT_PUBLIC_` variables are inlined at build time, if you need different values for different environments, you should provide them as build arguments (`--build-arg`) during the Docker build process.
-
-### Azure Deployment Advice
-
-You can also deploy this containerized application to Microsoft Azure using **Azure Container Apps** or **Azure Kubernetes Service (AKS)**.
-
-#### Option 1: Azure Container Apps (Simplest)
-Azure Container Apps is a fully managed serverless container service.
-
-1.  **Push to ACR**: Build your Docker image and push it to Azure Container Registry (ACR).
+2.  Run the application:
     ```bash
-    # Login to Azure
-    az login
-    
-    # Create ACR (if you haven't already)
-    az acr create --resource-group <resource-group> --name <acr-name> --sku Basic
-    
-    # Login to ACR
-    az acr login --name <acr-name>
-    
-    # Build and Tag
-    docker build -t portfolio .
-    docker tag portfolio:latest <acr-name>.azurecr.io/portfolio:latest
-    
-    # Push
-    docker push <acr-name>.azurecr.io/portfolio:latest
+    docker-compose up -d --build
     ```
-2.  **Create Container App**:
-    *   Go to the Azure Portal and search for "Container Apps".
-    *   Create a new Container App.
-    *   **Image Source**: Select "Azure Container Registry" and choose your image.
-    *   **Ingress**: Enable Ingress, set target port to `3000`, and select "External" traffic.
-    *   **Environment Variables**: Add your variables (e.g., `EMAIL_USER`, `EMAIL_PASS`) in the "Containers" -> "Environment variables" section.
 
-#### Option 2: Azure App Service for Containers
-Another easy option for web apps.
+The application will be available at `http://localhost:3000`.
 
-1.  **Push to ACR**: Same as above.
-2.  **Create Web App**:
-    *   Go to Azure Portal -> "App Services" -> "Create".
-    *   **Publish**: Select "Docker Container".
-    *   **Operating System**: Linux.
-    *   **Docker Tab**: Select your image from ACR.
-    *   **Configuration**: Go to "Settings" -> "Environment variables" to add your app secrets.
+### AWS Deployment (using Docker Compose)
+
+You can deploy this application to an AWS EC2 instance using Docker Compose.
+
+1.  **Launch an EC2 Instance**:
+    *   Launch an instance (e.g., Ubuntu or Amazon Linux 2).
+    *   Ensure the security group allows inbound traffic on port `3000` (and `80`/`443` if using a reverse proxy).
+
+2.  **Install Docker & Docker Compose**:
+    *   Connect to your instance via SSH.
+    *   Install Docker and Docker Compose following the official documentation.
+
+3.  **Deploy**:
+    *   Clone your repository to the server.
+    *   Create the `.env` file with your secrets.
+    *   Run:
+        ```bash
+        docker-compose up -d --build
+        ```
+
+### Azure Deployment (using Docker Compose)
+
+You can deploy to Azure using a Virtual Machine or App Service (which supports Compose).
+
+#### Option 1: Azure Virtual Machine
+Similar to AWS EC2:
+1.  Create a Linux VM in Azure.
+2.  Open port `3000` in the networking settings.
+3.  SSH into the VM, install Docker/Compose, clone the repo, and run `docker-compose up -d --build`.
+
+#### Option 2: Azure App Service (Docker Compose)
+1.  Create a Web App for Containers.
+2.  Choose **Docker Compose** as the source.
+3.  Upload your `docker-compose.yml` file (or link to your registry).
+4.  Set your environment variables in the App Service configuration.
 
 ## 📄 License
 
