@@ -25,7 +25,7 @@ A professional, modern personal portfolio website built with Next.js 15, TypeScr
 
 ## 🚀 Features
 
-- **Modern Stack**: Built with Next.js 15 (App Router), TypeScript, and Tailwind CSS
+- **Modern Stack**: Built with Next.js 16 (App Router), TypeScript, and Tailwind CSS
 - **Dark/Light Mode**: System-aware theme with manual toggle
 - **Responsive Design**: Optimized for all screen sizes
 - **Semantic HTML**: Accessible markup with proper ARIA attributes
