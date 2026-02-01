@@ -42,7 +42,7 @@ function BiographySection() {
                 <div className="flex-1 max-w-2xl">
                     <SectionHeader
                         title="About Me"
-                        subtitle="Engineer, problem solver, and lifelong learner."
+                        subtitle="Engineer, Researcher, AI enthusiast, and Lifelong learner."
                     />
 
                     <div className="space-y-4 sm:space-y-6">
