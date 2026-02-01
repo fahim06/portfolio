@@ -296,9 +296,9 @@ For production deployments, it's recommended to use a reverse proxy like nginx t
         ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
         
-        # SSL configuration (modern, secure settings)
+        # SSL configuration (TLSv1.3 for maximum security)
+        # For broader compatibility, add TLSv1.2: ssl_protocols TLSv1.2 TLSv1.3;
         ssl_protocols TLSv1.3;
-        ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
         ssl_prefer_server_ciphers off;
 
         location / {
