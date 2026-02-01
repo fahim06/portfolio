@@ -10,7 +10,7 @@ export const personalInfo = {
     headline: "Building intelligent solutions with code and machine learning.",
     subheadline:
         "Software engineer focused on deep learning, computer vision, and building practical applications that tackle everyday challenges.",
-    summary: `I'm a software engineer with a strong foundation in computer science and a real interest in machine learning and AI. My work ranges from building full-stack web apps to developing deep learning models for things like medical image analysis and crop classification.
+    summary: `I'm a software engineer with a strong foundation in computer science and a deep passion for machine learning, deep learning, and AI. My work ranges from building full-stack web apps to developing sophisticated deep learning models for applications like medical image analysis and crop classification.
 
 I focus on combining good engineering practices with the latest AI techniques. I've tackled projects from brain tumor detection systems hitting 95% accuracy to complete student management platforms. I build software that works well and actually helps people.
 
