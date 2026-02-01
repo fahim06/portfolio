@@ -42,6 +42,7 @@ portfolio/
 ├── public/                     # Static assets
 │   └── fahim-cv.pdf            # CV download (add your own)
 ├── package.json
+├── tailwind.config.ts
 ├── tsconfig.json
 ├── Dockerfile                  # Docker configuration
 └── .dockerignore
@@ -241,6 +242,49 @@ For more control over infrastructure or if you are already using ECS:
 4.  **Load Balancer**: Ideally, put an Application Load Balancer (ALB) in front of your service to handle SSL termination and traffic routing.
 
 **Note**: Since `NEXT_PUBLIC_` variables are inlined at build time, if you need different values for different environments, you should provide them as build arguments (`--build-arg`) during the Docker build process.
+
+### Azure Deployment Advice
+
+You can also deploy this containerized application to Microsoft Azure using **Azure Container Apps** or **Azure Kubernetes Service (AKS)**.
+
+#### Option 1: Azure Container Apps (Simplest)
+Azure Container Apps is a fully managed serverless container service.
+
+1.  **Push to ACR**: Build your Docker image and push it to Azure Container Registry (ACR).
+    ```bash
+    # Login to Azure
+    az login
+    
+    # Create ACR (if you haven't already)
+    az acr create --resource-group <resource-group> --name <acr-name> --sku Basic
+    
+    # Login to ACR
+    az acr login --name <acr-name>
+    
+    # Build and Tag
+    docker build -t portfolio .
+    docker tag portfolio:latest <acr-name>.azurecr.io/portfolio:latest
+    
+    # Push
+    docker push <acr-name>.azurecr.io/portfolio:latest
+    ```
+2.  **Create Container App**:
+    *   Go to the Azure Portal and search for "Container Apps".
+    *   Create a new Container App.
+    *   **Image Source**: Select "Azure Container Registry" and choose your image.
+    *   **Ingress**: Enable Ingress, set target port to `3000`, and select "External" traffic.
+    *   **Environment Variables**: Add your variables (e.g., `EMAIL_USER`, `EMAIL_PASS`) in the "Containers" -> "Environment variables" section.
+
+#### Option 2: Azure App Service for Containers
+Another easy option for web apps.
+
+1.  **Push to ACR**: Same as above.
+2.  **Create Web App**:
+    *   Go to Azure Portal -> "App Services" -> "Create".
+    *   **Publish**: Select "Docker Container".
+    *   **Operating System**: Linux.
+    *   **Docker Tab**: Select your image from ACR.
+    *   **Configuration**: Go to "Settings" -> "Environment variables" to add your app secrets.
 
 ## 📄 License
 
