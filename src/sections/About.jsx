@@ -8,7 +8,7 @@ export default function About() {
   const { aboutImage, summary } = personalInfo;
   return (
     <section id="about" className={styles.about} aria-labelledby="about-title">
-      <SectionHeader index="02" eyebrow="About" title="Engineering with intent" />
+      <SectionHeader index="02" eyebrow="About" title="Engineering with intent" id="about-title" />
       <div className={styles.grid}>
         <Card span={7} className={styles.narrative}>
           {summary.split('\n').filter(Boolean).map((p, i) => (
