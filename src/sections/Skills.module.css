@@ -1,0 +1,4 @@
+.skills { padding-block: var(--space-8); }
+.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--space-4); }
+.clusterWrap { grid-column: span 3; display: flex; }
+@media (max-width: 1023px) { .clusterWrap { grid-column: 1 / -1; } }
