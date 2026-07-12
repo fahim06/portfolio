@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  grid-column: 1 / -1;
+}
+.index {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--accent);
+  padding-top: 0.4rem;
+}
+.title { margin: 0; }
