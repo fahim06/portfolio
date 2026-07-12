@@ -1,0 +1,17 @@
+.card {
+  grid-column: span var(--span);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: border-color var(--t-base) var(--ease), transform var(--t-base) var(--ease),
+    box-shadow var(--t-base) var(--ease);
+}
+.card:hover { border-color: var(--border-strong); }
+
+@media (min-width: 1024px) {
+  .card { grid-column: span var(--span); }
+}
+@media (max-width: 1023px) {
+  .card { grid-column: 1 / -1; }
+}
