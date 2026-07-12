@@ -20,6 +20,10 @@
 # production
 /build
 
+# vite
+dist/
+.vite/
+
 # misc
 .DS_Store
 *.pem
@@ -44,3 +48,6 @@ next-env.d.ts
 .idea/
 .vscode/
 .env*.local
+
+# superpowers SDD scratch
+.superpowers/
