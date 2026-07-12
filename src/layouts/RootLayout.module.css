@@ -1,0 +1,12 @@
+.shell {
+  max-width: var(--container);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: var(--space-6);
+  padding: var(--space-6) var(--space-5);
+}
+.main { min-width: 0; }
+@media (max-width: 1023px) {
+  .shell { grid-template-columns: 1fr; padding: var(--space-5) var(--space-4); }
+}
