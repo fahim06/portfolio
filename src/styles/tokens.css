@@ -1,0 +1,75 @@
+:root {
+  --bg: #111312;
+  --bg-2: #1A1D1B;
+  --surface: #222624;
+  --surface-2: #2A2F2C;
+  --border: #343A36;
+  --border-strong: #444B46;
+
+  --accent: #7C8C58;
+  --accent-hover: #91A56A;
+  --accent-muted: #59634F;
+
+  --text: #F7F7F5;
+  --text-2: #C5C8C2;
+  --text-muted: #8E948B;
+
+  --success: #6FA06A;
+  --warning: #C9A35D;
+  --error: #B65C5C;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 5rem;
+  --space-10: 6rem;
+  --space-12: 8rem;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 18px;
+  --radius-pill: 9999px;
+
+  --t-fast: 150ms;
+  --t-base: 220ms;
+  --t-slow: 320ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 12px 30px -16px rgb(0 0 0 / 0.7);
+  --shadow-lg: 0 24px 60px -24px rgb(0 0 0 / 0.75);
+
+  --container: 1200px;
+  --font-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+[data-theme='light'] {
+  --bg: #F5F5F0;
+  --bg-2: #EDEDE6;
+  --surface: #FBFAF5;
+  --surface-2: #F0EFE8;
+  --border: #DAD8CC;
+  --border-strong: #C2BFAF;
+
+  --accent: #58634B;
+  --accent-hover: #697652;
+  --accent-muted: #C9CFB3;
+
+  --text: #1C1E1B;
+  --text-2: #4A4E47;
+  --text-muted: #6E736B;
+
+  --success: #4F7E4A;
+  --warning: #9B7A38;
+  --error: #9C4747;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-md: 0 12px 30px -16px rgb(0 0 0 / 0.18);
+  --shadow-lg: 0 24px 60px -24px rgb(0 0 0 / 0.22);
+}
