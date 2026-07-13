@@ -1,28 +1,5 @@
 services:
   portfolio:
-    container_name: portfolio-app
-    build:
-      context: .
-      dockerfile: Dockerfile
-      # If you need to pass build-time variables (NEXT_PUBLIC_...), uncomment below:
-      # args:
-      #   NEXT_PUBLIC_ANALYTICS_ID: ${NEXT_PUBLIC_ANALYTICS_ID}
+    build: .
     ports:
-      - "3000:3000"
-    environment:
-      - NODE_ENV=production
-      # Runtime environment variables for the contact form
-      # Create a .env file in the same directory with these values
-      - EMAIL_USER=${EMAIL_USER}
-      - EMAIL_PASS=${EMAIL_PASS}
-      - EMAIL_TO=${EMAIL_TO}
-    restart: always
-    # Resource limits to prevent the container from consuming all server resources
-    deploy:
-      resources:
-        limits:
-          cpus: '1.0'
-          memory: 1G
-        reservations:
-          cpus: '0.25'
-          memory: 256M
+      - "8080:80"
