@@ -1,0 +1,11 @@
+.form { display: flex; flex-direction: column; gap: var(--space-3); }
+.field { display: flex; flex-direction: column; gap: var(--space-1); }
+.label { font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
+.input, .textarea {
+  font: inherit; color: var(--text); background: var(--bg-2);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 0.7rem 0.9rem; width: 100%; resize: vertical;
+  transition: border-color var(--t-fast) var(--ease);
+}
+.input:focus, .textarea:focus { outline: none; border-color: var(--accent); }
+.hint { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
