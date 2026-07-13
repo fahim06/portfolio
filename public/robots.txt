@@ -1,0 +1,7 @@
+# https://www.robotstxt.org/
+# Allow all crawlers full access.
+User-agent: *
+Allow: /
+
+# Before going live, replace YOUR-DOMAIN with your deployed URL.
+Sitemap: https://YOUR-DOMAIN/sitemap.xml
