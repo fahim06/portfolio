@@ -1,0 +1,30 @@
+import { personalInfo, projects } from '../data/content.js';
+import Card from '../components/Card.jsx';
+import SectionHeader from '../components/SectionHeader.jsx';
+import Button from '../components/Button.jsx';
+import Icon from '../components/Icon.jsx';
+import styles from './Resume.module.css';
+
+export default function Resume() {
+  const highlights = projects.filter((p) => p.featured).map((p) => p.outcome);
+  return (
+    <section id="resume" aria-labelledby="resume-title">
+      <SectionHeader index="09" eyebrow="Resume" title="At a glance" id="resume-title" />
+      <div className={styles.grid}>
+        <Card span={7} className={styles.highlights}>
+          <h3 className={styles.sub}>Highlights</h3>
+          <ul className={styles.list}>
+            {highlights.map((h, i) => <li key={i}>{h}</li>)}
+          </ul>
+        </Card>
+        <Card span={5} className={styles.cta}>
+          <h3 className={styles.sub}>Full résumé</h3>
+          <p className={styles.note}>Download the complete PDF for the full picture.</p>
+          <Button href={personalInfo.cvUrl} download={personalInfo.cvDownloadName}>
+            Download CV <Icon name="arrow-down" size={16} />
+          </Button>
+        </Card>
+      </div>
+    </section>
+  );
+}
