@@ -1,0 +1,2 @@
+.card { display: flex; }
+.cloud { display: flex; flex-wrap: wrap; gap: var(--space-2); }
