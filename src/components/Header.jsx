@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { sections } from '../constants/nav.js';
+import { sections } from '../config/navigation.js';
 import { scrollToSection } from '../utils/scroll.js';
-import { personalInfo } from '../data/content.js';
+import { personalInfo } from '../data/personalInfo.js';
 import { clsx } from '../utils/clsx.js';
 import ThemeToggle from './ThemeToggle.jsx';
 import Icon from './Icon.jsx';

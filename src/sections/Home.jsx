@@ -1,4 +1,5 @@
-import { personalInfo } from '../data/content.js';
+import { personalInfo } from '../data/personalInfo.js';
+import { resume } from '../config/resume.js';
 import Button from '../components/Button.jsx';
 import Tag from '../components/Tag.jsx';
 import Reveal from '../components/Reveal.jsx';
@@ -6,7 +7,8 @@ import Icon from '../components/Icon.jsx';
 import styles from './Home.module.css';
 
 export default function Home() {
-  const { name, title, headline, statement, availability, email, heroImage, cvUrl, cvDownloadName } = personalInfo;
+  const { name, title, headline, statement, availability, email, heroImage } = personalInfo;
+  const { cvUrl, cvDownloadName } = resume;
   return (
     <section id="home" className={styles.home} aria-labelledby="home-title">
       <Reveal className={styles.headline} delay={0}>

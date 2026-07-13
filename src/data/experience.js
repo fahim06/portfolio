@@ -1,0 +1,30 @@
+export const experience = [
+  {
+    id: 'exp-1',
+    company: 'Freelance / Personal Projects',
+    role: 'Full Stack Developer & ML Engineer',
+    location: 'Remote',
+    period: '2021 – Present',
+    description: 'Building web applications and machine learning solutions for various domains.',
+    responsibilities: [
+      'Developed full-stack applications using modern web technologies and frameworks',
+      'Created deep learning models for image classification and medical diagnosis',
+      'Implemented CI/CD pipelines and deployed applications on cloud platforms',
+    ],
+    impact: 'Successfully delivered multiple projects including student management systems, task managers, and ML-based classification systems.',
+    technologies: ['Python', 'Web Frameworks', 'Deep Learning', 'Databases', 'DevOps'],
+    placeholder: false,
+  },
+  {
+    id: 'exp-2',
+    company: 'SkyTech Global LTD',
+    role: 'Trainee',
+    location: '',
+    period: '',
+    description: '',
+    responsibilities: [],
+    impact: '',
+    technologies: [],
+    placeholder: true,
+  },
+];

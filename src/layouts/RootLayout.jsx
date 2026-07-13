@@ -1,4 +1,4 @@
-import { sections } from '../constants/nav.js';
+import { sections } from '../config/navigation.js';
 import { useScrollSpy } from '../hooks/useScrollSpy.js';
 import SkipLink from '../components/SkipLink.jsx';
 import Header from '../components/Header.jsx';

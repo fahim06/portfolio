@@ -1,5 +1,5 @@
-import { personalInfo } from '../data/content.js';
-import { socials } from '../constants/socials.js';
+import { personalInfo } from '../data/personalInfo.js';
+import { socials } from '../config/social.js';
 import Card from '../components/Card.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import MailtoForm from '../components/MailtoForm.jsx';

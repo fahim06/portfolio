@@ -1,4 +1,4 @@
-import { education } from '../data/content.js';
+import { education } from '../data/education.js';
 import Card from '../components/Card.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import styles from './Education.module.css';

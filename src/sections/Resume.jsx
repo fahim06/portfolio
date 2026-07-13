@@ -1,4 +1,5 @@
-import { personalInfo, projects } from '../data/content.js';
+import { projects } from '../data/projects.js';
+import { resume } from '../config/resume.js';
 import Card from '../components/Card.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import Button from '../components/Button.jsx';
@@ -20,7 +21,7 @@ export default function Resume() {
         <Card span={5} className={styles.cta}>
           <h3 className={styles.sub}>Full résumé</h3>
           <p className={styles.note}>Download the complete PDF for the full picture.</p>
-          <Button href={personalInfo.cvUrl} download={personalInfo.cvDownloadName}>
+          <Button href={resume.cvUrl} download={resume.cvDownloadName}>
             Download CV <Icon name="arrow-down" size={16} />
           </Button>
         </Card>

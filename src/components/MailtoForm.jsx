@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { buildMailto } from '../utils/mailto.js';
-import { personalInfo } from '../data/content.js';
+import { personalInfo } from '../data/personalInfo.js';
 import Icon from './Icon.jsx';
 import Button from './Button.jsx';
 import styles from './MailtoForm.module.css';

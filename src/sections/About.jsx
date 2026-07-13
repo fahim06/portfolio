@@ -1,4 +1,5 @@
-import { personalInfo, engineeringValues } from '../data/content.js';
+import { personalInfo } from '../data/personalInfo.js';
+import { engineeringValues } from '../data/engineeringValues.js';
 import Card from '../components/Card.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import Reveal from '../components/Reveal.jsx';

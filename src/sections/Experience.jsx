@@ -1,4 +1,4 @@
-import { experience } from '../data/content.js';
+import { experience } from '../data/experience.js';
 import SectionHeader from '../components/SectionHeader.jsx';
 import TimelineItem from '../components/TimelineItem.jsx';
 import Card from '../components/Card.jsx';

@@ -1,5 +1,5 @@
-import { personalInfo } from '../data/content.js';
-import { socials } from '../constants/socials.js';
+import { personalInfo } from '../data/personalInfo.js';
+import { socials } from '../config/social.js';
 import { scrollToSection } from '../utils/scroll.js';
 import Icon from './Icon.jsx';
 import styles from './Footer.module.css';
