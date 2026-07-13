@@ -1,0 +1,11 @@
+# Dev image — Vite dev server with hot reload
+FROM node:20-alpine
+WORKDIR /app
+
+# Install deps (package.json + lock) — uses bind mount for source at runtime
+COPY package*.json ./
+RUN npm install
+
+# Vite dev server, bound to all interfaces for Docker
+EXPOSE 5173
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

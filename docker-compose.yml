@@ -1,5 +1,25 @@
 services:
-  portfolio:
-    build: .
+  # Production: builds the app and serves the static build via nginx.
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8080:80"
+    restart: unless-stopped
+
+  # Development: Vite dev server with hot reload + live source mount.
+  # Run with:  docker compose --profile dev up
+  dev:
+    profiles: ["dev"]
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    restart: unless-stopped
