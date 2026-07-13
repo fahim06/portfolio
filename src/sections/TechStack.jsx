@@ -1,4 +1,5 @@
-import { skillGroups, projects } from '../data/content.js';
+import { skillGroups } from '../data/skills.js';
+import { projects } from '../data/projects.js';
 import Card from '../components/Card.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import Tag from '../components/Tag.jsx';

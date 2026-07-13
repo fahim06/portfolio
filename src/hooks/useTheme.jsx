@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
-
-const STORAGE_KEY = 'theme';
+import { STORAGE_KEY, DEFAULT_THEME } from '../config/theme.js';
 
 /** Pure theme resolver — unit tested. */
 export function resolveTheme(preference, systemPrefersDark) {
@@ -12,8 +11,8 @@ const ThemeContext = createContext(null);
 
 export function ThemeProvider({ children }) {
   const [preference, setPreference] = useState(() => {
-    if (typeof window === 'undefined') return 'system';
-    return localStorage.getItem(STORAGE_KEY) || 'system';
+    if (typeof window === 'undefined') return DEFAULT_THEME;
+    return localStorage.getItem(STORAGE_KEY) || DEFAULT_THEME;
   });
   const [systemPrefersDark, setSystemPrefersDark] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches

@@ -1,4 +1,4 @@
-import { projects } from '../data/content.js';
+import { projects } from '../data/projects.js';
 import SectionHeader from '../components/SectionHeader.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
 import Reveal from '../components/Reveal.jsx';

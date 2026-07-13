@@ -1,4 +1,4 @@
-import { skillGroups } from '../data/content.js';
+import { skillGroups } from '../data/skills.js';
 import SectionHeader from '../components/SectionHeader.jsx';
 import SkillCluster from '../components/SkillCluster.jsx';
 import Reveal from '../components/Reveal.jsx';

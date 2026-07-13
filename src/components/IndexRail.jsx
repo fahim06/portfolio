@@ -1,4 +1,4 @@
-import { sections } from '../constants/nav.js';
+import { sections } from '../config/navigation.js';
 import { scrollToSection } from '../utils/scroll.js';
 import { clsx } from '../utils/clsx.js';
 import styles from './IndexRail.module.css';

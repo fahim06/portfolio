@@ -1,16 +1,11 @@
 import { useTheme } from '../hooks/useTheme.jsx';
+import { THEME_META } from '../config/theme.js';
 import Icon from './Icon.jsx';
 import styles from './ThemeToggle.module.css';
 
-const META = {
-  dark: { icon: 'moon', label: 'Dark' },
-  light: { icon: 'sun', label: 'Light' },
-  system: { icon: 'auto', label: 'System' },
-};
-
 export default function ThemeToggle() {
   const { preference, cycle } = useTheme();
-  const meta = META[preference] || META.system;
+  const meta = THEME_META[preference] || THEME_META.system;
   return (
     <button
       type="button"
