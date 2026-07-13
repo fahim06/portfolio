@@ -1,7 +1,7 @@
-import { personalInfo } from '../data/personalInfo.js';
-import { socials } from '../config/social.js';
-import { scrollToSection } from '../utils/scroll.js';
-import Icon from './Icon.jsx';
+import { personalInfo } from '../../data/personalInfo.js';
+import { socials } from '../../config/social.js';
+import { scrollToSection } from '../../utils/scroll.js';
+import Icon from '../ui/Icon.jsx';
 import styles from './Footer.module.css';
 
 export default function Footer() {

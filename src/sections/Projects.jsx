@@ -1,7 +1,7 @@
 import { projects } from '../data/projects.js';
-import SectionHeader from '../components/SectionHeader.jsx';
+import SectionHeader from '../components/ui/SectionHeader.jsx';
 import ProjectCard from '../components/ProjectCard.jsx';
-import Reveal from '../components/Reveal.jsx';
+import Reveal from '../components/ui/Reveal.jsx';
 import styles from './Projects.module.css';
 
 export default function Projects() {

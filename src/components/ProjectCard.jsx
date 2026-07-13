@@ -1,6 +1,6 @@
-import Icon from './Icon.jsx';
-import Tag from './Tag.jsx';
-import Card from './Card.jsx';
+import Icon from './ui/Icon.jsx';
+import Tag from './ui/Tag.jsx';
+import Card from './ui/Card.jsx';
 import { clsx } from '../utils/clsx.js';
 import styles from './ProjectCard.module.css';
 

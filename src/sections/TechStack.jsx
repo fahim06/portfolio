@@ -1,8 +1,8 @@
 import { skillGroups } from '../data/skills.js';
 import { projects } from '../data/projects.js';
-import Card from '../components/Card.jsx';
-import SectionHeader from '../components/SectionHeader.jsx';
-import Tag from '../components/Tag.jsx';
+import Card from '../components/ui/Card.jsx';
+import SectionHeader from '../components/ui/SectionHeader.jsx';
+import Tag from '../components/ui/Tag.jsx';
 import styles from './TechStack.module.css';
 
 export default function TechStack() {

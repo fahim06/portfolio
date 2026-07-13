@@ -1,10 +1,10 @@
 import { sections } from '../config/navigation.js';
 import { useScrollSpy } from '../hooks/useScrollSpy.js';
-import SkipLink from '../components/SkipLink.jsx';
-import Header from '../components/Header.jsx';
-import IndexRail from '../components/IndexRail.jsx';
-import Footer from '../components/Footer.jsx';
-import BackToTop from '../components/BackToTop.jsx';
+import SkipLink from '../components/ui/SkipLink.jsx';
+import Header from '../components/layout/Header.jsx';
+import IndexRail from '../components/layout/IndexRail.jsx';
+import Footer from '../components/layout/Footer.jsx';
+import BackToTop from '../components/ui/BackToTop.jsx';
 import styles from './RootLayout.module.css';
 
 export default function RootLayout({ children }) {

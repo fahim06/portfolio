@@ -1,6 +1,6 @@
-import Card from '../components/Card.jsx';
-import SectionHeader from '../components/SectionHeader.jsx';
-import EmptyState from '../components/EmptyState.jsx';
+import Card from '../components/ui/Card.jsx';
+import SectionHeader from '../components/ui/SectionHeader.jsx';
+import EmptyState from '../components/ui/EmptyState.jsx';
 import styles from './Certificates.module.css';
 
 export default function Certificates() {

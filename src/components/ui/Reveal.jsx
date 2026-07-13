@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion.js';
+import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.js';
 
 export default function Reveal({ children, delay = 0, as = 'div', className, style }) {
   const reduce = usePrefersReducedMotion();

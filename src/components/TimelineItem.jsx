@@ -1,5 +1,5 @@
-import Tag from './Tag.jsx';
-import EmptyState from './EmptyState.jsx';
+import Tag from './ui/Tag.jsx';
+import EmptyState from './ui/EmptyState.jsx';
 import styles from './TimelineItem.module.css';
 
 export default function TimelineItem({ item }) {

@@ -1,6 +1,6 @@
-import { useTheme } from '../hooks/useTheme.jsx';
-import { THEME_META } from '../config/theme.js';
-import Icon from './Icon.jsx';
+import { useTheme } from '../../hooks/useTheme.jsx';
+import { THEME_META } from '../../config/theme.js';
+import Icon from '../ui/Icon.jsx';
 import styles from './ThemeToggle.module.css';
 
 export default function ThemeToggle() {

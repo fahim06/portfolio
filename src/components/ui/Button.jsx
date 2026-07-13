@@ -1,4 +1,4 @@
-import { clsx } from '../utils/clsx.js';
+import { clsx } from '../../utils/clsx.js';
 import styles from './Button.module.css';
 
 export default function Button({

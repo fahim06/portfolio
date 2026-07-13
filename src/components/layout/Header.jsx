@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { sections } from '../config/navigation.js';
-import { scrollToSection } from '../utils/scroll.js';
-import { personalInfo } from '../data/personalInfo.js';
-import { clsx } from '../utils/clsx.js';
+import { sections } from '../../config/navigation.js';
+import { scrollToSection } from '../../utils/scroll.js';
+import { personalInfo } from '../../data/personalInfo.js';
+import { clsx } from '../../utils/clsx.js';
 import ThemeToggle from './ThemeToggle.jsx';
-import Icon from './Icon.jsx';
+import Icon from '../ui/Icon.jsx';
 import styles from './Header.module.css';
 
 export default function Header({ active }) {

@@ -1,4 +1,4 @@
-import { clsx } from '../utils/clsx.js';
+import { clsx } from '../../utils/clsx.js';
 import styles from './Card.module.css';
 
 export default function Card({ as: Comp = 'div', span = 12, className, children, ...rest }) {
