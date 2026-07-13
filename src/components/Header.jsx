@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { sections } from '../constants/nav.js';
 import { scrollToSection } from '../utils/scroll.js';
 import { personalInfo } from '../data/content.js';
@@ -9,6 +9,16 @@ import styles from './Header.module.css';
 
 export default function Header({ active }) {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open]);
+
   return (
     <header className={styles.header}>
       <div className={styles.bar}>
@@ -28,6 +38,7 @@ export default function Header({ active }) {
               type="button"
               className={clsx(styles.navLink, active === s.id && styles.active)}
               onClick={() => scrollToSection(s.id)}
+              aria-current={active === s.id ? 'page' : undefined}
             >
               {s.label}
             </button>
@@ -55,6 +66,7 @@ export default function Header({ active }) {
               key={s.id}
               className={clsx(styles.mobileLink, active === s.id && styles.active)}
               onClick={() => { scrollToSection(s.id); setOpen(false); }}
+              aria-current={active === s.id ? 'page' : undefined}
             >
               <span className={styles.mobileIndex}>{s.index}</span>
               {s.label}

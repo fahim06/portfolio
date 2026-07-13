@@ -9,7 +9,7 @@ export default function Home() {
   const { name, title, headline, statement, availability, email, heroImage, cvUrl, cvDownloadName } = personalInfo;
   return (
     <section id="home" className={styles.home} aria-labelledby="home-title">
-      <Reveal className={styles.headline} span={12} delay={0}>
+      <Reveal className={styles.headline} delay={0}>
         <p className="eyebrow">{availability}</p>
         <h1 id="home-title" className={styles.name}>{name}</h1>
         <p className={styles.title}>{title}</p>
