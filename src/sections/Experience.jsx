@@ -1,7 +1,7 @@
 import { experience } from '../data/experience.js';
-import SectionHeader from '../components/SectionHeader.jsx';
+import SectionHeader from '../components/ui/SectionHeader.jsx';
 import TimelineItem from '../components/TimelineItem.jsx';
-import Card from '../components/Card.jsx';
+import Card from '../components/ui/Card.jsx';
 import styles from './Experience.module.css';
 
 export default function Experience() {

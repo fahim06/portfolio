@@ -1,8 +1,8 @@
 import { personalInfo } from '../data/personalInfo.js';
 import { engineeringValues } from '../data/engineeringValues.js';
-import Card from '../components/Card.jsx';
-import SectionHeader from '../components/SectionHeader.jsx';
-import Reveal from '../components/Reveal.jsx';
+import Card from '../components/ui/Card.jsx';
+import SectionHeader from '../components/ui/SectionHeader.jsx';
+import Reveal from '../components/ui/Reveal.jsx';
 import styles from './About.module.css';
 
 export default function About() {

@@ -1,9 +1,9 @@
 import { projects } from '../data/projects.js';
 import { resume } from '../config/resume.js';
-import Card from '../components/Card.jsx';
-import SectionHeader from '../components/SectionHeader.jsx';
-import Button from '../components/Button.jsx';
-import Icon from '../components/Icon.jsx';
+import Card from '../components/ui/Card.jsx';
+import SectionHeader from '../components/ui/SectionHeader.jsx';
+import Button from '../components/ui/Button.jsx';
+import Icon from '../components/ui/Icon.jsx';
 import styles from './Resume.module.css';
 
 export default function Resume() {

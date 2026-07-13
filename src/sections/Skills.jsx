@@ -1,7 +1,7 @@
 import { skillGroups } from '../data/skills.js';
-import SectionHeader from '../components/SectionHeader.jsx';
+import SectionHeader from '../components/ui/SectionHeader.jsx';
 import SkillCluster from '../components/SkillCluster.jsx';
-import Reveal from '../components/Reveal.jsx';
+import Reveal from '../components/ui/Reveal.jsx';
 import styles from './Skills.module.css';
 
 export default function Skills() {

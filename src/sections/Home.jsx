@@ -1,9 +1,9 @@
 import { personalInfo } from '../data/personalInfo.js';
 import { resume } from '../config/resume.js';
-import Button from '../components/Button.jsx';
-import Tag from '../components/Tag.jsx';
-import Reveal from '../components/Reveal.jsx';
-import Icon from '../components/Icon.jsx';
+import Button from '../components/ui/Button.jsx';
+import Tag from '../components/ui/Tag.jsx';
+import Reveal from '../components/ui/Reveal.jsx';
+import Icon from '../components/ui/Icon.jsx';
 import styles from './Home.module.css';
 
 export default function Home() {

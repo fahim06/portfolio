@@ -1,5 +1,5 @@
-import Card from './Card.jsx';
-import Tag from './Tag.jsx';
+import Card from './ui/Card.jsx';
+import Tag from './ui/Tag.jsx';
 import styles from './SkillCluster.module.css';
 
 export default function SkillCluster({ title, items }) {

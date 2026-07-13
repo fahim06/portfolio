@@ -1,9 +1,9 @@
 import { personalInfo } from '../data/personalInfo.js';
 import { socials } from '../config/social.js';
-import Card from '../components/Card.jsx';
-import SectionHeader from '../components/SectionHeader.jsx';
-import MailtoForm from '../components/MailtoForm.jsx';
-import Icon from '../components/Icon.jsx';
+import Card from '../components/ui/Card.jsx';
+import SectionHeader from '../components/ui/SectionHeader.jsx';
+import MailtoForm from '../components/forms/MailtoForm.jsx';
+import Icon from '../components/ui/Icon.jsx';
 import styles from './Contact.module.css';
 
 export default function Contact() {

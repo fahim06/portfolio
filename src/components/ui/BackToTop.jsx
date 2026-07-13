@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { scrollToSection } from '../utils/scroll.js';
+import { scrollToSection } from '../../utils/scroll.js';
 import Icon from './Icon.jsx';
 import styles from './BackToTop.module.css';
 
