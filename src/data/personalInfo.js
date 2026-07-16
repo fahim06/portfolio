@@ -17,8 +17,13 @@ export const personalInfo = {
     "Reproducible, containerized environments and maintainable, well-tested code",
   ],
   heroImage: {
-    url: "/images/fahim-hero.jpg",
+    url: "/images/fahim-hero.png",
+    fallback: "/images/fahim-hero_backup.jpg",
     alt: "Fahim Yusuf — Software Engineer",
   },
-  aboutImage: { url: "/images/fahim-about.jpg", alt: "Fahim Yusuf" },
+  aboutImage: {
+    url: "/images/fahim-about.png",
+    fallback: "/images/fahim-about_backup.jpg",
+    alt: "Fahim Yusuf",
+  },
 };

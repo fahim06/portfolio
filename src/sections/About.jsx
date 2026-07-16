@@ -1,5 +1,6 @@
 import Card from "../components/ui/Card.jsx";
 import SectionHeader from "../components/ui/SectionHeader.jsx";
+import SmartImage from "../components/ui/SmartImage.jsx";
 import { personalInfo } from "../data/personalInfo.js";
 import styles from "./About.module.css";
 
@@ -26,9 +27,10 @@ export default function About() {
           )}
         </Card>
         <Card span={5} className={styles.photoCard}>
-          <img
+          <SmartImage
             className={styles.photo}
             src={aboutImage.url}
+            fallback={aboutImage.fallback}
             alt={aboutImage.alt}
             loading="lazy"
             width="500"
