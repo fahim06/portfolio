@@ -8,7 +8,37 @@
 .index {
   font-family: var(--font-mono);
   font-size: 0.95rem;
-  color: var(--accent);
   padding-top: 0.4rem;
+  background: var(--border-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.title { margin: 0; }
+.heading {
+  min-width: 0;
+}
+.emoji {
+  font-size: 1rem;
+  margin-right: 0.35rem;
+  line-height: 1;
+}
+.title {
+  margin: 0;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% 1.5px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size var(--t-slow) var(--ease);
+}
+.header:hover .title {
+  background-size: 100% 1.5px;
+}
+
+@media (max-width: 480px) {
+  .header {
+    gap: var(--space-3);
+  }
+  .index {
+    font-size: 0.85rem;
+  }
+}

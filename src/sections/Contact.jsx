@@ -1,18 +1,24 @@
-import { personalInfo } from '../data/personalInfo.js';
-import { socials } from '../config/social.js';
-import Card from '../components/ui/Card.jsx';
-import SectionHeader from '../components/ui/SectionHeader.jsx';
-import MailtoForm from '../components/forms/MailtoForm.jsx';
-import Icon from '../components/ui/Icon.jsx';
-import styles from './Contact.module.css';
+import ContactForm from "../components/forms/ContactForm.jsx";
+import Card from "../components/ui/Card.jsx";
+import Icon from "../components/ui/Icon.jsx";
+import SectionHeader from "../components/ui/SectionHeader.jsx";
+import { socials } from "../config/social.js";
+import { personalInfo } from "../data/personalInfo.js";
+import styles from "./Contact.module.css";
 
 export default function Contact() {
   return (
     <section id="contact" aria-labelledby="contact-title">
-      <SectionHeader index="10" eyebrow="Contact" title="Let's talk" id="contact-title" />
+      <SectionHeader
+        index="10"
+        eyebrow="Contact"
+        emoji="📬"
+        title="Let's talk"
+        id="contact-title"
+      />
       <div className={styles.grid}>
         <Card span={7}>
-          <MailtoForm />
+          <ContactForm />
         </Card>
         <Card span={5} className={styles.info}>
           <div>
@@ -27,12 +33,26 @@ export default function Contact() {
             <p className={styles.label}>Elsewhere</p>
             <div className={styles.socials}>
               {socials.map((s) => (
-                <a key={s.name} href={s.url} target={s.url.startsWith('http') ? '_blank' : undefined} rel="noreferrer" className={styles.social} aria-label={s.name}>
+                <a
+                  key={s.name}
+                  href={s.url}
+                  target={s.url.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className={styles.social}
+                  aria-label={s.name}
+                >
                   <Icon name={s.icon} size={18} />
                 </a>
               ))}
             </div>
           </div>
+          <p className={styles.fallback}>
+            Prefer email?{" "}
+            <a href={`mailto:${personalInfo.email}`}>
+              Send me a message directly
+            </a>
+            .
+          </p>
         </Card>
       </div>
     </section>

@@ -3,5 +3,4 @@
 User-agent: *
 Allow: /
 
-# Before going live, replace YOUR-DOMAIN with your deployed URL.
-Sitemap: https://YOUR-DOMAIN/sitemap.xml
+Sitemap: https://fahimyusuf.com.bd/sitemap.xml

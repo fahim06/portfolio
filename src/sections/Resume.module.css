@@ -1,8 +1,0 @@
-.grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: var(--space-4); }
-.highlights { grid-column: span 7; }
-.cta { grid-column: span 5; display: flex; flex-direction: column; gap: var(--space-3); align-items: flex-start; }
-.sub { font-size: 1.1rem; margin: 0 0 var(--space-2); }
-.note { color: var(--text-2); margin: 0; }
-.list { display: flex; flex-direction: column; gap: var(--space-2); padding-left: var(--space-4); }
-.list li { list-style: disc; color: var(--text-2); }
-@media (max-width: 1023px) { .highlights, .cta { grid-column: 1 / -1; } }

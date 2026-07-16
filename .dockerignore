@@ -1,38 +1,19 @@
-# version control & editor metadata
-.git
-.gitignore
-.github
-.idea
-.vscode
-.DS_Store
-
-# dependencies & build artifacts
+# Keep the Docker build context lean for the dev image.
 node_modules
 dist
 build
-.vite
-coverage
-
-# env (never bake secrets into images)
+.git
+.gitignore
 .env
-.env.*
-
-# logs
+.env.local
+.env.*.local
+.vercel
+.idea
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# docker (not needed inside the build context)
+.DS_Store
+# Large certificate PDFs are not needed inside the image.
+certificates
+# Don't include Docker's own files in the context.
 Dockerfile
-.dockerignore
 docker-compose.yml
-docker-compose.*.yml
-
-# project docs & scratch (not needed to build)
-README.md
-README_FOR_CLAUDE.md
-CLAUDE.md
-docs
-.superpowers
+.dockerignore
