@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/
+# Allow all crawlers full access.
+User-agent: *
+Allow: /
+
+Sitemap: https://fahimyusuf.com.bd/sitemap.xml

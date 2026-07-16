@@ -1,0 +1,42 @@
+name: Docker
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build dev image & smoke test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build dev image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          load: true
+          tags: portfolio:ci
+
+      - name: Smoke test — Vite dev server returns HTTP 200
+        run: |
+          docker run -d --name portfolio-ci -p 3000:3000 portfolio:ci
+          for i in $(seq 1 40); do
+            if curl -sf http://localhost:3000/ -o /dev/null; then
+              echo "Server is up"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "Server did not become ready" >&2
+          docker logs portfolio-ci || true
+          exit 1

@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Ask a question
+    url: https://github.com/fahim06/portfolio/discussions
+    about: For questions and ideas that aren't bugs or feature requests, use GitHub Discussions.
+  - name: Security report
+    url: https://github.com/fahim06/portfolio/security/advisories/new
+    about: Found a security issue? Please report it privately instead of opening a public issue.
