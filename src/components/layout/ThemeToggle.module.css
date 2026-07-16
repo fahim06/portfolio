@@ -1,4 +1,10 @@
-.toggle {
+.root {
+  position: relative;
+  display: inline-block;
+}
+
+/* ── Trigger ─────────────────────────────────────────────── */
+.trigger {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -9,8 +15,142 @@
   color: var(--text-2);
   cursor: pointer;
   font: inherit;
-  transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+  transition:
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    background-color var(--t-fast) var(--ease);
 }
-.toggle:hover { color: var(--accent); border-color: var(--accent); }
-.label { font-size: 0.8rem; font-family: var(--font-mono); }
-@media (max-width: 480px) { .label { display: none; } }
+.trigger:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+.trigger[aria-expanded="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.triggerLabel {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+}
+.chevron {
+  transition: transform var(--t-base) var(--ease-out-expo);
+  opacity: 0.7;
+}
+.trigger[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+@keyframes iconIn {
+  from {
+    opacity: 0;
+    transform: translateY(-3px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.triggerIcon {
+  display: inline-flex;
+  color: var(--accent);
+  animation: iconIn 220ms var(--ease-out-expo);
+}
+
+/* ── Floating menu ───────────────────────────────────────── */
+.menu {
+  position: absolute;
+  top: calc(100% + 0.55rem);
+  right: 0;
+  z-index: var(--z-dropdown);
+  min-width: 11rem;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  box-shadow: var(--elev-3);
+  transform-origin: top right;
+
+  /* Closed (default) */
+  opacity: 0;
+  transform: translateY(-6px) scale(0.96);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 160ms var(--ease-out-expo),
+    transform 160ms var(--ease-out-expo),
+    visibility 0s linear 160ms;
+}
+.menu[data-open="true"] {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 160ms var(--ease-out-expo),
+    transform 160ms var(--ease-out-expo),
+    visibility 0s linear 0s;
+}
+
+/* ── Options ─────────────────────────────────────────────── */
+.option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 0.5rem 0.6rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-2);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background-color var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease);
+}
+.option:hover,
+.option:focus-visible,
+.option[data-active="true"] {
+  background: var(--surface-2);
+  color: var(--text);
+  outline: none;
+}
+.optionIcon {
+  display: inline-flex;
+  color: var(--text-muted);
+}
+.option[data-active="true"] .optionIcon {
+  color: var(--accent);
+}
+.optionLabel {
+  flex: 1;
+}
+.check {
+  display: inline-flex;
+  color: var(--accent);
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity var(--t-fast) var(--ease),
+    transform var(--t-base) var(--ease-spring);
+}
+.check[data-on="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 480px) {
+  .triggerLabel {
+    display: none;
+  }
+  .trigger {
+    padding: 0.5rem;
+  }
+}

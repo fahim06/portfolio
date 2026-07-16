@@ -1,0 +1,115 @@
+.atmosphere {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  /* Base mesh: layered radial blooms anchored to the corners. */
+  background:
+    radial-gradient(
+      120% 80% at 12% -5%,
+      color-mix(
+        in srgb,
+        var(--blob-1) calc(var(--blob-strength) * 55%),
+        transparent
+      ),
+      transparent 58%
+    ),
+    radial-gradient(
+      100% 70% at 95% 8%,
+      color-mix(
+        in srgb,
+        var(--blob-2) calc(var(--blob-strength) * 50%),
+        transparent
+      ),
+      transparent 55%
+    ),
+    radial-gradient(
+      120% 95% at 70% 105%,
+      color-mix(
+        in srgb,
+        var(--blob-3) calc(var(--blob-strength) * 50%),
+        transparent
+      ),
+      transparent 60%
+    );
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  opacity: var(--blob-strength);
+  mix-blend-mode: var(--blob-blend, screen);
+  will-change: transform;
+}
+:global([data-theme="light"]) .blob {
+  mix-blend-mode: multiply;
+}
+
+.blob1 {
+  width: 42vw;
+  height: 42vw;
+  top: -8vw;
+  left: -6vw;
+  background: radial-gradient(circle, var(--blob-1), transparent 68%);
+  animation: drift1 28s var(--ease) infinite alternate;
+}
+.blob2 {
+  width: 38vw;
+  height: 38vw;
+  top: 2vw;
+  right: -10vw;
+  background: radial-gradient(circle, var(--blob-2), transparent 68%);
+  animation: drift2 34s var(--ease) infinite alternate;
+}
+.blob3 {
+  width: 46vw;
+  height: 46vw;
+  bottom: -16vw;
+  left: 28vw;
+  background: radial-gradient(circle, var(--blob-3), transparent 68%);
+  animation: drift3 40s var(--ease) infinite alternate;
+}
+
+@keyframes drift1 {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(4vw, 3vw, 0) scale(1.08);
+  }
+}
+@keyframes drift2 {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-3vw, 4vw, 0) scale(1.1);
+  }
+}
+@keyframes drift3 {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(3vw, -4vw, 0) scale(1.06);
+  }
+}
+
+/* Subtle film grain for depth. */
+.grain {
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob {
+    animation: none;
+  }
+}

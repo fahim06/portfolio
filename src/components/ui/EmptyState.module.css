@@ -7,5 +7,12 @@
   border-radius: var(--radius-lg);
   text-align: center;
 }
-.title { color: var(--text); font-weight: 600; margin: 0; }
-.note { color: var(--text-muted); margin: 0; }
+.title {
+  color: var(--text);
+  font-weight: 600;
+  margin: 0;
+}
+.note {
+  color: var(--text-muted);
+  margin: 0;
+}

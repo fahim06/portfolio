@@ -1,17 +1,61 @@
 .card {
   grid-column: span var(--span);
-  background: var(--surface);
+  position: relative;
+  isolation: isolate;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface) 94%, transparent),
+    var(--surface)
+  );
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
-  transition: border-color var(--t-base) var(--ease), transform var(--t-base) var(--ease),
+  transition:
+    border-color var(--t-base) var(--ease),
+    transform var(--t-base) var(--ease),
     box-shadow var(--t-base) var(--ease);
 }
-.card:hover { border-color: var(--border-strong); }
+/* Soft accent glow that blooms on hover (sits behind content). */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, -10%),
+    color-mix(in srgb, var(--accent) 18%, transparent),
+    transparent 62%
+  );
+  opacity: 0;
+  transition: opacity var(--t-base) var(--ease);
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  box-shadow: var(--elev-2);
+}
+.card:hover::after {
+  opacity: 1;
+}
 
 @media (min-width: 1024px) {
-  .card { grid-column: span var(--span); }
+  .card {
+    grid-column: span var(--span);
+  }
 }
 @media (max-width: 1023px) {
-  .card { grid-column: 1 / -1; }
+  .card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: border-color var(--t-fast) var(--ease);
+  }
+  .card:hover {
+    transform: none;
+  }
 }

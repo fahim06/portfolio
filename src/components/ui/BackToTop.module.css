@@ -1,9 +1,26 @@
 .fab {
-  position: fixed; right: var(--space-4); bottom: var(--space-4); z-index: 60;
-  display: inline-grid; place-items: center; width: 44px; height: 44px;
-  border-radius: var(--radius-pill); border: 1px solid var(--border-strong);
-  background: var(--surface); color: var(--accent); cursor: pointer;
-  box-shadow: var(--shadow-md);
-  transition: transform var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: var(--z-fab);
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+  box-shadow: var(--elev-2);
+  /* Transform is driven by framer-motion; only animate surface props here. */
+  transition:
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
 }
-.fab:hover { transform: translateY(-2px); color: var(--accent-hover); }
+.fab:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent);
+  box-shadow: var(--elev-3);
+}

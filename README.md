@@ -1,8 +1,10 @@
 # Fahim Yusuf — Portfolio
 
-A personal portfolio for **Fahim Yusuf — Software Engineer & ML Enthusiast**, built with an original **Olive Gray** design system on **Vite + React 19 (JavaScript)**. No TypeScript, no UI framework — hand-crafted CSS Modules, custom-property design tokens, and subtle motion.
+A personal portfolio for **Fahim Yusuf — Software Engineer & ML Enthusiast**, built with an original **Olive Gray** design system on **Vite + React 19 (JavaScript)**. No TypeScript, no UI framework — hand-crafted CSS Modules, custom-property design tokens, layered mesh-gradient atmospheres, and tasteful motion.
 
 [![CI](https://github.com/fahim06/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/fahim06/portfolio/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/fahim06/portfolio/actions/workflows/codeql.yml/badge.svg)](https://github.com/fahim06/portfolio/actions/workflows/codeql.yml)
+[![Docker](https://github.com/fahim06/portfolio/actions/workflows/docker.yml/badge.svg)](https://github.com/fahim06/portfolio/actions/workflows/docker.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-7C8C58.svg)](LICENSE)
 [![React 19](https://img.shields.io/badge/React-19-91A56A.svg)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-7.x-59634F.svg)](https://vitejs.dev)
@@ -11,76 +13,84 @@ A personal portfolio for **Fahim Yusuf — Software Engineer & ML Enthusiast**, 
 
 ## Overview
 
-This repository is Fahim Yusuf's portfolio — a single-page React application for an ML/software engineer. It communicates: *"I build software with precision."*
+A single-page React portfolio for an ML / software engineer — designed to feel like a premium digital product rather than a template.
 
-- **Design system** — an original **Olive Gray** palette: sophisticated, low-saturation greens on near-black. No blue accents, no purple.
-- **Layout** — an original **Editorial Index Rail**: a sticky left rail of section numbers that acts as both navigation and a table of contents, paired with a vertical flow of modular content blocks. Not a bento grid, not a conventional nav.
-- **Theming** — **Dark / Light / System** modes, FOUC-safe (the resolved theme is applied before first paint via an inline script and persisted to `localStorage`).
-- **10 sections** — Home, About, Skills, Experience, Projects, Education, Certificates, Tech Stack, Resume, Contact.
-- **Original work** — entirely original design, layout, typography, and copy. Not a clone or imitation of any reference.
+- **Design system** — an original **Olive Gray** identity (olive, sage, emerald, warm gold, muted cyan) on a deep, layered background: a fixed mesh-gradient atmosphere with slowly drifting blurred blobs, a subtle film-grain, glass cards with gradient borders, and tasteful motion throughout.
+- **Navigation** — a sticky, blur-on-scroll top navbar with section links (scroll-spy active state), a premium Dark / Light / System **theme dropdown**, and a mobile menu. Smooth-scroll anchors, no client-side router.
+- **Theming** — Dark / Light / System, FOUC-safe (the resolved theme is applied before first paint via an inline script and persisted to `localStorage`). Each theme is designed independently.
+- **10 sections** — Home, About, Skills, Experience, Projects, Education, Certificates, Achievements, Tech Stack, Contact.
+- **Contact backend** — the contact form posts to a **Nodemailer** endpoint (`/api/contact`) that delivers email over Gmail SMTP. Works in production on Vercel and locally via a Vite dev middleware.
+- **Original work** — entirely original design, layout, typography, and copy.
 
 ## Features
 
-- **Dark / Light / System theme** — three-way toggle with system-preference tracking; FOUC-safe inline boot script.
-- **Responsive** — fluid from 320px to ultra-wide; no horizontal overflow, no layout breakage.
-- **Accessible** — semantic landmarks, skip link, `:focus-visible` rings, `aria-*` on interactive controls, and `prefers-reduced-motion` support that dampens animation.
-- **Subtle motion** — fade/slide/stagger via `framer-motion`, respectful of reduced-motion.
-- **Editorial Index Rail** — sticky section index that doubles as scroll-spy navigation.
-- **`mailto:` contact** — form opens a pre-filled email; no backend, no third-party services, no data leaves the browser.
-- **Self-hosted typography** — Inter + JetBrains Mono via `@fontsource` (no Google Fonts request).
-- **Original design** — conceived from scratch; intentionally distinct from any inspiration.
+- **Dark / Light / System theme** — accessible WAI-ARIA dropdown (keyboard nav, Esc / outside-click close, persistence).
+- **Premium hero** — pulsing availability indicator, gradient name, metric tiles, floating tech badges, glass portrait card with an animated gradient ring, staggered entrance.
+- **Project showcase** — the NeuroLens flagship renders as an oversized case study with an animated multi-hue gradient border and spotlight glow.
+- **Layered motion** — fade / slide / scale / blur reveals, mouse-follow card spotlight, scroll-progress bar, drifting atmosphere — all GPU-friendly and all respect `prefers-reduced-motion`.
+- **Responsive** — fluid from 320px to ultra-wide; no horizontal overflow.
+- **Accessible** — WCAG 2.2 AA color contrast (both themes), semantic landmarks, skip link, `:focus-visible` rings, full keyboard support, reduced-motion paths.
+- **Secure contact form** — client + server validation, header-injection sanitization, rate limiting, and a honeypot.
+- **Lazy-loaded** — below-the-fold sections are code-split for a small initial payload.
 
 ## Technology Stack
 
-| Layer            | Choice                                                  |
-| ---------------- | ------------------------------------------------------- |
-| Build tool       | **Vite**                                                |
-| UI               | **React 19** — functional components & hooks (`.jsx`)   |
-| Animation        | **framer-motion** — subtle fade / slide / stagger       |
-| Styling          | **CSS Modules** + custom-property design tokens         |
-| Fonts            | `@fontsource/inter`, `@fontsource-variable/jetbrains-mono` |
-| Testing          | **Vitest** — logic-level unit tests                     |
-| Linting          | **ESLint** (`eslint-plugin-react`, `-react-hooks`)      |
+| Layer        | Choice                                                                   |
+| ------------ | ------------------------------------------------------------------------ |
+| Build tool   | **Vite**                                                                 |
+| UI           | **React 19** — functional components & hooks (`.jsx`)                     |
+| Animation    | **framer-motion** — reveal / spotlight / entrance                        |
+| Styling      | **CSS Modules** + custom-property design tokens                          |
+| Fonts        | `@fontsource/inter`, `@fontsource-variable/jetbrains-mono` + Comforter Brush (brand only) |
+| Contact      | **Nodemailer** (Gmail SMTP) — Vercel function + Vite dev middleware       |
+| Testing      | **Vitest** + **React Testing Library** (unit + component smoke)          |
+| Linting      | **ESLint** (`eslint-plugin-react`, `-react-hooks`)                        |
+| Deploy       | **Vercel** (static SPA + serverless `/api/contact`)                       |
 
-> **No** TypeScript, **no** Tailwind / UI kit, **no** backend, **no** router (single page with smooth-scroll sections).
+> **No** TypeScript, **no** Tailwind / UI kit, **no** client-side router.
 
 ## Architecture Overview
 
-A single-page application with no client-side router — each section is a scroll target linked by smooth-scroll anchors. `App.jsx` composes ten section components inside `RootLayout`, which renders the `Header`, the sticky `IndexRail`, a `<main>` landmark, and the `Footer`.
+A single-page application — each section is a scroll target linked by smooth-scroll anchors. `App.jsx` lazy-loads the below-the-fold sections (Home is eager) and composes them inside `RootLayout`, which renders the `Atmosphere`, `ScrollProgress`, `Header` (navbar + theme dropdown), `<main>`, `Footer`, and `BackToTop`.
 
-Theming is provided by `ThemeProvider` (in `src/hooks/useTheme.jsx`) wrapping the app in `main.jsx`. A small FOUC-safe inline script in `index.html` applies the resolved theme to `<html>` before React mounts, so there is no flash of the wrong theme on load. Content is fully separated from presentation: all copy lives in `src/data/`, all site/navigation/social/theme configuration in `src/config/`, and components stay presentational.
+Theming comes from `ThemeProvider` (`src/hooks/useTheme.jsx`) wrapping the app in `main.jsx`, with a FOUC-safe inline script in `index.html` setting the resolved theme before React mounts. Content is separated from presentation: copy in `src/data/`, configuration in `src/config/`, components presentational.
+
+The contact form (`src/components/forms/ContactForm.jsx`) POSTs JSON to `/api/contact`, handled by `api/contact.js` (Vercel serverless function) which calls the shared `server/contactHandler.js` (validation, sanitization, rate limiting, Nodemailer). For local dev, the same handler is mounted as Vite middleware in `vite.config.js`, so `npm run dev` exercises the real backend.
 
 ## Folder Structure
 
 ```text
 portfolio/
-├── public/                     # static assets — favicon.svg, images/, resume.pdf
-├── index.html                  # HTML shell + FOUC-safe theme boot script
-├── vite.config.js              # Vite config (dev server on port 3000)
-├── vitest.config.js            # Vitest config
-├── eslint.config.mjs           # ESLint flat config
-├── Dockerfile                  # multi-stage build → nginx serving dist/
-├── Dockerfile.dev              # Vite dev container
-├── docker-compose.yml          # prod (web) + opt-in dev (profile: dev)
+├── api/contact.js            # Vercel serverless function (POST /api/contact)
+├── server/contactHandler.js  # shared Nodemailer handler (validation/sanitize/rate-limit)
+├── scripts/sync-vercel-env.sh# push EMAIL_* from .env.local → Vercel project env
+├── public/                   # favicon.svg, robots.txt, sitemap.xml, resume.pdf, images/
+├── index.html                # HTML shell + FOUC-safe theme boot script
+├── vite.config.js            # Vite config + dev /api/contact middleware
+├── vitest.config.js          # Vitest config (jsdom + setup)
+├── eslint.config.mjs         # ESLint flat config
+├── Dockerfile                # dev image (Vite dev server + healthcheck)
+├── Dockerfile.prod           # production image (multi-stage → nginx serving dist/)
+├── docker-compose.yml        # dev service (HMR, bind mount, port 3000)
 └── src/
-    ├── App.jsx                 # page composition (10 sections)
-    ├── main.jsx                # entry point — fonts, tokens, ThemeProvider
+    ├── App.jsx               # page composition (lazy sections)
+    ├── main.jsx              # entry — fonts, tokens, ThemeProvider, MotionConfig
     ├── components/
-    │   ├── ui/                 # Button, Card, Tag, Icon, Reveal, SectionHeader,
-    │   │                       # BackToTop, SkipLink, EmptyState
-    │   ├── layout/             # Header, Footer, IndexRail, ThemeToggle
-    │   └── forms/              # MailtoForm (mailto: contact form)
-    ├── sections/               # Home, About, Skills, Experience, Projects,
-    │                           # Education, Certificates, TechStack, Resume, Contact
-    ├── layouts/                # RootLayout — Header + IndexRail + main + Footer
-    ├── hooks/                  # useTheme (+ThemeProvider), useScrollSpy,
-    │                           # usePrefersReducedMotion
-    ├── config/                 # site, navigation, social, theme, resume config
-    ├── contexts/               # (reserved for future React contexts)
-    ├── data/                   # personalInfo, skills, experience, projects,
-    │                           # education, engineeringValues
-    ├── styles/                 # tokens.css (design tokens), base.css (reset/base)
-    └── utils/                  # clsx, mailto, scroll helpers
+    │   ├── ui/               # Button, Card, Tag, Icon, Reveal, SectionHeader,
+    │   │                     # BackToTop, SkipLink, EmptyState, Atmosphere, ScrollProgress
+    │   ├── layout/           # Header, Footer, ThemeToggle
+    │   └── forms/            # ContactForm (Nodemailer)
+    ├── sections/             # Home, About, Skills, Experience, Projects, Education,
+    │                         # Certificates, Achievements, TechStack, Contact
+    ├── layouts/              # RootLayout
+    ├── hooks/                # useTheme(+Provider), useScrollSpy, useScrolled,
+    │                         # useScrollProgress, usePrefersReducedMotion, useClickOutside
+    ├── config/               # site, social, theme, resume
+    ├── data/                 # personalInfo, skills, experience, projects, education,
+    │                         # certificates, achievements
+    ├── styles/               # tokens.css (design tokens), base.css (reset/base)
+    ├── utils/                # clsx, scroll helpers
+    └── test/setup.js         # jsdom polyfills (matchMedia, IntersectionObserver)
 ```
 
 ## Installation
@@ -99,63 +109,58 @@ npm install
 npm run dev
 ```
 
-Starts the Vite dev server at **http://localhost:3000** with hot-module replacement (HMR) — edits to `src/` reload instantly in the browser.
-
-## Docker Usage
-
-Two compose services are defined in `docker-compose.yml`:
-
-**Production** — builds the app and serves the static build via nginx:
-
-```bash
-docker compose up --build
-# → http://localhost:8080
-```
-
-**Development** — Vite dev server with live source mount and hot reload (opt-in profile):
-
-```bash
-docker compose --profile dev up --build
-# → http://localhost:5173
-```
+Starts the Vite dev server at **http://localhost:3000** with HMR. The dev middleware exposes `POST /api/contact` locally (reads `EMAIL_*` from `.env.local`).
 
 ## Environment Variables
 
-None are required — this is a static SPA. One optional variable is supported:
+The contact form needs server-side SMTP credentials (no `VITE_` prefix — they are never shipped to the browser). Copy `.env.example` → `.env.local` and fill in:
 
-| Variable        | Required | Description                                                        |
-| --------------- | -------- | ------------------------------------------------------------------ |
-| `VITE_SITE_URL` | no       | Canonical deployed URL, for SEO / Open Graph tags if wired up.     |
+| Variable     | Required | Description                                            |
+| ------------ | -------- | ------------------------------------------------------ |
+| `EMAIL_USER` | yes\*    | Gmail address that sends the mail                      |
+| `EMAIL_PASS` | yes\*    | Gmail **App Password** (not your normal password)      |
+| `EMAIL_TO`   | no       | Inbox that receives submissions (defaults to `EMAIL_USER`) |
 
-See [`.env.example`](.env.example). Never commit real secrets; `.env*` files are gitignored except the example.
+\* Required for the contact form to deliver; the app builds and runs without them (the form shows a clear "not configured" message).
 
-## Build
+For **production on Vercel**, add the same three under Project → Settings → Environment Variables (or run `bash scripts/sync-vercel-env.sh` after `vercel login`), then redeploy. See [`.env.example`](.env.example). Never commit real secrets — `.env*` is gitignored except the example.
 
-```bash
-npm run build      # type/transform-free production build → dist/
-npm run preview    # serve the production build locally for verification
-```
-
-## Testing & Linting
+## Build & Test
 
 ```bash
-npm test           # Vitest — logic-level unit tests (clsx, mailto, useTheme, …)
-npm run lint       # ESLint over src/
+npm run build      # production build → dist/
+npm run preview    # serve the production build locally
+npm test           # Vitest — unit + App smoke tests
+npm run lint       # ESLint
 ```
 
-Tests deliberately cover pure logic (data utilities, the theme reducer, mailto composition) rather than DOM snapshots, to stay fast and resilient.
+## Docker
+
+**Development** (Vite dev server with HMR + healthcheck):
+
+```bash
+docker compose up --build
+# → http://localhost:3000
+```
+
+**Production** (self-contained nginx static image; frontend only — the `/api/contact` backend runs on Vercel):
+
+```bash
+docker build -f Dockerfile.prod -t portfolio-prod .
+docker run -p 8080:80 portfolio-prod
+# → http://localhost:8080
+```
 
 ## Deployment
 
-**Vercel (recommended)** — push to GitHub and import the repo in [Vercel](https://vercel.com). Vite is auto-detected, but set the project's **Framework Preset to *Vite*** to be explicit (the CI workflow already deploys to Vercel on pushes to `main` and creates preview deployments from `dev`).
+**Vercel (recommended)** — import the repo in [Vercel](https://vercel.com); Vite is auto-detected and `api/contact.js` is picked up as a serverless function automatically. Set the `EMAIL_*` env vars (above) and deploy. The CI workflow also deploys to Vercel on pushes to `main` (production) and `dev`/PRs (preview).
 
-**Docker** — the `web` service in `docker-compose.yml` produces a self-contained nginx container suitable for any host.
+## GitHub Actions
 
-## Screenshots
-
-<!-- add screenshots here -->
-
-_Screenshots of the Home section, Index Rail, light/dark themes, and a project card will be added here._
+- **ci.yml** — lint + test + build, then Vercel production/preview deploys (Node cache, build artifact upload).
+- **codeql.yml** — JavaScript security analysis (weekly).
+- **dependency-review.yml** — blocks high/critical dependency vulnerabilities on PRs.
+- **docker.yml** — builds the dev image and runs an HTTP-200 smoke test.
 
 ## License
 
@@ -166,13 +171,12 @@ MIT — © Fahim Yusuf. See [LICENSE](LICENSE).
 **Fahim Yusuf** — Software Engineer & ML Enthusiast
 
 - GitHub: [@fahim06](https://github.com/fahim06)
-- LinkedIn: [fahim-yusuf](https://www.linkedin.com/in/fahim-yusuf)
+- LinkedIn: [fahim06](https://www.linkedin.com/in/fahim06)
 - Email: [fahim.yusuf06@gmail.com](mailto:fahim.yusuf06@gmail.com)
 
 ## Future Improvements
 
-- Fill in the SkyTech experience entry with full role details and achievements.
-- Populate the **Certificates** section with issuers, dates, and credential links.
-- Wire the optional `VITE_SITE_URL` into SEO / Open Graph meta tags in `index.html`.
-- Optionally add a blog or per-project detail routes (would require a router).
-- Address outstanding `npm audit` advisories where feasible.
+- Add end-to-end tests (Playwright) covering navigation, theme switching, and the contact flow.
+- Run a bulk `prettier --write` pass to fully normalize formatting (config is in place).
+- Capture Lighthouse scores on the Vercel deployment and tune if needed.
+- Optionally add per-project detail routes (would require a router).

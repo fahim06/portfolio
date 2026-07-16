@@ -9,4 +9,8 @@
   font-size: 0.8rem;
   line-height: 1.4;
 }
-.mono { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.02em; }
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+}

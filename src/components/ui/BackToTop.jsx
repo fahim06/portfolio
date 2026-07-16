@@ -1,19 +1,52 @@
-import { useEffect, useState } from 'react';
-import { scrollToSection } from '../../utils/scroll.js';
-import Icon from './Icon.jsx';
-import styles from './BackToTop.module.css';
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion.js";
+import { scrollToSection } from "../../utils/scroll.js";
+import styles from "./BackToTop.module.css";
+import Icon from "./Icon.jsx";
 
 export default function BackToTop() {
   const [show, setShow] = useState(false);
+  const reduce = usePrefersReducedMotion();
+
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 600);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-  if (!show) return null;
+
+  if (reduce) {
+    return show ? (
+      <button
+        type="button"
+        className={styles.fab}
+        onClick={() => scrollToSection("home")}
+        aria-label="Back to top"
+      >
+        <Icon name="arrow-up" size={18} />
+      </button>
+    ) : null;
+  }
+
   return (
-    <button type="button" className={styles.fab} onClick={() => scrollToSection('home')} aria-label="Back to top">
-      <Icon name="arrow-up" size={18} />
-    </button>
+    <AnimatePresence>
+      {show && (
+        <motion.button
+          type="button"
+          className={styles.fab}
+          onClick={() => scrollToSection("home")}
+          aria-label="Back to top"
+          initial={{ opacity: 0, scale: 0.6, y: 12 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.6, y: 12 }}
+          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ y: -3 }}
+          whileTap={{ scale: 0.92 }}
+        >
+          <Icon name="arrow-up" size={18} />
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 }

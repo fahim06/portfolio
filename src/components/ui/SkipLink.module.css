@@ -9,4 +9,6 @@
   border-radius: 0 0 var(--radius) 0;
   font-weight: 600;
 }
-.skip:focus { left: 0; }
+.skip:focus {
+  left: 0;
+}
