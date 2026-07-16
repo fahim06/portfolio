@@ -1,0 +1,33 @@
+.track {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: var(--z-progress);
+  background: transparent;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--t-base) var(--ease);
+}
+.track[data-active="true"] {
+  opacity: 1;
+}
+
+.bar {
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--accent-muted), var(--accent));
+  transition: transform 90ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    transition: none;
+  }
+  .bar {
+    transition: none;
+  }
+}

@@ -1,342 +1,182 @@
-# Fahim's Portfolio
+# Fahim Yusuf — Portfolio
 
-A professional, modern personal portfolio website built with Next.js 15, TypeScript, and Tailwind CSS.
+A personal portfolio for **Fahim Yusuf — Software Engineer & ML Enthusiast**, built with an original **Olive Gray** design system on **Vite + React 19 (JavaScript)**. No TypeScript, no UI framework — hand-crafted CSS Modules, custom-property design tokens, layered mesh-gradient atmospheres, and tasteful motion.
 
-## 📑 Table of Contents
+[![CI](https://github.com/fahim06/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/fahim06/portfolio/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/fahim06/portfolio/actions/workflows/codeql.yml/badge.svg)](https://github.com/fahim06/portfolio/actions/workflows/codeql.yml)
+[![Docker](https://github.com/fahim06/portfolio/actions/workflows/docker.yml/badge.svg)](https://github.com/fahim06/portfolio/actions/workflows/docker.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-7C8C58.svg)](LICENSE)
+[![React 19](https://img.shields.io/badge/React-19-91A56A.svg)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-7.x-59634F.svg)](https://vitejs.dev)
 
-- [🚀 Features](#-features)
-- [📁 Project Structure](#-project-structure)
-- [🛠️ Getting Started](#-getting-started)
-  - [Prerequisites](#prerequisites)
-  - [System Requirements](#system-requirements)
-  - [Installation](#installation)
-  - [Email Setup (Contact Form)](#email-setup-contact-form)
-  - [Build for Production](#build-for-production)
-  - [Start Production Server](#start-production-server)
-- [🎨 Design System](#-design-system)
-- [📝 Customization](#-customization)
-- [🚢 Deployment](#-deployment)
-  - [Vercel (Recommended)](#vercel-recommended)
-  - [🐳 Docker Support](#-docker-support)
-  - [AWS Deployment (using Docker Compose)](#aws-deployment-using-docker-compose)
-  - [Azure Deployment (using Docker Compose)](#azure-deployment-using-docker-compose)
-- [📄 License](#-license)
-- [🤝 Contact](#-contact)
+---
 
-## 🚀 Features
+## Overview
 
-- **Modern Stack**: Built with Next.js 16 (App Router), TypeScript, and Tailwind CSS
-- **Dark/Light Mode**: System-aware theme with manual toggle
-- **Responsive Design**: Optimized for all screen sizes
-- **Semantic HTML**: Accessible markup with proper ARIA attributes
-- **Performance Optimized**: Fast load times with optimized assets
-- **Original Design**: Custom design system with no templates or UI kits
-- **Dockerized**: Ready for containerized deployment (AWS, etc.)
+A single-page React portfolio for an ML / software engineer — designed to feel like a premium digital product rather than a template.
 
-## 📁 Project Structure
+- **Design system** — an original **Olive Gray** identity (olive, sage, emerald, warm gold, muted cyan) on a deep, layered background: a fixed mesh-gradient atmosphere with slowly drifting blurred blobs, a subtle film-grain, glass cards with gradient borders, and tasteful motion throughout.
+- **Navigation** — a sticky, blur-on-scroll top navbar with section links (scroll-spy active state), a premium Dark / Light / System **theme dropdown**, and a mobile menu. Smooth-scroll anchors, no client-side router.
+- **Theming** — Dark / Light / System, FOUC-safe (the resolved theme is applied before first paint via an inline script and persisted to `localStorage`). Each theme is designed independently.
+- **10 sections** — Home, About, Skills, Experience, Projects, Education, Certificates, Achievements, Tech Stack, Contact.
+- **Contact backend** — the contact form posts to a **Nodemailer** endpoint (`/api/contact`) that delivers email over Gmail SMTP. Works in production on Vercel and locally via a Vite dev middleware.
+- **Original work** — entirely original design, layout, typography, and copy.
+
+## Features
+
+- **Dark / Light / System theme** — accessible WAI-ARIA dropdown (keyboard nav, Esc / outside-click close, persistence).
+- **Premium hero** — pulsing availability indicator, gradient name, metric tiles, floating tech badges, glass portrait card with an animated gradient ring, staggered entrance.
+- **Project showcase** — the NeuroLens flagship renders as an oversized case study with an animated multi-hue gradient border and spotlight glow.
+- **Layered motion** — fade / slide / scale / blur reveals, mouse-follow card spotlight, scroll-progress bar, drifting atmosphere — all GPU-friendly and all respect `prefers-reduced-motion`.
+- **Responsive** — fluid from 320px to ultra-wide; no horizontal overflow.
+- **Accessible** — WCAG 2.2 AA color contrast (both themes), semantic landmarks, skip link, `:focus-visible` rings, full keyboard support, reduced-motion paths.
+- **Secure contact form** — client + server validation, header-injection sanitization, rate limiting, and a honeypot.
+- **Lazy-loaded** — below-the-fold sections are code-split for a small initial payload.
+
+## Technology Stack
+
+| Layer        | Choice                                                                   |
+| ------------ | ------------------------------------------------------------------------ |
+| Build tool   | **Vite**                                                                 |
+| UI           | **React 19** — functional components & hooks (`.jsx`)                     |
+| Animation    | **framer-motion** — reveal / spotlight / entrance                        |
+| Styling      | **CSS Modules** + custom-property design tokens                          |
+| Fonts        | `@fontsource/inter`, `@fontsource-variable/jetbrains-mono` + Comforter Brush (brand only) |
+| Contact      | **Nodemailer** (Gmail SMTP) — Vercel function + Vite dev middleware       |
+| Testing      | **Vitest** + **React Testing Library** (unit + component smoke)          |
+| Linting      | **ESLint** (`eslint-plugin-react`, `-react-hooks`)                        |
+| Deploy       | **Vercel** (static SPA + serverless `/api/contact`)                       |
+
+> **No** TypeScript, **no** Tailwind / UI kit, **no** client-side router.
+
+## Architecture Overview
+
+A single-page application — each section is a scroll target linked by smooth-scroll anchors. `App.jsx` lazy-loads the below-the-fold sections (Home is eager) and composes them inside `RootLayout`, which renders the `Atmosphere`, `ScrollProgress`, `Header` (navbar + theme dropdown), `<main>`, `Footer`, and `BackToTop`.
+
+Theming comes from `ThemeProvider` (`src/hooks/useTheme.jsx`) wrapping the app in `main.jsx`, with a FOUC-safe inline script in `index.html` setting the resolved theme before React mounts. Content is separated from presentation: copy in `src/data/`, configuration in `src/config/`, components presentational.
+
+The contact form (`src/components/forms/ContactForm.jsx`) POSTs JSON to `/api/contact`, handled by `api/contact.js` (Vercel serverless function) which calls the shared `server/contactHandler.js` (validation, sanitization, rate limiting, Nodemailer). For local dev, the same handler is mounted as Vite middleware in `vite.config.js`, so `npm run dev` exercises the real backend.
+
+## Folder Structure
 
 ```text
 portfolio/
-├── src/
-│   ├── app/                    # Next.js App Router pages
-│   │   ├── about/              # About page
-│   │   ├── contact/            # Contact page with form
-│   │   ├── experience/         # Experience & education
-│   │   ├── projects/           # Projects showcase
-│   │   ├── globals.css         # Global styles & design tokens
-│   │   ├── layout.tsx          # Root layout
-│   │   ├── not-found.tsx       # 404 page
-│   │   └── page.tsx            # Home page
-│   ├── components/             # React components
-│   │   ├── ui/                 # Reusable UI primitives
-│   │   │   ├── Button.tsx
-│   │   │   ├── Card.tsx
-│   │   │   ├── Section.tsx
-│   │   │   └── index.ts
-│   │   ├── Footer.tsx
-│   │   ├── Header.tsx
-│   │   ├── ThemeProvider.tsx
-│   │   └── index.ts
-│   └── data/                   # Static content data
-│       ├── content.ts          # All site content
-│       └── index.ts
-├── public/                     # Static assets
-│   └── fahim-cv.pdf            # CV download (add your own)
-├── package.json
-├── tailwind.config.ts
-├── tsconfig.json
-├── Dockerfile                  # Docker configuration
-├── docker-compose.yml          # Docker Compose configuration
-└── .dockerignore
+├── api/contact.js            # Vercel serverless function (POST /api/contact)
+├── server/contactHandler.js  # shared Nodemailer handler (validation/sanitize/rate-limit)
+├── scripts/sync-vercel-env.sh# push EMAIL_* from .env.local → Vercel project env
+├── public/                   # favicon.svg, robots.txt, sitemap.xml, resume.pdf, images/
+├── index.html                # HTML shell + FOUC-safe theme boot script
+├── vite.config.js            # Vite config + dev /api/contact middleware
+├── vitest.config.js          # Vitest config (jsdom + setup)
+├── eslint.config.mjs         # ESLint flat config
+├── Dockerfile                # dev image (Vite dev server + healthcheck)
+├── Dockerfile.prod           # production image (multi-stage → nginx serving dist/)
+├── docker-compose.yml        # dev service (HMR, bind mount, port 3000)
+└── src/
+    ├── App.jsx               # page composition (lazy sections)
+    ├── main.jsx              # entry — fonts, tokens, ThemeProvider, MotionConfig
+    ├── components/
+    │   ├── ui/               # Button, Card, Tag, Icon, Reveal, SectionHeader,
+    │   │                     # BackToTop, SkipLink, EmptyState, Atmosphere, ScrollProgress
+    │   ├── layout/           # Header, Footer, ThemeToggle
+    │   └── forms/            # ContactForm (Nodemailer)
+    ├── sections/             # Home, About, Skills, Experience, Projects, Education,
+    │                         # Certificates, Achievements, TechStack, Contact
+    ├── layouts/              # RootLayout
+    ├── hooks/                # useTheme(+Provider), useScrollSpy, useScrolled,
+    │                         # useScrollProgress, usePrefersReducedMotion, useClickOutside
+    ├── config/               # site, social, theme, resume
+    ├── data/                 # personalInfo, skills, experience, projects, education,
+    │                         # certificates, achievements
+    ├── styles/               # tokens.css (design tokens), base.css (reset/base)
+    ├── utils/                # clsx, scroll helpers
+    └── test/setup.js         # jsdom polyfills (matchMedia, IntersectionObserver)
 ```
 
-## 🛠️ Getting Started
-
-### Prerequisites
-
-- Node.js 18.17 or later
-- npm or yarn
-- Docker (optional, for containerization)
-
-### System Requirements
-
-To run this project locally, your system should meet the following requirements:
-
-- **Operating System**: Windows, macOS, or Linux
-- **RAM**: Minimum 4GB (8GB recommended)
-- **Disk Space**: At least 1GB of free space
-- **Processor**: Dual-core processor or better
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/fahim06/portfolio.git
-   cd portfolio
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Set up environment variables for the contact form:
-
-   ```bash
-   cp .env.example .env.local
-   ```
-
-   Then edit `.env.local` with your Gmail credentials (see Email Setup below).
-
-4. Run the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Email Setup (Contact Form)
-
-To enable the contact form to send emails:
-
-1. Use a Gmail account
-2. Enable 2-Step Verification at <https://myaccount.google.com/security>
-3. Generate an App Password:
-    - Go to <https://myaccount.google.com/apppasswords>
-    - Select "Mail" and generate a password
-
-4. Add these to your `.env.local`:
-
-   ```env
-   EMAIL_USER=your-email@gmail.com
-   EMAIL_PASS=your-16-char-app-password
-   EMAIL_TO=your-email@gmail.com
-   ```
-
-### Build for Production
+## Installation
 
 ```bash
-npm run build
+git clone https://github.com/fahim06/portfolio.git
+cd portfolio
+npm install
 ```
 
-### Start Production Server
+**Requirements:** Node.js 20+ (matches CI) and npm.
+
+## Development
 
 ```bash
-npm start
+npm run dev
 ```
 
-## 🎨 Design System
+Starts the Vite dev server at **http://localhost:3000** with HMR. The dev middleware exposes `POST /api/contact` locally (reads `EMAIL_*` from `.env.local`).
 
-### Color Tokens
+## Environment Variables
 
-The design system uses CSS custom properties for theming:
+The contact form needs server-side SMTP credentials (no `VITE_` prefix — they are never shipped to the browser). Copy `.env.example` → `.env.local` and fill in:
 
-- **Neutral Palette**: `--neutral-50` through `--neutral-950`
-- **Accent Color**: Deep teal (`--accent-400` through `--accent-900`)
-- **Semantic Colors**: `--background`, `--foreground`, `--border`, etc.
+| Variable     | Required | Description                                            |
+| ------------ | -------- | ------------------------------------------------------ |
+| `EMAIL_USER` | yes\*    | Gmail address that sends the mail                      |
+| `EMAIL_PASS` | yes\*    | Gmail **App Password** (not your normal password)      |
+| `EMAIL_TO`   | no       | Inbox that receives submissions (defaults to `EMAIL_USER`) |
 
-### Typography Scale
+\* Required for the contact form to deliver; the app builds and runs without them (the form shows a clear "not configured" message).
 
-- Font family: Geist Sans (variable font)
-- Size scale: `--font-size-xs` through `--font-size-6xl`
-- Line heights: `--leading-tight`, `--leading-normal`, `--leading-relaxed`
+For **production on Vercel**, add the same three under Project → Settings → Environment Variables (or run `bash scripts/sync-vercel-env.sh` after `vercel login`), then redeploy. See [`.env.example`](.env.example). Never commit real secrets — `.env*` is gitignored except the example.
 
-### Spacing
+## Build & Test
 
-Consistent spacing scale from `--space-1` (0.25rem) to `--space-32` (8rem)
-
-## 📝 Customization
-
-### Updating Content
-
-All site content is stored in `src/data/content.ts`. Update this file to customize:
-
-- Personal information
-- Engineering values
-- Skills
-- Work experience
-- Education
-- Projects
-
-### Adding Your CV
-
-Place your CV PDF file in the `public` directory and update the `cvUrl` in `content.ts`:
-
-```typescript
-export const personalInfo = {
-    // ...
-    cvUrl: "/your-cv-filename.pdf",
-};
+```bash
+npm run build      # production build → dist/
+npm run preview    # serve the production build locally
+npm test           # Vitest — unit + App smoke tests
+npm run lint       # ESLint
 ```
 
-### Customizing Colors
+## Docker
 
-Modify the CSS custom properties in `src/app/globals.css` to change the color scheme.
+**Development** (Vite dev server with HMR + healthcheck):
 
-## 🚢 Deployment
+```bash
+docker compose up --build
+# → http://localhost:3000
+```
 
-### Vercel (Recommended)
+**Production** (self-contained nginx static image; frontend only — the `/api/contact` backend runs on Vercel):
 
-1. Push your code to GitHub
-2. Import the repository in [Vercel](https://vercel.com)
-3. Deploy with default settings
+```bash
+docker build -f Dockerfile.prod -t portfolio-prod .
+docker run -p 8080:80 portfolio-prod
+# → http://localhost:8080
+```
 
-### 🐳 Docker Support
+## Deployment
 
-This project includes a multi-stage `Dockerfile` optimized for production and a `docker-compose.yml` file for easy deployment.
+**Vercel (recommended)** — import the repo in [Vercel](https://vercel.com); Vite is auto-detected and `api/contact.js` is picked up as a serverless function automatically. Set the `EMAIL_*` env vars (above) and deploy. The CI workflow also deploys to Vercel on pushes to `main` (production) and `dev`/PRs (preview).
 
-#### Build and Run with Docker Compose
+## GitHub Actions
 
-1.  Create a `.env` file in the root directory with your environment variables:
-    ```env
-    EMAIL_USER=your-email@gmail.com
-    EMAIL_PASS=your-app-password
-    EMAIL_TO=your-email@gmail.com
-    ```
+- **ci.yml** — lint + test + build, then Vercel production/preview deploys (Node cache, build artifact upload).
+- **codeql.yml** — JavaScript security analysis (weekly).
+- **dependency-review.yml** — blocks high/critical dependency vulnerabilities on PRs.
+- **docker.yml** — builds the dev image and runs an HTTP-200 smoke test.
 
-2.  Run the application:
-    ```bash
-    docker-compose up -d --build
-    ```
+## License
 
-The application will be available at `http://localhost:3000`.
+MIT — © Fahim Yusuf. See [LICENSE](LICENSE).
 
-> **Note for Production:** For production deployments, consider setting up a reverse proxy (like nginx) in front of the application to handle SSL/TLS termination and serve on standard ports 80/443. This provides better security and allows you to serve the application over HTTPS. See the "Production Reverse Proxy Setup" section below for details.
+## Author
 
-### AWS Deployment (using Docker Compose)
+**Fahim Yusuf** — Software Engineer & ML Enthusiast
 
-You can deploy this application to an AWS EC2 instance using Docker Compose.
-
-1.  **Launch an EC2 Instance**:
-    *   Launch an instance (e.g., Ubuntu or Amazon Linux 2).
-    *   Ensure the security group allows inbound traffic on port `3000` (and `80`/`443` if using a reverse proxy).
-
-2.  **Install Docker & Docker Compose**:
-    *   Connect to your instance via SSH.
-    *   Install Docker and Docker Compose following the official documentation.
-
-3.  **Deploy**:
-    *   Clone your repository to the server.
-    *   Create the `.env` file with your secrets.
-    *   Run:
-        ```bash
-        docker-compose up -d --build
-        ```
-
-### Azure Deployment (using Docker Compose)
-
-You can deploy to Azure using a Virtual Machine or App Service (which supports Compose).
-
-#### Option 1: Azure Virtual Machine
-Similar to AWS EC2:
-1.  Create a Linux VM in Azure.
-2.  Open port `3000` in the networking settings.
-3.  SSH into the VM, install Docker/Compose, clone the repo, and run `docker-compose up -d --build`.
-
-#### Option 2: Azure App Service (Docker Compose)
-1.  Create a Web App for Containers.
-2.  Choose **Docker Compose** as the source.
-3.  Upload your `docker-compose.yml` file (or link to your registry).
-4.  Set your environment variables in the App Service configuration.
-
-### Production Reverse Proxy Setup
-
-For production deployments, it's recommended to use a reverse proxy like nginx to:
-- Handle SSL/TLS termination for HTTPS
-- Serve the application on standard ports (80/443)
-- Add an additional layer of security
-- Enable better caching and load balancing capabilities
-
-#### Example nginx Configuration
-
-1.  Install nginx on your server:
-    ```bash
-    sudo apt update
-    sudo apt install nginx
-    ```
-
-2.  Create an nginx configuration file (e.g., `/etc/nginx/sites-available/portfolio`):
-    ```nginx
-    server {
-        listen 80;
-        server_name yourdomain.com www.yourdomain.com;
-        
-        # Redirect HTTP to HTTPS
-        return 301 https://$host$request_uri;
-    }
-
-    server {
-        listen 443 ssl http2;
-        server_name yourdomain.com www.yourdomain.com;
-
-        # SSL certificates (use Let's Encrypt with certbot)
-        ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
-        
-        # SSL configuration (TLSv1.3 for maximum security)
-        # For broader compatibility, add TLSv1.2: ssl_protocols TLSv1.2 TLSv1.3;
-        ssl_protocols TLSv1.3;
-        ssl_prefer_server_ciphers off;
-
-        location / {
-            proxy_pass http://localhost:3000;
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection 'upgrade';
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_set_header X-Forwarded-Proto $scheme;
-            proxy_cache_bypass $http_upgrade;
-        }
-    }
-    ```
-
-3.  Enable the configuration and obtain SSL certificates:
-    ```bash
-    sudo ln -s /etc/nginx/sites-available/portfolio /etc/nginx/sites-enabled/
-    sudo apt install certbot python3-certbot-nginx
-    sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
-    sudo nginx -t
-    sudo systemctl restart nginx
-    ```
-
-4.  Update your firewall/security group to allow ports 80 and 443:
-    - For AWS EC2: Update security group inbound rules
-    - For Azure VM: Update Network Security Group rules
-    - For local firewall: `sudo ufw allow 'Nginx Full'`
-
-With this setup, your application will be accessible via HTTPS at `https://yourdomain.com`, while nginx handles SSL/TLS termination and proxies requests to your Next.js application running on port 3000.
-
-## 📄 License
-
-MIT License—feel free to use this as a starting point for your own portfolio.
-
-## 🤝 Contact
-
-- Email: [fahim.yusuf06@gmail.com](mailto:fahim.yusuf06@gmail.com)
 - GitHub: [@fahim06](https://github.com/fahim06)
-- LinkedIn: [fahim06](https://www.linkedin.com/in/fahim06/)
+- LinkedIn: [fahim06](https://www.linkedin.com/in/fahim06)
+- Email: [fahim.yusuf06@gmail.com](mailto:fahim.yusuf06@gmail.com)
+
+## Future Improvements
+
+- Add end-to-end tests (Playwright) covering navigation, theme switching, and the contact flow.
+- Run a bulk `prettier --write` pass to fully normalize formatting (config is in place).
+- Capture Lighthouse scores on the Vercel deployment and tune if needed.
+- Optionally add per-project detail routes (would require a router).

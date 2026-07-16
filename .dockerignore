@@ -1,16 +1,19 @@
-Dockerfile
-.dockerignore
+# Keep the Docker build context lean for the dev image.
 node_modules
-npm-debug.log
-README.md
-.next
+dist
+build
 .git
 .gitignore
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
-build
-dist
+.env.*.local
+.vercel
+.idea
+*.log
 .DS_Store
+# Large certificate PDFs are not needed inside the image.
+certificates
+# Don't include Docker's own files in the context.
+Dockerfile
+docker-compose.yml
+.dockerignore

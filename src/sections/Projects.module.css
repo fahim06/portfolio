@@ -1,0 +1,17 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-4);
+}
+.wrap {
+  grid-column: span var(--span, 4);
+  display: flex;
+}
+.wrap > * {
+  width: 100%;
+}
+@media (max-width: 1023px) {
+  .wrap {
+    grid-column: 1 / -1;
+  }
+}

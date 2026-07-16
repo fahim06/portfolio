@@ -1,0 +1,91 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+.label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+.input,
+.textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.7rem 0.9rem;
+  width: 100%;
+  resize: vertical;
+  transition: border-color var(--t-fast) var(--ease);
+}
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--text-muted);
+}
+.input:focus-visible,
+.textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+.input:disabled,
+.textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.fieldError {
+  font-size: 0.78rem;
+  color: var(--error);
+}
+
+/* Inline status alerts */
+.success {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--success);
+  background: color-mix(in srgb, var(--success) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--success) 35%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
+}
+.error {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--error);
+  background: color-mix(in srgb, var(--error) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--error) 35%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
+}
+
+/* Visually hidden honeypot — present in the DOM, off-screen, ignored by people. */
+.honey {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

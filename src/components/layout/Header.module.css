@@ -1,0 +1,189 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  will-change: transform;
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid transparent;
+  transition:
+    padding var(--t-base) var(--ease),
+    background-color var(--t-base) var(--ease),
+    border-color var(--t-base) var(--ease),
+    box-shadow var(--t-base) var(--ease);
+}
+.header[data-scrolled="true"] {
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  border-bottom-color: var(--border);
+  box-shadow: var(--elev-1);
+}
+
+.bar {
+  max-width: var(--container);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  transition: padding var(--t-base) var(--ease);
+}
+.header[data-scrolled="true"] .bar {
+  padding-block: var(--space-2);
+}
+
+.brand {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  font: inherit;
+  padding: 0;
+}
+.brandName {
+  font-family: var(--font-brand);
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--text);
+  letter-spacing: 0;
+  transition:
+    color var(--t-fast) var(--ease),
+    font-size var(--t-base) var(--ease);
+}
+.header[data-scrolled="true"] .brandName {
+  font-size: 1.7rem;
+}
+.brand:hover .brandName {
+  color: var(--accent);
+}
+
+/* Centered section navigation (desktop). */
+.nav {
+  justify-self: center;
+  display: none;
+  align-items: center;
+  gap: 0.15rem;
+}
+.link {
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-pill);
+  transition:
+    color var(--t-fast) var(--ease),
+    background-color var(--t-fast) var(--ease);
+}
+.link:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface-2) 70%, transparent);
+}
+.link[data-active="true"] {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 26%, transparent);
+}
+
+.actions {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Wraps the hamburger trigger + its dropdown panel (for outside-click). */
+.menuWrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Hamburger (mobile only). */
+.menuBtn {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-2);
+  cursor: pointer;
+  transition:
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease);
+}
+.menuBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Mobile dropdown panel. */
+.panel {
+  position: absolute;
+  left: var(--space-4);
+  right: var(--space-4);
+  top: calc(100% + 0.5rem);
+  z-index: var(--z-dropdown);
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--elev-3);
+}
+.panelLink {
+  text-align: left;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--text-2);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.65rem 0.8rem;
+  border-radius: var(--radius-sm);
+  transition:
+    background-color var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease);
+}
+.panelLink:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+.panelLink[data-active="true"] {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* Desktop: inline nav, hide hamburger + panel. */
+@media (min-width: 1000px) {
+  .nav {
+    display: flex;
+  }
+  .menuBtn {
+    display: none;
+  }
+  .panel {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .brandName {
+    font-size: 1.6rem;
+  }
+  .bar {
+    padding-inline: var(--space-4);
+  }
+}

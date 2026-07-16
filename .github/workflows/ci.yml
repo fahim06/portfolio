@@ -10,9 +10,9 @@ env:
   NODE_VERSION: "20"
 
 jobs:
-  # Lint and Type Check
+  # Lint and Test
   lint:
-    name: Lint & Type Check
+    name: Lint & Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -30,8 +30,8 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-      - name: Run TypeScript type check
-        run: npx tsc --noEmit
+      - name: Run tests
+        run: npm test
 
   # Build
   build:
@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-output
-          path: .next
+          path: dist
           retention-days: 7
 
   # Deploy to Vercel (Production - only on main branch)

@@ -1,0 +1,14 @@
+.shell {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: var(--space-5) var(--space-5);
+}
+.main {
+  min-width: 0;
+}
+
+@media (max-width: 600px) {
+  .shell {
+    padding: var(--space-4);
+  }
+}
