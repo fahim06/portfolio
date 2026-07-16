@@ -3,7 +3,6 @@
 A personal portfolio for **Fahim Yusuf — Software Engineer & ML Enthusiast**, built with an original **Olive Gray** design system on **Vite + React 19 (JavaScript)**. No TypeScript, no UI framework — hand-crafted CSS Modules, custom-property design tokens, layered mesh-gradient atmospheres, and tasteful motion.
 
 [![CI](https://github.com/fahim06/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/fahim06/portfolio/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/fahim06/portfolio/actions/workflows/codeql.yml/badge.svg)](https://github.com/fahim06/portfolio/actions/workflows/codeql.yml)
 [![Docker](https://github.com/fahim06/portfolio/actions/workflows/docker.yml/badge.svg)](https://github.com/fahim06/portfolio/actions/workflows/docker.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-7C8C58.svg)](LICENSE)
 [![React 19](https://img.shields.io/badge/React-19-91A56A.svg)](https://react.dev)
