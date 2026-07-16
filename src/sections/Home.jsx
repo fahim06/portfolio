@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Button from "../components/ui/Button.jsx";
 import Icon from "../components/ui/Icon.jsx";
+import SmartImage from "../components/ui/SmartImage.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
 import { resume } from "../config/resume.js";
 import { personalInfo } from "../data/personalInfo.js";
@@ -78,9 +79,10 @@ export default function Home() {
 
       <Reveal variant="zoom" delay={0.2} className={styles.portraitWrap}>
         <div className={styles.portraitCard}>
-          <img
+          <SmartImage
             className={styles.portrait}
             src={heroImage.url}
+            fallback={heroImage.fallback}
             alt={heroImage.alt}
             width="320"
             height="400"
