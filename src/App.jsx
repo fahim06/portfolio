@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import RootLayout from "./layouts/RootLayout.jsx";
 import Home from "./sections/Home.jsx";
 
@@ -56,6 +57,7 @@ export default function App() {
       <LazySection>
         <Contact />
       </LazySection>
+      <SpeedInsights />
     </RootLayout>
   );
 }
