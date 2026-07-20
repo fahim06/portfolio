@@ -12,7 +12,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@fontsource-variable/jetbrains-mono": "^5.2.5",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@fontsource/inter": "^5.2.5",
     "@vercel/speed-insights": "^2.0.0",
     "framer-motion": "^12.23.25",
