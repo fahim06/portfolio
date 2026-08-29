@@ -25,7 +25,7 @@
       property="og:description"
       content="Fahim Yusuf — Software Engineer & ML Enthusiast. Building intelligent solutions with code and machine learning."
     />
-    <meta property="og:image" content="/images/fahim-hero.png" />
+    <meta property="og:image" content="https://fahimyusuf.com.bd/images/fahim-hero.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -53,6 +53,43 @@
           document.documentElement.setAttribute("data-theme", "dark");
         }
       })();
+    </script>
+    <!-- Structured data — facts only, sourced from src/config + src/data. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://fahimyusuf.com.bd/#person",
+            "name": "Fahim Yusuf",
+            "jobTitle": "Software Engineer & AI Enthusiast",
+            "url": "https://fahimyusuf.com.bd/",
+            "image": "https://fahimyusuf.com.bd/images/fahim-hero.png",
+            "email": "mailto:fahim.yusuf06@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Dhaka",
+              "addressCountry": "BD"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/fahim06/",
+              "https://github.com/fahim06",
+              "https://www.behance.net/fahimyusufstudio",
+              "https://x.com/fahim1206"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://fahimyusuf.com.bd/#website",
+            "url": "https://fahimyusuf.com.bd/",
+            "name": "Fahim Yusuf — Software Engineer & ML Enthusiast",
+            "description": "Fahim Yusuf — Software Engineer & ML Enthusiast. Building intelligent solutions with code and machine learning.",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://fahimyusuf.com.bd/#person" }
+          }
+        ]
+      }
     </script>
   </head>
   <body>
