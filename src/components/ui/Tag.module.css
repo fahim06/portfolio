@@ -3,8 +3,10 @@
   align-items: center;
   padding: 0.3rem 0.7rem;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--border);
-  background: var(--surface-2);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
   color: var(--text-2);
   font-size: 0.8rem;
   line-height: 1.4;

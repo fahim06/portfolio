@@ -49,20 +49,24 @@
 
 /* Variants */
 .primary {
-  background: var(--accent);
+  background: var(--glass-bg-accent);
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
   color: var(--bg);
-  border-color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 85%, transparent);
 }
 .primary:hover {
-  background: var(--accent-hover);
+  background: color-mix(in srgb, var(--accent-hover) 88%, transparent);
   color: var(--bg);
   box-shadow: var(--elev-2);
 }
 
 .secondary {
-  background: transparent;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
   color: var(--text);
-  border-color: var(--border-strong);
+  border-color: var(--glass-border);
 }
 .secondary:hover {
   border-color: var(--accent);
