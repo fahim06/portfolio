@@ -82,6 +82,17 @@
   border-top: 1px solid var(--border);
   padding-top: var(--space-4);
 }
+.legal {
+  grid-column: 1;
+  justify-self: start;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--t-fast) var(--ease);
+}
+.legal:hover {
+  color: var(--accent);
+}
 .copy {
   grid-column: 2;
   text-align: center;

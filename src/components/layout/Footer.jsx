@@ -37,6 +37,9 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
+          <a className={styles.legal} href="/accessibility">
+            Accessibility
+          </a>
           <p className={styles.copy}>
             © {year} {personalInfo.name}. All rights reserved.
           </p>
