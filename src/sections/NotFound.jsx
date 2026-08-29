@@ -27,8 +27,8 @@ export default function NotFound() {
       />
       <div className={styles.body}>
         <p className={styles.lede}>
-          The link may be mistyped, or the page may have moved. Everything on
-          this site lives on one page — here are two ways back:
+          The link may be mistyped, or the page may have moved. Everything on this site lives on one
+          page — here are two ways back:
         </p>
         <div className={styles.actions}>
           <Button href="/" variant="primary">

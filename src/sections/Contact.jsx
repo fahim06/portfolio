@@ -47,11 +47,7 @@ export default function Contact() {
             </div>
           </div>
           <p className={styles.fallback}>
-            Prefer email?{" "}
-            <a href={`mailto:${personalInfo.email}`}>
-              Send me a message directly
-            </a>
-            .
+            Prefer email? <a href={`mailto:${personalInfo.email}`}>Send me a message directly</a>.
           </p>
         </Card>
       </div>

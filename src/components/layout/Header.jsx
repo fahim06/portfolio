@@ -19,13 +19,7 @@ const NAV = [
   { id: "contact", label: "Contact" },
 ];
 // Desktop pill shows the core five; the mobile dropdown lists everything.
-const PRIMARY_IDS = new Set([
-  "about",
-  "skills",
-  "experience",
-  "projects",
-  "contact",
-]);
+const PRIMARY_IDS = new Set(["about", "skills", "experience", "projects", "contact"]);
 const DESKTOP_NAV = NAV.filter((n) => PRIMARY_IDS.has(n.id));
 const SPY_IDS = ["home", ...NAV.map((n) => n.id)];
 

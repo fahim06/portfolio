@@ -19,9 +19,7 @@ const Contact = lazy(() => import("./sections/Contact.jsx"));
 function LazySection({ children }) {
   // Reserve vertical space so streaming chunks don't cause layout shift.
   return (
-    <Suspense
-      fallback={<div style={{ minHeight: "40vh" }} aria-hidden="true" />}
-    >
+    <Suspense fallback={<div style={{ minHeight: "40vh" }} aria-hidden="true" />}>
       {children}
     </Suspense>
   );

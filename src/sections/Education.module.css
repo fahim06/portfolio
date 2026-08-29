@@ -28,7 +28,6 @@
 .desc {
   color: var(--text-muted);
   margin: 0;
-
 }
 .highlights {
   display: flex;
@@ -40,7 +39,6 @@
 .highlights li {
   list-style: disc;
   color: var(--text-2);
-
 }
 @media (max-width: 1023px) {
   .card {

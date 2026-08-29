@@ -8,29 +8,17 @@
   background:
     radial-gradient(
       120% 80% at 12% -5%,
-      color-mix(
-        in srgb,
-        var(--blob-1) calc(var(--blob-strength) * 55%),
-        transparent
-      ),
+      color-mix(in srgb, var(--blob-1) calc(var(--blob-strength) * 55%), transparent),
       transparent 58%
     ),
     radial-gradient(
       100% 70% at 95% 8%,
-      color-mix(
-        in srgb,
-        var(--blob-2) calc(var(--blob-strength) * 50%),
-        transparent
-      ),
+      color-mix(in srgb, var(--blob-2) calc(var(--blob-strength) * 50%), transparent),
       transparent 55%
     ),
     radial-gradient(
       120% 95% at 70% 105%,
-      color-mix(
-        in srgb,
-        var(--blob-3) calc(var(--blob-strength) * 50%),
-        transparent
-      ),
+      color-mix(in srgb, var(--blob-3) calc(var(--blob-strength) * 50%), transparent),
       transparent 60%
     );
 }

@@ -24,8 +24,8 @@ export default class ErrorBoundary extends Component {
         <div className={styles.screen} role="alert">
           <h1 className={styles.title}>Something went wrong</h1>
           <p className={styles.text}>
-            An unexpected error interrupted the page. Nothing is lost — this
-            site stores nothing on your device beyond a theme preference.
+            An unexpected error interrupted the page. Nothing is lost — this site stores nothing on
+            your device beyond a theme preference.
           </p>
           <a className={styles.action} href="/">
             Reload the site

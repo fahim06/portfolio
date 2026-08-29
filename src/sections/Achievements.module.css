@@ -30,9 +30,7 @@
 .medal {
   font-size: 3rem;
   line-height: 1;
-  filter: drop-shadow(
-    0 6px 18px color-mix(in srgb, var(--gold) 40%, transparent)
-  );
+  filter: drop-shadow(0 6px 18px color-mix(in srgb, var(--gold) 40%, transparent));
 }
 
 .content {

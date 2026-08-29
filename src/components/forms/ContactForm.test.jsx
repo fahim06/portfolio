@@ -23,9 +23,7 @@ describe("ContactForm", () => {
     const nameInput = screen.getByLabelText(/name/i);
     expect(nameInput.getAttribute("aria-invalid")).toBe("true");
     expect(nameInput.getAttribute("aria-describedby")).toBe("name-error");
-    expect(document.getElementById("name-error")?.textContent).toContain(
-      "Please enter your name",
-    );
+    expect(document.getElementById("name-error")?.textContent).toContain("Please enter your name");
   });
 
   it("submits valid input and shows the success state", async () => {

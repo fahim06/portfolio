@@ -2,13 +2,7 @@ import { useRef } from "react";
 import { clsx } from "../../utils/clsx.js";
 import styles from "./Card.module.css";
 
-export default function Card({
-  as: Comp = "div",
-  span = 12,
-  className,
-  children,
-  ...rest
-}) {
+export default function Card({ as: Comp = "div", span = 12, className, children, ...rest }) {
   const ref = useRef(null);
 
   function onMouseMove(event) {

@@ -115,7 +115,6 @@
 .summary {
   color: var(--text-2);
   margin: 0;
-
 }
 .details {
   display: grid;
@@ -136,7 +135,6 @@
 .detailText {
   color: var(--text-2);
   margin: 0;
-
 }
 .list {
   display: flex;
@@ -148,7 +146,6 @@
 .list li {
   list-style: disc;
   color: var(--text-2);
-
 }
 .stack {
   display: flex;

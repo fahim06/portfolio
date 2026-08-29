@@ -35,11 +35,7 @@ export default function Accessibility() {
   }, []);
 
   return (
-    <section
-      id="accessibility"
-      className={styles.page}
-      aria-labelledby="accessibility-title"
-    >
+    <section id="accessibility" className={styles.page} aria-labelledby="accessibility-title">
       <SectionHeader
         index="A11y"
         eyebrow="Accessibility"
@@ -57,10 +53,9 @@ export default function Accessibility() {
         <Card span={6} className={styles.card}>
           <h3 className={styles.practice}>Known limitations</h3>
           <p className={styles.body}>
-            This site has not been through a formal WCAG audit. If something
-            gets in your way, I want to hear about it — email{" "}
-            <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>{" "}
-            and I&rsquo;ll fix it.
+            This site has not been through a formal WCAG audit. If something gets in your way, I
+            want to hear about it — email{" "}
+            <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a> and I&rsquo;ll fix it.
           </p>
         </Card>
       </div>

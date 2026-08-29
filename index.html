@@ -4,12 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Hero portrait is the LCP element — start fetching it immediately. -->
-    <link
-      rel="preload"
-      as="image"
-      href="/images/fahim-hero.webp"
-      fetchpriority="high"
-    />
+    <link rel="preload" as="image" href="/images/fahim-hero.webp" fetchpriority="high" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -18,20 +13,14 @@
     <meta name="theme-color" content="#111312" />
     <title>Fahim Yusuf — Software Engineer & ML Enthusiast</title>
     <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Fahim Yusuf — Software Engineer & ML Enthusiast"
-    />
+    <meta property="og:title" content="Fahim Yusuf — Software Engineer & ML Enthusiast" />
     <meta
       property="og:description"
       content="Fahim Yusuf — Software Engineer & ML Enthusiast. Building intelligent solutions with code and machine learning."
     />
     <meta property="og:image" content="https://fahimyusuf.com.bd/images/fahim-hero.webp" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Fahim Yusuf — Software Engineer & ML Enthusiast"
-    />
+    <meta name="twitter:title" content="Fahim Yusuf — Software Engineer & ML Enthusiast" />
     <meta
       name="twitter:description"
       content="Fahim Yusuf — Software Engineer & ML Enthusiast. Building intelligent solutions with code and machine learning."
@@ -44,11 +33,8 @@
         try {
           var stored = localStorage.getItem("theme"); // 'dark' | 'light' | 'system' | null
           var mode = stored || "system";
-          var systemDark = window.matchMedia(
-            "(prefers-color-scheme: dark)",
-          ).matches;
-          var resolved =
-            mode === "system" ? (systemDark ? "dark" : "light") : mode;
+          var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var resolved = mode === "system" ? (systemDark ? "dark" : "light") : mode;
           document.documentElement.setAttribute("data-theme", resolved);
         } catch (e) {
           document.documentElement.setAttribute("data-theme", "dark");

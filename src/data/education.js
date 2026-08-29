@@ -5,8 +5,7 @@ export const education = [
     degree: "M.Sc. in Computer Science & Engineering",
     location: "Dhaka, Bangladesh",
     period: "2023 – 2025",
-    description:
-      "Advanced studies in machine learning, deep learning, and computer vision.",
+    description: "Advanced studies in machine learning, deep learning, and computer vision.",
     highlights: [
       "Thesis: Optimizing Citrus Genus Identification using MobileNet and Inception V3",
       "Achieved 99.85% accuracy in citrus classification using deep learning",
@@ -19,8 +18,7 @@ export const education = [
     degree: "B.Sc. in Computer Science & Engineering",
     location: "Dhaka, Bangladesh",
     period: "2018 – 2022",
-    description:
-      "Comprehensive foundation in computer science, software engineering, and AI.",
+    description: "Comprehensive foundation in computer science, software engineering, and AI.",
     highlights: [
       "Thesis: Brain Tumor Identification using Deep Learning (VGG-16 achieved 95.21% accuracy)",
       "Studied algorithms, data structures, database systems, and machine learning",
