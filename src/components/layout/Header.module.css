@@ -16,7 +16,6 @@
 }
 
 .brand {
-  position: relative;
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
@@ -34,19 +33,6 @@
     border-color var(--t-fast) var(--ease),
     background-color var(--t-base) var(--ease),
     box-shadow var(--t-fast) var(--ease);
-}
-/* Small multicolor accent strip peeking off the logo pill's top-left corner
-   (decorative brand detail from the reference). */
-.brand::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: -1px;
-  width: 6px;
-  height: 6px;
-  border-top-left-radius: var(--radius-sm);
-  /* --accent-2/--accent-3 don't exist in tokens; nearest defined hues. */
-  background: linear-gradient(45deg, var(--accent) 0%, var(--emerald) 50%, var(--cyan) 100%);
 }
 .brandName {
   font-family: var(--font-brand);
@@ -239,10 +225,12 @@
   }
 }
 
-/* Spec-sized pill row (brand 220 + nav 423 + date 244 + theme 214 + 3×16
-   gaps = 1149px) — applied only where it fits. Narrower screens keep the
-   fluid pill layout above. */
+/* Spec-sized pill row: containers 220 + 423 + 244 + 214 + 3×16 gaps = 1149px
+   inside a fixed 1152px centered bar. Narrower screens keep the fluid layout. */
 @media (min-width: 1200px) {
+  .bar {
+    width: 1152px;
+  }
   .brand {
     width: 220px;
     height: 50px;
