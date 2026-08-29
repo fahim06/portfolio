@@ -167,3 +167,29 @@ Facts that cannot be safely determined from the repository; none were guessed:
 9. `npm audit fix` (non-breaking only).
 
 Deliberately **not** implemented (with reasons): privacy policy (blocked), manifest (N/A), offline/maintenance/403 (N/A), search/filtering/blog/services/testimonials (N/A), vitest@4 forced upgrade (repo policy).
+
+## Verification results (post-implementation, 2026-08-29)
+
+| Check | Command or method | Result |
+| --- | --- | --- |
+| Lint | `npm run lint` | PASSED — 0 errors |
+| Unit/component tests | `npm test` | PASSED — 7 files, 21 tests (12 pre-existing + 9 new: 4 routing, 2 boundary, 3 contact form) |
+| Production build | `npm run build` | PASSED — built in 852ms; JSON-LD present (1 block) and absolute `og:image` confirmed in `dist/index.html` |
+| Dependency audit | `npm audit` | PARTIAL — high `brace-expansion` fixed via non-breaking `npm audit fix`; moderate esbuild (dev-server-only advisory) remains, fix requires vitest@4 major held by repo policy |
+| Route serving | `npm run preview` + curl | PASSED — `/`, `/accessibility`, unknown paths all serve the SPA (200); `/resume.pdf` serves the file directly; rendered views covered by route tests |
+| Formatter (Prettier) | — | NOT_RUN — `.prettierrc` exists but prettier is not installed as a dependency or script |
+| Type checker | — | NOT_APPLICABLE — plain JavaScript project |
+| Automated a11y (axe/Lighthouse) | — | NOT_RUN — no such tooling in repo; CLI-only environment |
+| Browser/emulator manual pass | — | NOT_RUN — dev server available at `:3000` for owner verification |
+
+## Implementation record
+
+| Item | Commit |
+| --- | --- |
+| Audit document | `b40449e` |
+| Absolute og:image + JSON-LD | `7dc89a7` |
+| 404 + /accessibility + footer link + tests | `10840b1` |
+| Root ErrorBoundary + test | `7c778ac` |
+| ContactForm aria wiring + tests | `b86dea0` |
+| Self-hosted Comforter Brush | `d53f076` |
+| SECURITY.md + audit fix | `b8c780b` |
