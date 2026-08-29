@@ -108,6 +108,8 @@ export default function ContactForm() {
             autoComplete="name"
             placeholder="Your name"
             disabled={submitting}
+            aria-invalid={errors.name ? true : undefined}
+            aria-describedby={errors.name ? "name-error" : undefined}
           />
         </Field>
         <Field label="Email" htmlFor="email" error={errors.email}>
@@ -121,6 +123,8 @@ export default function ContactForm() {
             autoComplete="email"
             placeholder="you@example.com"
             disabled={submitting}
+            aria-invalid={errors.email ? true : undefined}
+            aria-describedby={errors.email ? "email-error" : undefined}
           />
         </Field>
       </div>
@@ -135,6 +139,8 @@ export default function ContactForm() {
           rows={5}
           placeholder="Tell me about your project or how I can help…"
           disabled={submitting}
+          aria-invalid={errors.message ? true : undefined}
+          aria-describedby={errors.message ? "message-error" : undefined}
         />
       </Field>
 
@@ -170,7 +176,7 @@ function Field({ label, htmlFor, error, children }) {
       </label>
       {children}
       {error && (
-        <span className={styles.fieldError} role="alert">
+        <span className={styles.fieldError} id={`${htmlFor}-error`} role="alert">
           {error}
         </span>
       )}
