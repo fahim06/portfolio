@@ -63,7 +63,7 @@ export default function Header() {
           type="button"
           className={styles.brand}
           onClick={() => go("home")}
-          aria-label="Fahim Yusuf — back to top"
+          aria-label="F. Yusuf — back to top"
         >
           <span className={styles.brandName}>{site.brandName}</span>
         </button>
