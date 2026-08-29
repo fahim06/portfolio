@@ -160,15 +160,6 @@
   border-color: var(--accent);
 }
 
-/* Scrolled: the pills densify slightly and gain elevation. */
-.header[data-scrolled="true"] .brand,
-.header[data-scrolled="true"] .nav,
-.header[data-scrolled="true"] .date,
-.header[data-scrolled="true"] .menuBtn {
-  background: color-mix(in srgb, var(--bg) 84%, transparent);
-  box-shadow: var(--elev-1), var(--glass-highlight);
-}
-
 /* Mobile dropdown panel. */
 .panel {
   position: absolute;
