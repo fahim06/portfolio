@@ -4,6 +4,15 @@
 }
 
 /* ── Trigger ─────────────────────────────────────────────── */
+/* Spec-sized theme pill (214×50) where the full navbar row fits. */
+@media (min-width: 1200px) {
+  .trigger {
+    width: 214px;
+    height: 50px;
+    justify-content: center;
+  }
+}
+
 .trigger {
   display: inline-flex;
   align-items: center;
