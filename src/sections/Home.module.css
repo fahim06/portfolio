@@ -185,9 +185,6 @@
     gap: var(--space-6);
     padding-top: var(--space-7);
   }
-  .portraitWrap {
-    order: -1;
-  }
   .portrait {
     width: min(260px, 60vw);
   }
