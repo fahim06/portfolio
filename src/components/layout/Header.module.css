@@ -95,6 +95,28 @@
   gap: var(--space-2);
 }
 
+/* Live date pill (desktop only). */
+.date {
+  display: none;
+  align-items: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  box-shadow: var(--glass-highlight);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.dateWeekday {
+  color: var(--text);
+  font-weight: 600;
+}
+
 /* Wraps the hamburger trigger + its dropdown panel (for outside-click). */
 .menuWrap {
   display: inline-flex;
@@ -127,6 +149,7 @@
 /* Scrolled: the pills densify slightly and gain elevation. */
 .header[data-scrolled="true"] .brand,
 .header[data-scrolled="true"] .nav,
+.header[data-scrolled="true"] .date,
 .header[data-scrolled="true"] .menuBtn {
   background: color-mix(in srgb, var(--bg) 84%, transparent);
   box-shadow: var(--elev-1), var(--glass-highlight);
@@ -172,10 +195,13 @@
   background: color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
-/* Desktop: inline nav pill, hide hamburger + panel. */
+/* Desktop: inline nav + date pills, hide hamburger + panel. */
 @media (min-width: 1000px) {
   .nav {
     display: flex;
+  }
+  .date {
+    display: inline-flex;
   }
   .menuBtn {
     display: none;

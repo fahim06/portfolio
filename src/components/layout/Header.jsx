@@ -18,6 +18,15 @@ const NAV = [
   { id: "techstack", label: "Tech Stack" },
   { id: "contact", label: "Contact" },
 ];
+// Desktop pill shows the core five; the mobile dropdown lists everything.
+const PRIMARY_IDS = new Set([
+  "about",
+  "skills",
+  "experience",
+  "projects",
+  "contact",
+]);
+const DESKTOP_NAV = NAV.filter((n) => PRIMARY_IDS.has(n.id));
 const SPY_IDS = ["home", ...NAV.map((n) => n.id)];
 
 export default function Header() {
@@ -26,6 +35,14 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null); // wraps trigger + panel for outside-click
   const triggerRef = useRef(null); // hamburger, for focus return
+
+  const today = new Date();
+  const weekday = today.toLocaleDateString("en-US", { weekday: "long" });
+  const dateRest = today.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
   // Close on outside-click + Escape (only while open).
   useClickOutside(menuRef, () => setMenuOpen(false), menuOpen);
@@ -52,7 +69,7 @@ export default function Header() {
         </button>
 
         <nav className={styles.nav} aria-label="Sections">
-          {NAV.map((n) => (
+          {DESKTOP_NAV.map((n) => (
             <button
               key={n.id}
               type="button"
@@ -66,6 +83,9 @@ export default function Header() {
         </nav>
 
         <div className={styles.actions}>
+          <div className={styles.date}>
+            <span className={styles.dateWeekday}>{weekday}</span> {dateRest}
+          </div>
           <ThemeToggle />
           <div className={styles.menuWrap} ref={menuRef}>
             <button
