@@ -143,6 +143,29 @@
   border-color: var(--accent);
 }
 
+/* Compact external-profile icon buttons (desktop only, minimal set). */
+.iconLink {
+  display: none;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-subtle);
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
+  color: var(--text-2);
+  transition:
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease);
+}
+.iconLink:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
 /* Scrolled: the pills densify slightly and gain elevation. */
 .header[data-scrolled="true"] .brand,
 .header[data-scrolled="true"] .nav,
@@ -199,6 +222,9 @@
   }
   .date {
     display: inline-flex;
+  }
+  .iconLink {
+    display: inline-grid;
   }
   .menuBtn {
     display: none;

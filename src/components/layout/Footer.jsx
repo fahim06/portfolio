@@ -27,7 +27,7 @@ export default function Footer() {
                   target={s.url.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
                   className={styles.social}
-                  aria-label={s.name}
+                  aria-label={`${s.name} profile (opens in new tab)`}
                 >
                   <Icon name={s.icon} size={18} />
                 </a>

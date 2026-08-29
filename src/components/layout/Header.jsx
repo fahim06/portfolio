@@ -4,8 +4,10 @@ import { useScrollSpy } from "../../hooks/useScrollSpy.js";
 import { useScrolled } from "../../hooks/useScrollState.js";
 import { useClickOutside } from "../../hooks/useClickOutside.js";
 import { scrollToSection } from "../../utils/scroll.js";
+import Icon from "../ui/Icon.jsx";
 import styles from "./Header.module.css";
 import ThemeToggle from "./ThemeToggle.jsx";
+import { navbarSocials } from "../../config/social.js";
 
 const NAV = [
   { id: "about", label: "About" },
@@ -80,6 +82,18 @@ export default function Header() {
           <div className={styles.date}>
             <span className={styles.dateWeekday}>{weekday}</span> {dateRest}
           </div>
+          {navbarSocials.map((s) => (
+            <a
+              key={s.name}
+              className={styles.iconLink}
+              href={s.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${s.name} profile (opens in new tab)`}
+            >
+              <Icon name={s.icon} size={16} />
+            </a>
+          ))}
           <ThemeToggle />
           <div className={styles.menuWrap} ref={menuRef}>
             <button
