@@ -68,8 +68,8 @@
   padding: 0.35rem;
   list-style: none;
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border: 1px solid var(--glass-border);
   border-radius: var(--radius);
   box-shadow: var(--elev-3);

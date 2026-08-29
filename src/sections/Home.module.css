@@ -31,8 +31,8 @@
   border-radius: var(--radius-pill);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
 }
 .dot {
   width: 8px;
@@ -128,8 +128,8 @@
   padding: var(--space-3);
   border-radius: var(--radius-lg);
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border: 1px solid var(--glass-border);
   box-shadow: var(--elev-3);
 }
@@ -172,8 +172,10 @@
   color: var(--text-2);
   padding: 0.3rem 0.7rem;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--border);
-  background: var(--surface-2);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
 }
 
 @media (max-width: 900px) {
