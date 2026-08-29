@@ -23,8 +23,10 @@
 .textarea {
   font: inherit;
   color: var(--text);
-  background: var(--bg-2);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius);
   padding: 0.7rem 0.9rem;
   width: 100%;
