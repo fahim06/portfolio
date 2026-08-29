@@ -23,7 +23,7 @@
   display: block;
 }
 .narrative p {
-  text-align: justify;
+
 }
 .points {
   display: flex;
@@ -35,7 +35,7 @@
 .points li {
   list-style: disc;
   color: var(--text-2);
-  text-align: justify;
+
 }
 
 @media (max-width: 1023px) {

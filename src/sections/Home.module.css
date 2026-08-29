@@ -80,7 +80,7 @@
 .statement {
   color: var(--text-2);
   max-width: 52ch;
-  text-align: justify;
+
   margin: var(--space-2) 0 0;
 }
 

@@ -118,4 +118,20 @@
   .connectCol {
     align-items: flex-start;
   }
+  /* Bottom row stacks: accessibility → copyright → version. */
+  .bottom {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: var(--space-1);
+  }
+  .legal,
+  .copy,
+  .meta {
+    grid-column: auto;
+    justify-self: center;
+    text-align: center;
+  }
+  .meta {
+    text-align: center;
+  }
 }

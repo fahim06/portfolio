@@ -1,13 +1,11 @@
-import ProjectCard from "../components/ProjectCard.jsx";
-import Reveal from "../components/ui/Reveal.jsx";
-import SectionHeader from "../components/ui/SectionHeader.jsx";
-import { projects } from "../data/projects.js";
-import styles from "./Projects.module.css";
+import ProjectCard from "../components/ProjectCard.jsx"
+import Reveal from "../components/ui/Reveal.jsx"
+import SectionHeader from "../components/ui/SectionHeader.jsx"
+import { projects } from "../data/projects.js"
+import styles from "./Projects.module.css"
 
 export default function Projects() {
-  const sorted = [...projects].sort(
-    (a, b) => Number(b.featured) - Number(a.featured),
-  );
+  const sorted = [...projects].sort((a, b) => Number(b.featured) - Number(a.featured))
   return (
     <section id="projects" aria-labelledby="projects-title">
       <SectionHeader
@@ -30,5 +28,5 @@ export default function Projects() {
         ))}
       </div>
     </section>
-  );
+  )
 }

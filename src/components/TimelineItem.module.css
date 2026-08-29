@@ -70,7 +70,7 @@
 .desc {
   color: var(--text-2);
   margin: 0;
-  text-align: justify;
+
 }
 .resp {
   display: flex;
@@ -81,7 +81,7 @@
 .resp li {
   list-style: disc;
   color: var(--text-2);
-  text-align: justify;
+
 }
 .impact {
   color: var(--text);

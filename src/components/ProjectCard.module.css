@@ -15,6 +15,12 @@
     var(--elev-3),
     0 0 60px -24px color-mix(in srgb, var(--emerald) 60%, transparent);
 }
+/* The emerald halo reads muddy on the cream theme — soften it there. */
+:global([data-theme="light"]) .flagship {
+  box-shadow:
+    var(--elev-3),
+    0 0 48px -20px color-mix(in srgb, var(--emerald) 30%, transparent);
+}
 /* NeuroLens spotlight: animated gradient border ring. */
 .flagship::before {
   content: "";
@@ -109,7 +115,7 @@
 .summary {
   color: var(--text-2);
   margin: 0;
-  text-align: justify;
+
 }
 .details {
   display: grid;
@@ -130,7 +136,7 @@
 .detailText {
   color: var(--text-2);
   margin: 0;
-  text-align: justify;
+
 }
 .list {
   display: flex;
@@ -142,7 +148,7 @@
 .list li {
   list-style: disc;
   color: var(--text-2);
-  text-align: justify;
+
 }
 .stack {
   display: flex;
