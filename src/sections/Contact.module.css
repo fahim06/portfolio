@@ -37,12 +37,20 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-subtle);
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
   color: var(--text-2);
+  transition:
+    color var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease);
 }
 .social:hover {
   color: var(--accent);
   border-color: var(--accent);
+  transform: translateY(-2px);
 }
 @media (max-width: 1023px) {
   .grid > * {

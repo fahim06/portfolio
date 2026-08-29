@@ -20,7 +20,8 @@
   height: 11px;
   border-radius: 50%;
   background: var(--accent);
-  border: 2px solid var(--bg);
+  /* Ring matches the glass card tone instead of the page background. */
+  border: 2px solid color-mix(in srgb, var(--surface) 85%, transparent);
 }
 .body {
   display: flex;

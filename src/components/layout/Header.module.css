@@ -23,8 +23,8 @@
   border-radius: var(--radius);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg-strong);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
   box-shadow: var(--glass-highlight);
   cursor: pointer;
   color: var(--text);
@@ -55,8 +55,8 @@
   border-radius: var(--radius);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg-strong);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
   box-shadow: var(--glass-highlight);
   transition:
     background-color var(--t-base) var(--ease),
@@ -100,8 +100,8 @@
   border-radius: var(--radius);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg-strong);
-  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
-  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
   box-shadow: var(--glass-highlight);
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -129,8 +129,8 @@
   border-radius: var(--radius);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg-strong);
-  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
-  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
   box-shadow: var(--glass-highlight);
   color: var(--text-2);
   cursor: pointer;
@@ -165,8 +165,8 @@
   border-radius: var(--radius);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
   box-shadow: var(--elev-3);
 }
 .panelLink {

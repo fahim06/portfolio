@@ -50,8 +50,8 @@
 /* Variants */
 .primary {
   background: var(--glass-bg-accent);
-  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
-  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
   color: var(--bg);
   border-color: color-mix(in srgb, var(--accent) 85%, transparent);
 }
@@ -62,9 +62,9 @@
 }
 
 .secondary {
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
-  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  background: var(--glass-bg-subtle);
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
   color: var(--text);
   border-color: var(--glass-border);
 }

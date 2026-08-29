@@ -12,8 +12,8 @@
   border-radius: var(--radius);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg-strong);
-  -webkit-backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
-  backdrop-filter: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
   box-shadow: var(--glass-highlight);
   color: var(--text-2);
   cursor: pointer;

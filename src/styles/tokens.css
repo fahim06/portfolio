@@ -72,15 +72,20 @@
   --elev-3:
     0 28px 64px -24px rgb(0 0 0 / 0.72), 0 10px 28px -18px rgb(0 0 0 / 0.5);
 
-  /* Glassmorphism — backdrop-blur surfaces (two tiers + accent). */
+  /* Glassmorphism — tiered surfaces: chrome (strong) > containers (base) >
+     controls nested on glass (subtle). Filters live in tokens so every
+     surface shares one recipe. */
   --glass-bg: color-mix(in srgb, var(--surface) 62%, transparent);
   --glass-bg-strong: color-mix(in srgb, var(--bg) 74%, transparent);
+  --glass-bg-subtle: color-mix(in srgb, var(--surface) 76%, transparent);
   --glass-bg-accent: color-mix(in srgb, var(--accent) 80%, transparent);
   --glass-border: color-mix(in srgb, var(--border) 70%, transparent);
   --glass-highlight: inset 0 1px 0 color-mix(in srgb, white 6%, transparent);
   --glass-blur: 16px;
   --glass-blur-sm: 8px;
   --glass-saturate: 160%;
+  --glass-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  --glass-filter-sm: blur(var(--glass-blur-sm)) saturate(var(--glass-saturate));
 
   /* Z-index scale — kept in one place to avoid stacking wars. */
   --z-fab: 90;
@@ -154,6 +159,7 @@
 
   --glass-bg: color-mix(in srgb, var(--surface) 68%, transparent);
   --glass-bg-strong: color-mix(in srgb, var(--bg) 80%, transparent);
+  --glass-bg-subtle: color-mix(in srgb, var(--surface) 82%, transparent);
   --glass-bg-accent: color-mix(in srgb, var(--accent) 88%, transparent);
   --glass-border: color-mix(in srgb, var(--border) 70%, transparent);
   --glass-highlight: inset 0 1px 0 color-mix(in srgb, white 45%, transparent);
@@ -165,6 +171,7 @@
   [data-theme="light"] {
     --glass-bg: color-mix(in srgb, var(--surface) 96%, transparent);
     --glass-bg-strong: color-mix(in srgb, var(--bg) 97%, transparent);
+    --glass-bg-subtle: color-mix(in srgb, var(--surface) 97%, transparent);
     --glass-bg-accent: color-mix(in srgb, var(--accent) 97%, transparent);
   }
 }
@@ -174,6 +181,7 @@
   [data-theme="light"] {
     --glass-bg: color-mix(in srgb, var(--surface) 96%, transparent);
     --glass-bg-strong: color-mix(in srgb, var(--bg) 97%, transparent);
+    --glass-bg-subtle: color-mix(in srgb, var(--surface) 97%, transparent);
     --glass-bg-accent: color-mix(in srgb, var(--accent) 97%, transparent);
   }
 }
