@@ -67,7 +67,8 @@
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--accent);
+  /* Darkened accent so micro-type holds AA on tinted glass over bright blobs. */
+  color: color-mix(in srgb, var(--accent) 70%, var(--text));
   padding: 0.1rem 0.45rem;
   border-radius: var(--radius-pill);
   border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
