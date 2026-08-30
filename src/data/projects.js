@@ -182,4 +182,4 @@ export const projects = [
     featured: false,
     highlight: false,
   },
-]
+];

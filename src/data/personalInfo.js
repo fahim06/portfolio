@@ -28,4 +28,4 @@ export const personalInfo = {
     fallback: "/images/fahim-about_backup.jpg",
     alt: "Fahim Yusuf",
   },
-}
+};
