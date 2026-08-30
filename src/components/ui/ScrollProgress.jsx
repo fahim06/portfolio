@@ -14,10 +14,7 @@ export default function ScrollProgress() {
       aria-valuenow={Math.round(progress * 100)}
       data-active={progress > 0}
     >
-      <div
-        className={styles.bar}
-        style={{ transform: `scaleX(${progress})` }}
-      />
+      <div className={styles.bar} style={{ transform: `scaleX(${progress})` }} />
     </div>
   );
 }

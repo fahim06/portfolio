@@ -16,11 +16,7 @@ const FOCUS = [
 export default function Achievements() {
   const a = achievements[0] ?? {};
   return (
-    <section
-      id="achievements"
-      className={styles.section}
-      aria-labelledby="achievements-title"
-    >
+    <section id="achievements" className={styles.section} aria-labelledby="achievements-title">
       <SectionHeader
         index="08"
         eyebrow="Achievements"

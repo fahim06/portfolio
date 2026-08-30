@@ -6,11 +6,7 @@ import styles from "./Skills.module.css";
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      className={styles.skills}
-      aria-labelledby="skills-title"
-    >
+    <section id="skills" className={styles.skills} aria-labelledby="skills-title">
       <SectionHeader
         index="03"
         eyebrow="Skills"

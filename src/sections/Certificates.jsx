@@ -3,17 +3,11 @@ import SectionHeader from "../components/ui/SectionHeader.jsx";
 import { certificateGroups } from "../data/certificates.js";
 import styles from "./Certificates.module.css";
 
-const all = certificateGroups.flatMap((g) =>
-  g.items.map((c) => ({ ...c, category: g.category })),
-);
+const all = certificateGroups.flatMap((g) => g.items.map((c) => ({ ...c, category: g.category })));
 
 export default function Certificates() {
   return (
-    <section
-      id="certificates"
-      className={styles.section}
-      aria-labelledby="certificates-title"
-    >
+    <section id="certificates" className={styles.section} aria-labelledby="certificates-title">
       <SectionHeader
         index="07"
         eyebrow="Certificates"

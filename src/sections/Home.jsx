@@ -27,19 +27,13 @@ const item = {
 };
 
 export default function Home() {
-  const { name, title, headline, statement, availability, heroImage } =
-    personalInfo;
+  const { name, title, headline, statement, availability, heroImage } = personalInfo;
   const { cvUrl, cvDownloadName } = resume;
 
   return (
     <section id="home" className={styles.home} aria-labelledby="home-title">
       <div className={styles.left}>
-        <motion.div
-          className={styles.stack}
-          variants={container}
-          initial="hidden"
-          animate="shown"
-        >
+        <motion.div className={styles.stack} variants={container} initial="hidden" animate="shown">
           <motion.p variants={item} className={styles.availability}>
             <span className={styles.dot} aria-hidden="true" /> {availability}
           </motion.p>
@@ -59,10 +53,7 @@ export default function Home() {
             <Button href={cvUrl} download={cvDownloadName} variant="primary">
               Download CV <Icon name="arrow-down" size={16} />
             </Button>
-            <Button
-              variant="secondary"
-              onClick={() => scrollToSection("projects")}
-            >
+            <Button variant="secondary" onClick={() => scrollToSection("projects")}>
               Explore work <Icon name="arrow-down" size={16} />
             </Button>
           </motion.div>

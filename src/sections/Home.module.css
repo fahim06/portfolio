@@ -31,8 +31,8 @@
   border-radius: var(--radius-pill);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
 }
 .dot {
   width: 8px;
@@ -80,7 +80,7 @@
 .statement {
   color: var(--text-2);
   max-width: 52ch;
-  text-align: justify;
+
   margin: var(--space-2) 0 0;
 }
 
@@ -128,8 +128,8 @@
   padding: var(--space-3);
   border-radius: var(--radius-lg);
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
   border: 1px solid var(--glass-border);
   box-shadow: var(--elev-3);
 }
@@ -172,8 +172,10 @@
   color: var(--text-2);
   padding: 0.3rem 0.7rem;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--border);
-  background: var(--surface-2);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-subtle);
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
 }
 
 @media (max-width: 900px) {
@@ -182,9 +184,6 @@
     min-height: auto;
     gap: var(--space-6);
     padding-top: var(--space-7);
-  }
-  .portraitWrap {
-    order: -1;
   }
   .portrait {
     width: min(260px, 60vw);

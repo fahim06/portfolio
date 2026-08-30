@@ -1,0 +1,22 @@
+.page {
+  min-height: 55vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-block: var(--space-7) var(--space-6);
+}
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+.lede {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--text-2);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}

@@ -28,12 +28,11 @@
   min-height: 112px;
   padding: var(--space-4);
   border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--surface) 94%, transparent),
-    var(--surface)
-  );
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
+  box-shadow: var(--glass-highlight);
   transition:
     border-color var(--t-base) var(--ease),
     transform var(--t-base) var(--ease),
@@ -42,7 +41,7 @@
 .card:hover {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-  box-shadow: var(--elev-2);
+  box-shadow: var(--elev-2), var(--glass-highlight);
 }
 
 .badge {
@@ -65,10 +64,11 @@
 .tag {
   align-self: flex-start;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--accent);
+  /* Darkened accent so micro-type holds AA on tinted glass over bright blobs. */
+  color: color-mix(in srgb, var(--accent) 70%, var(--text));
   padding: 0.1rem 0.45rem;
   border-radius: var(--radius-pill);
   border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);

@@ -15,12 +15,8 @@ export default function TimelineItem({ item }) {
           {item.company}
           {item.location ? ` · ${item.location}` : ""}
         </p>
-        {item.department && (
-          <p className={styles.dept}>Department — {item.department}</p>
-        )}
-        {item.employmentType && (
-          <span className={styles.empType}>{item.employmentType}</span>
-        )}
+        {item.department && <p className={styles.dept}>Department — {item.department}</p>}
+        {item.employmentType && <span className={styles.empType}>{item.employmentType}</span>}
         {item.description && <p className={styles.desc}>{item.description}</p>}
         {item.placeholder ? (
           <EmptyState

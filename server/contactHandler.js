@@ -94,14 +94,11 @@ export async function handleContact(body = {}, ip = "unknown") {
   const sanitizedMessage = sanitize(message);
 
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error(
-      "[contact] Email credentials not configured (EMAIL_USER / EMAIL_PASS)",
-    );
+    console.error("[contact] Email credentials not configured (EMAIL_USER / EMAIL_PASS)");
     return {
       status: 500,
       json: {
-        error:
-          "Email service is not configured. Please contact directly via email.",
+        error: "Email service is not configured. Please contact directly via email.",
       },
     };
   }

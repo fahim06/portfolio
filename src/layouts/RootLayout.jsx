@@ -11,10 +11,11 @@ export default function RootLayout({ children }) {
     <>
       <Atmosphere />
       <SkipLink />
-      <ScrollProgress />
       <Header />
       <div className={styles.shell}>
         <main id="main" className={styles.main}>
+          {/* Inside main so the fixed progress bar lives in a landmark. */}
+          <ScrollProgress />
           {children}
         </main>
       </div>

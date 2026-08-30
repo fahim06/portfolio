@@ -8,3 +8,7 @@ pnpm-lock.yaml
 public/images
 public/*.pdf
 *.svg
+
+# Owner reference prompts (not code)
+PORTFOLIO_PRODUCTION_AUDIT_PROMPT.md
+Portfolio UI-UX Audit & Fix Prompt.md

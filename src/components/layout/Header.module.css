@@ -1,75 +1,69 @@
+/* Floating segmented navbar — bare sticky bar, glass pills carry the surface. */
 .header {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
-  will-change: transform;
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  backdrop-filter: blur(var(--glass-blur));
-  border-bottom: 1px solid transparent;
-  transition:
-    padding var(--t-base) var(--ease),
-    background-color var(--t-base) var(--ease),
-    border-color var(--t-base) var(--ease),
-    box-shadow var(--t-base) var(--ease);
-}
-.header[data-scrolled="true"] {
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  border-bottom-color: var(--border);
-  box-shadow: var(--elev-1);
+  padding: var(--space-3) var(--space-4) 0;
 }
 
 .bar {
   max-width: var(--container);
   margin-inline: auto;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-4);
-  padding: var(--space-4) var(--space-5);
-  transition: padding var(--t-base) var(--ease);
-}
-.header[data-scrolled="true"] .bar {
-  padding-block: var(--space-2);
 }
 
 .brand {
-  justify-self: start;
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  background: none;
-  border: none;
+  padding: 0.38rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
+  box-shadow: var(--glass-highlight);
   cursor: pointer;
   color: var(--text);
   font: inherit;
-  padding: 0;
+  transition:
+    border-color var(--t-fast) var(--ease),
+    background-color var(--t-base) var(--ease),
+    box-shadow var(--t-fast) var(--ease);
 }
 .brandName {
   font-family: var(--font-brand);
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   line-height: 1;
   color: var(--text);
   letter-spacing: 0;
-  transition:
-    color var(--t-fast) var(--ease),
-    font-size var(--t-base) var(--ease);
-}
-.header[data-scrolled="true"] .brandName {
-  font-size: 1.7rem;
+  transition: color var(--t-fast) var(--ease);
 }
 .brand:hover .brandName {
   color: var(--accent);
 }
 
-/* Centered section navigation (desktop). */
+/* Centered section navigation pill (desktop). */
 .nav {
-  justify-self: center;
   display: none;
   align-items: center;
   gap: 0.15rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
+  box-shadow: var(--glass-highlight);
+  transition:
+    background-color var(--t-base) var(--ease),
+    box-shadow var(--t-base) var(--ease);
 }
 .link {
+  position: relative;
   font: inherit;
   font-family: var(--font-mono);
   font-size: 0.78rem;
@@ -78,11 +72,21 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.4rem 0.6rem;
+  padding: 0.4rem 0.7rem;
   border-radius: var(--radius-pill);
   transition:
     color var(--t-fast) var(--ease),
     background-color var(--t-fast) var(--ease);
+}
+/* Thin pipe separator between links (from the reference). */
+.sep {
+  position: absolute;
+  left: -0.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 13px;
+  background: color-mix(in srgb, var(--text-muted) 40%, transparent);
 }
 .link:hover {
   color: var(--text);
@@ -94,10 +98,37 @@
 }
 
 .actions {
-  justify-self: end;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: 16px; /* matches the 16px inter-container gap (date ↔ theme) */
+}
+
+/* Live date pill (desktop only). */
+.date {
+  display: none;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
+  box-shadow: var(--glass-highlight);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.dateWeekday {
+  color: var(--text);
+  font-weight: 600;
+}
+.dateSep {
+  width: 1px;
+  height: 12px;
+  background: color-mix(in srgb, var(--text-muted) 40%, transparent);
 }
 
 /* Wraps the hamburger trigger + its dropdown panel (for outside-click). */
@@ -112,9 +143,12 @@
   place-items: center;
   width: 44px;
   height: 44px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  background: var(--surface);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg-strong);
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
+  box-shadow: var(--glass-highlight);
   color: var(--text-2);
   cursor: pointer;
   transition:
@@ -139,8 +173,8 @@
   border-radius: var(--radius);
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
   box-shadow: var(--elev-3);
 }
 .panelLink {
@@ -166,10 +200,13 @@
   background: color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
-/* Desktop: inline nav, hide hamburger + panel. */
+/* Desktop: inline nav + date pills, hide hamburger + panel. */
 @media (min-width: 1000px) {
   .nav {
     display: flex;
+  }
+  .date {
+    display: inline-flex;
   }
   .menuBtn {
     display: none;
@@ -179,11 +216,34 @@
   }
 }
 
+/* Spec-sized pill row: containers 220 + 423 + 244 + 214 + 3×16 gaps = 1149px
+   inside a fixed 1152px centered bar. Narrower screens keep the fluid layout. */
+@media (min-width: 1200px) {
+  .bar {
+    width: 1152px;
+  }
+  .brand {
+    width: 220px;
+    height: 50px;
+    justify-content: center;
+  }
+  .nav {
+    width: 423px;
+    height: 50px;
+    justify-content: center;
+  }
+  .date {
+    width: 244px;
+    height: 50px;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 480px) {
   .brandName {
-    font-size: 1.6rem;
+    font-size: 1.35rem;
   }
-  .bar {
-    padding-inline: var(--space-4);
+  .header {
+    padding-inline: var(--space-3);
   }
 }

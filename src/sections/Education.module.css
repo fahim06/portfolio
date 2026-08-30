@@ -12,7 +12,8 @@
 .period {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--accent);
+  /* Darkened accent — same AA-on-glass rationale as certificate tags. */
+  color: color-mix(in srgb, var(--accent) 70%, var(--text));
   margin: 0;
 }
 .degree {
@@ -27,7 +28,6 @@
 .desc {
   color: var(--text-muted);
   margin: 0;
-  text-align: justify;
 }
 .highlights {
   display: flex;
@@ -39,7 +39,6 @@
 .highlights li {
   list-style: disc;
   color: var(--text-2);
-  text-align: justify;
 }
 @media (max-width: 1023px) {
   .card {

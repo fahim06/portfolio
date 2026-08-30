@@ -27,3 +27,7 @@ class NoopObserver {
 }
 if (!("IntersectionObserver" in window)) window.IntersectionObserver = NoopObserver;
 if (!("ResizeObserver" in window)) window.ResizeObserver = NoopObserver;
+
+// jsdom has no layout — give scrollIntoView/scrollTo no-op implementations.
+if (!Element.prototype.scrollIntoView) Element.prototype.scrollIntoView = () => {};
+if (!window.scrollTo) window.scrollTo = () => {};

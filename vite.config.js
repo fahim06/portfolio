@@ -16,8 +16,7 @@ function contactApiPlugin() {
         try {
           const data = JSON.parse((await readBody(req)) || "{}");
           const ip =
-            (req.headers["x-forwarded-for"] &&
-              req.headers["x-forwarded-for"].split(",")[0]) ||
+            (req.headers["x-forwarded-for"] && req.headers["x-forwarded-for"].split(",")[0]) ||
             req.socket?.remoteAddress ||
             "unknown";
           const result = await handleContact(data, ip);

@@ -47,27 +47,32 @@
   }
 }
 
-/* Variants */
+/* Variants — rest and hover styles swapped per owner preference:
+   buttons rest in the strong state and lighten on hover. */
 .primary {
-  background: var(--accent);
+  background: color-mix(in srgb, var(--accent-hover) 88%, transparent);
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
   color: var(--bg);
-  border-color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 85%, transparent);
+  box-shadow: var(--elev-2);
 }
 .primary:hover {
-  background: var(--accent-hover);
+  background: var(--glass-bg-accent);
   color: var(--bg);
-  box-shadow: var(--elev-2);
 }
 
 .secondary {
-  background: transparent;
-  color: var(--text);
-  border-color: var(--border-strong);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  -webkit-backdrop-filter: var(--glass-filter-sm);
+  backdrop-filter: var(--glass-filter-sm);
+  color: var(--accent);
+  border-color: var(--accent);
 }
 .secondary:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  background: var(--glass-bg-subtle);
+  color: var(--text);
+  border-color: var(--glass-border);
 }
 
 .ghost {
