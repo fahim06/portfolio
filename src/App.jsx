@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import RootLayout from "./layouts/RootLayout.jsx";
+import { useHashSectionScroll } from "./hooks/useHashSectionScroll.js";
 import Accessibility from "./sections/Accessibility.jsx";
 import Home from "./sections/Home.jsx";
 import NotFound from "./sections/NotFound.jsx";
@@ -37,6 +38,7 @@ function resolvePage(pathname) {
 }
 
 export default function App() {
+  useHashSectionScroll();
   const page = resolvePage(window.location.pathname);
 
   if (page === "accessibility") {

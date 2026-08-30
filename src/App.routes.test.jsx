@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "./hooks/useTheme.jsx";
 import App from "./App.jsx";
 
@@ -47,5 +47,14 @@ describe("pathname routing", () => {
     goTo("/index.html/");
     renderApp();
     expect(screen.getByRole("heading", { level: 1, name: "Fahim Yusuf" })).toBeTruthy();
+  });
+
+  it("scrolls to the hashed section once lazy sections mount (deep links)", async () => {
+    const spy = vi.spyOn(Element.prototype, "scrollIntoView");
+    goTo("/#about");
+    renderApp();
+    await screen.findByRole("heading", { name: /tools of the trade/i });
+    await waitFor(() => expect(spy).toHaveBeenCalled());
+    spy.mockRestore();
   });
 });
