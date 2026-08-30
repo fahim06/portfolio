@@ -26,12 +26,7 @@ export default function BackToTop() {
 
   if (reduce) {
     return show ? (
-      <button
-        type="button"
-        className={styles.fab}
-        onClick={goHome}
-        aria-label="Back to top"
-      >
+      <button type="button" className={styles.fab} onClick={goHome} aria-label="Back to top">
         <Icon name="arrow-up" size={18} />
       </button>
     ) : null;
