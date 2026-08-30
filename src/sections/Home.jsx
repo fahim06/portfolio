@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import Button from "../components/ui/Button.jsx";
 import Icon from "../components/ui/Icon.jsx";
-import SmartImage from "../components/ui/SmartImage.jsx";
 import Reveal from "../components/ui/Reveal.jsx";
+import SmartImage from "../components/ui/SmartImage.jsx";
 import { resume } from "../config/resume.js";
 import { personalInfo } from "../data/personalInfo.js";
 import { scrollToSection } from "../utils/scroll.js";
@@ -51,7 +51,7 @@ export default function Home() {
           </motion.p>
           <motion.div variants={item} className={styles.ctas}>
             <Button href={cvUrl} download={cvDownloadName} variant="primary">
-              Download CV <Icon name="arrow-down" size={16} />
+              Download CV
             </Button>
             <Button variant="secondary" onClick={() => scrollToSection("projects")}>
               Explore work <Icon name="arrow-down" size={16} />
