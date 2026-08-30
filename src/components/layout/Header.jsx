@@ -3,7 +3,7 @@ import { site } from "../../config/site.js";
 import { useScrollSpy } from "../../hooks/useScrollSpy.js";
 import { useScrolled } from "../../hooks/useScrollState.js";
 import { useClickOutside } from "../../hooks/useClickOutside.js";
-import { scrollToSection } from "../../utils/scroll.js";
+import { navHref, scrollToSection } from "../../utils/scroll.js";
 import styles from "./Header.module.css";
 import ThemeToggle from "./ThemeToggle.jsx";
 
@@ -42,6 +42,12 @@ export default function Header() {
   useClickOutside(menuRef, () => setMenuOpen(false), menuOpen);
 
   function go(id) {
+    // Off the home page the sections aren't mounted — navigate with a hash.
+    const href = navHref(id);
+    if (href) {
+      window.location.assign(href);
+      return;
+    }
     scrollToSection(id);
     if (menuOpen) {
       setMenuOpen(false);
