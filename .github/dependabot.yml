@@ -11,3 +11,12 @@ updates:
       # Match the repo's conventional-commit style (chore(deps) / chore(deps-dev))
       prefix: "chore(deps)"
       prefix-development: "chore(deps-dev)"
+    ignore:
+      # Major bumps that currently break the build — adopt deliberately, not via auto-PR.
+      # (Minor/patch updates for these still get proposed.)
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "vitest"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@vitejs/plugin-react"
+        update-types: ["version-update:semver-major"]
