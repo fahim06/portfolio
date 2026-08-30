@@ -2,8 +2,7 @@ export const projects = [
   {
     id: "proj-neurolens",
     title: "NeuroLens",
-    category:
-      "AI Vision Platform · Computer Vision · Deep Learning · Explainable AI",
+    category: "AI Vision Platform · Computer Vision · Deep Learning · Explainable AI",
     status: "Beta Development",
     summary:
       "NeuroLens is a modular AI vision platform that intelligently analyzes uploaded images, identifies their domain, routes them to the most suitable deep learning model, and delivers explainable predictions through a unified inference pipeline. Designed for scalability, it supports multi-domain AI applications across healthcare, agriculture, biodiversity, and intelligent image analysis.",
@@ -39,7 +38,6 @@ export const projects = [
       "Django",
       "Django REST Framework",
       "Tailwind CSS",
-      "JavaScript (ES6+)",
       "TensorFlow",
       "Keras",
       "NumPy",
@@ -73,13 +71,7 @@ export const projects = [
       "Built a full-stack app with a modern admin dashboard. Added role-based access with separate portals for admins, staff, and students. Created REST APIs, connected to a database, and set up automated deployment.",
     outcome:
       "Delivered a working system with user management, course handling, attendance tracking, feedback collection, leave requests, and secure profiles.",
-    stack: [
-      "Python",
-      "Django",
-      "PostgreSQL",
-      "React",
-      "GitHub Actions (CI/CD)",
-    ],
+    stack: ["Python", "Django", "PostgreSQL", "React", "GitHub Actions (CI/CD)"],
     links: {
       github: "https://github.com/fahim06/student_management_system",
       demo: "",
@@ -121,12 +113,7 @@ export const projects = [
       "Used a dataset of over 22,000 images across 8 citrus types. Prepped the data with augmentation. Fine-tuned existing models with transfer learning.",
     outcome:
       "Got excellent results: 99.85% accuracy with top scores in precision, recall, and F1 for citrus sorting.",
-    stack: [
-      "Python",
-      "Deep Learning",
-      "Transfer Learning",
-      "Image Classification",
-    ],
+    stack: ["Python", "Deep Learning", "Transfer Learning", "Image Classification"],
     links: {
       github: "https://github.com/fahim06/Citrus_Classification",
       demo: "",
@@ -159,8 +146,7 @@ export const projects = [
     id: "proj-5",
     title: "Object Detection System",
     category: "Computer Vision",
-    summary:
-      "Real-time object detection app using advanced algorithms for video and webcam.",
+    summary: "Real-time object detection app using advanced algorithms for video and webcam.",
     problem:
       "Need real-time object detection for video feeds and cameras, useful for security and automation.",
     approach:

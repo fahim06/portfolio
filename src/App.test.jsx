@@ -11,7 +11,7 @@ describe("App", () => {
     render(
       <ThemeProvider>
         <App />
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
     // Home section is eager; name + h1 appear immediately.
@@ -25,7 +25,7 @@ describe("App", () => {
     render(
       <ThemeProvider>
         <App />
-      </ThemeProvider>
+      </ThemeProvider>,
     );
     expect(await screen.findByRole("link", { name: /download cv/i })).toBeTruthy();
   });

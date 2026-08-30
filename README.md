@@ -34,17 +34,17 @@ A single-page React portfolio for an ML / software engineer — designed to feel
 
 ## Technology Stack
 
-| Layer        | Choice                                                                   |
-| ------------ | ------------------------------------------------------------------------ |
-| Build tool   | **Vite**                                                                 |
-| UI           | **React 19** — functional components & hooks (`.jsx`)                     |
-| Animation    | **framer-motion** — reveal / spotlight / entrance                        |
-| Styling      | **CSS Modules** + custom-property design tokens                          |
-| Fonts        | `@fontsource/inter`, `@fontsource-variable/jetbrains-mono` + Comforter Brush (brand only) |
-| Contact      | **Nodemailer** (Gmail SMTP) — Vercel function + Vite dev middleware       |
-| Testing      | **Vitest** + **React Testing Library** (unit + component smoke)          |
-| Linting      | **ESLint** (`eslint-plugin-react`, `-react-hooks`)                        |
-| Deploy       | **Vercel** (static SPA + serverless `/api/contact`)                       |
+| Layer      | Choice                                                                                    |
+| ---------- | ----------------------------------------------------------------------------------------- |
+| Build tool | **Vite**                                                                                  |
+| UI         | **React 19** — functional components & hooks (`.jsx`)                                     |
+| Animation  | **framer-motion** — reveal / spotlight / entrance                                         |
+| Styling    | **CSS Modules** + custom-property design tokens                                           |
+| Fonts      | `@fontsource/inter`, `@fontsource-variable/jetbrains-mono` + Comforter Brush (brand only) |
+| Contact    | **Nodemailer** (Gmail SMTP) — Vercel function + Vite dev middleware                       |
+| Testing    | **Vitest** + **React Testing Library** (unit + component smoke)                           |
+| Linting    | **ESLint** (`eslint-plugin-react`, `-react-hooks`)                                        |
+| Deploy     | **Vercel** (static SPA + serverless `/api/contact`)                                       |
 
 > **No** TypeScript, **no** Tailwind / UI kit, **no** client-side router.
 
@@ -114,10 +114,10 @@ Starts the Vite dev server at **http://localhost:3000** with HMR. The dev middle
 
 The contact form needs server-side SMTP credentials (no `VITE_` prefix — they are never shipped to the browser). Copy `.env.example` → `.env.local` and fill in:
 
-| Variable     | Required | Description                                            |
-| ------------ | -------- | ------------------------------------------------------ |
-| `EMAIL_USER` | yes\*    | Gmail address that sends the mail                      |
-| `EMAIL_PASS` | yes\*    | Gmail **App Password** (not your normal password)      |
+| Variable     | Required | Description                                                |
+| ------------ | -------- | ---------------------------------------------------------- |
+| `EMAIL_USER` | yes\*    | Gmail address that sends the mail                          |
+| `EMAIL_PASS` | yes\*    | Gmail **App Password** (not your normal password)          |
 | `EMAIL_TO`   | no       | Inbox that receives submissions (defaults to `EMAIL_USER`) |
 
 \* Required for the contact form to deliver; the app builds and runs without them (the form shows a clear "not configured" message).

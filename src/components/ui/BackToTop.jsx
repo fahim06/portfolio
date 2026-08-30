@@ -1,7 +1,15 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { usePrefersReducedMotion } from "../../hooks/usePrefersReducedMotion.js";
-import { scrollToSection } from "../../utils/scroll.js";
+import { scrollToSection, scrollToTop } from "../../utils/scroll.js";
+
+// On the home page this scrolls to the hero; on standalone pages
+// (/accessibility, 404) the #home section isn't mounted, so it scrolls
+// the current page to the top instead.
+function goHome() {
+  if (document.getElementById("home")) scrollToSection("home");
+  else scrollToTop();
+}
 import styles from "./BackToTop.module.css";
 import Icon from "./Icon.jsx";
 
@@ -18,12 +26,7 @@ export default function BackToTop() {
 
   if (reduce) {
     return show ? (
-      <button
-        type="button"
-        className={styles.fab}
-        onClick={() => scrollToSection("home")}
-        aria-label="Back to top"
-      >
+      <button type="button" className={styles.fab} onClick={goHome} aria-label="Back to top">
         <Icon name="arrow-up" size={18} />
       </button>
     ) : null;
@@ -35,7 +38,7 @@ export default function BackToTop() {
         <motion.button
           type="button"
           className={styles.fab}
-          onClick={() => scrollToSection("home")}
+          onClick={goHome}
           aria-label="Back to top"
           initial={{ opacity: 0, scale: 0.6, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}

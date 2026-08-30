@@ -13,12 +13,7 @@ export default function Button({
 }) {
   const Comp = as || (href ? "a" : "button");
   const isDisabled = loading || disabled;
-  const classes = clsx(
-    styles.btn,
-    styles[variant],
-    loading && styles.loading,
-    className,
-  );
+  const classes = clsx(styles.btn, styles[variant], loading && styles.loading, className);
   return (
     <Comp
       className={classes}

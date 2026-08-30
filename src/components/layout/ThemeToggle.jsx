@@ -102,11 +102,7 @@ export default function ThemeToggle() {
         onClick={toggle}
         onKeyDown={onTriggerKeyDown}
       >
-        <span
-          key={preference}
-          className={styles.triggerIcon}
-          aria-hidden="true"
-        >
+        <span key={preference} className={styles.triggerIcon} aria-hidden="true">
           <Icon name={meta.icon} size={18} />
         </span>
         <span className={styles.triggerLabel}>{meta.label}</span>
@@ -143,11 +139,7 @@ export default function ThemeToggle() {
                   <Icon name={item.icon} size={17} />
                 </span>
                 <span className={styles.optionLabel}>{item.label}</span>
-                <span
-                  className={styles.check}
-                  aria-hidden="true"
-                  data-on={active}
-                >
+                <span className={styles.check} aria-hidden="true" data-on={active}>
                   <Icon name="check" size={15} />
                 </span>
               </button>

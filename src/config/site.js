@@ -8,6 +8,6 @@ export const site = {
   url: "https://fahimyusuf.com.bd/", // deployed URL (canonical / robots / sitemap / og)
   author: "Fahim Yusuf",
   locale: "en",
-  ogImage: "/images/fahim-hero.png",
+  ogImage: "https://fahimyusuf.com.bd/images/fahim-hero.webp", // absolute — scrapers require it
   twitterCard: "summary_large_image",
 };

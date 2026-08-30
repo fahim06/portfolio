@@ -1,21 +1,26 @@
 # Security Policy
 
-## Supported Versions
+## Supported versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+This is a personal portfolio site. Only the currently deployed production
+build (the `main` branch, deployed at <https://fahimyusuf.com.bd/>)
+receives fixes; older deployments are not supported.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+## Reporting a vulnerability
 
-## Reporting a Vulnerability
+If you find a security issue in this site or its repository, please report it
+privately by email to **fahim.yusuf06@gmail.com** — the same address published
+on the site's contact section.
 
-Use this section to tell people how to report a vulnerability.
+Please avoid opening public issues for anything security-sensitive. Include
+reproduction steps if you can. There is no bug bounty program; reports are
+handled on a best-effort basis.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+## Scope notes (verified, not claims)
+
+- The site is a static frontend plus one serverless endpoint (`/api/contact`)
+  that sends email via SMTP.
+- The contact endpoint validates input, strips header-injection characters,
+  uses a honeypot, and rate-limits submissions per IP address.
+- No accounts, sessions, payments, file uploads, or databases exist in this
+  project.

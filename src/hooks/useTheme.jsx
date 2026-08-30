@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { DEFAULT_THEME, STORAGE_KEY } from "../config/theme.js";
 
 /** Pure theme resolver — unit tested. */
@@ -22,8 +16,7 @@ export function ThemeProvider({ children }) {
   });
   const [systemPrefersDark, setSystemPrefersDark] = useState(
     () =>
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches,
+      typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches,
   );
 
   useEffect(() => {
@@ -49,9 +42,7 @@ export function ThemeProvider({ children }) {
   }, []);
 
   const value = { preference, resolved, setTheme };
-  return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {

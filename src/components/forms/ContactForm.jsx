@@ -26,8 +26,7 @@ export default function ContactForm() {
     const next = {};
     if (!values.name.trim()) next.name = "Please enter your name.";
     if (!values.email.trim()) next.email = "Please enter your email.";
-    else if (!EMAIL_RE.test(values.email))
-      next.email = "That email address looks invalid.";
+    else if (!EMAIL_RE.test(values.email)) next.email = "That email address looks invalid.";
     if (!values.message.trim()) next.message = "Please write a message.";
     else if (values.message.trim().length < MIN_MESSAGE)
       next.message = `Message should be at least ${MIN_MESSAGE} characters.`;
@@ -63,9 +62,7 @@ export default function ContactForm() {
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || "Failed to send message.");
       setStatus("success");
-      setServerMsg(
-        data.message || "Thanks for reaching out — I'll get back to you soon.",
-      );
+      setServerMsg(data.message || "Thanks for reaching out — I'll get back to you soon.");
       setValues(INITIAL);
     } catch (err) {
       setStatus("error");
@@ -108,6 +105,8 @@ export default function ContactForm() {
             autoComplete="name"
             placeholder="Your name"
             disabled={submitting}
+            aria-invalid={errors.name ? true : undefined}
+            aria-describedby={errors.name ? "name-error" : undefined}
           />
         </Field>
         <Field label="Email" htmlFor="email" error={errors.email}>
@@ -121,6 +120,8 @@ export default function ContactForm() {
             autoComplete="email"
             placeholder="you@example.com"
             disabled={submitting}
+            aria-invalid={errors.email ? true : undefined}
+            aria-describedby={errors.email ? "email-error" : undefined}
           />
         </Field>
       </div>
@@ -135,6 +136,8 @@ export default function ContactForm() {
           rows={5}
           placeholder="Tell me about your project or how I can help…"
           disabled={submitting}
+          aria-invalid={errors.message ? true : undefined}
+          aria-describedby={errors.message ? "message-error" : undefined}
         />
       </Field>
 
@@ -170,7 +173,7 @@ function Field({ label, htmlFor, error, children }) {
       </label>
       {children}
       {error && (
-        <span className={styles.fieldError} role="alert">
+        <span className={styles.fieldError} id={`${htmlFor}-error`} role="alert">
           {error}
         </span>
       )}

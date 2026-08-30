@@ -5,9 +5,7 @@ import { projects } from "../data/projects.js";
 import styles from "./Projects.module.css";
 
 export default function Projects() {
-  const sorted = [...projects].sort(
-    (a, b) => Number(b.featured) - Number(a.featured),
-  );
+  const sorted = [...projects].sort((a, b) => Number(b.featured) - Number(a.featured));
   return (
     <section id="projects" aria-labelledby="projects-title">
       <SectionHeader

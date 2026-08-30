@@ -2,14 +2,13 @@
   grid-column: span var(--span);
   position: relative;
   isolation: isolate;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--surface) 94%, transparent),
-    var(--surface)
-  );
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-filter);
+  backdrop-filter: var(--glass-filter);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   padding: var(--space-6);
+  box-shadow: var(--glass-highlight);
   transition:
     border-color var(--t-base) var(--ease),
     transform var(--t-base) var(--ease),
@@ -34,7 +33,7 @@
 .card:hover {
   transform: translateY(-3px);
   border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
-  box-shadow: var(--elev-2);
+  box-shadow: var(--elev-2), var(--glass-highlight);
 }
 .card:hover::after {
   opacity: 1;

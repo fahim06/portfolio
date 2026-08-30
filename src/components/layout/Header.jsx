@@ -3,7 +3,7 @@ import { site } from "../../config/site.js";
 import { useScrollSpy } from "../../hooks/useScrollSpy.js";
 import { useScrolled } from "../../hooks/useScrollState.js";
 import { useClickOutside } from "../../hooks/useClickOutside.js";
-import { scrollToSection } from "../../utils/scroll.js";
+import { navHref, scrollToSection } from "../../utils/scroll.js";
 import styles from "./Header.module.css";
 import ThemeToggle from "./ThemeToggle.jsx";
 
@@ -18,6 +18,9 @@ const NAV = [
   { id: "techstack", label: "Tech Stack" },
   { id: "contact", label: "Contact" },
 ];
+// Desktop pill shows the core five; the mobile dropdown lists everything.
+const PRIMARY_IDS = new Set(["about", "skills", "experience", "projects", "contact"]);
+const DESKTOP_NAV = NAV.filter((n) => PRIMARY_IDS.has(n.id));
 const SPY_IDS = ["home", ...NAV.map((n) => n.id)];
 
 export default function Header() {
@@ -27,11 +30,27 @@ export default function Header() {
   const menuRef = useRef(null); // wraps trigger + panel for outside-click
   const triggerRef = useRef(null); // hamburger, for focus return
 
+  const today = new Date();
+  const weekday = today.toLocaleDateString("en-US", { weekday: "long" });
+  const dateRest = today.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+
   // Close on outside-click + Escape (only while open).
   useClickOutside(menuRef, () => setMenuOpen(false), menuOpen);
 
   function go(id) {
+    // Off the home page the sections aren't mounted — navigate with a hash.
+    const href = navHref(id);
+    if (href) {
+      window.location.assign(href);
+      return;
+    }
     scrollToSection(id);
+    // Keep the URL in sync with the section (no reload, no re-scroll).
+    window.history.pushState(null, "", id === "home" ? window.location.pathname : `/#${id}`);
     if (menuOpen) {
       setMenuOpen(false);
       // The focused panel button unmounts on close — return focus to the trigger.
@@ -46,13 +65,13 @@ export default function Header() {
           type="button"
           className={styles.brand}
           onClick={() => go("home")}
-          aria-label="Fahim Yusuf — back to top"
+          aria-label="F. Yusuf — back to top"
         >
           <span className={styles.brandName}>{site.brandName}</span>
         </button>
 
         <nav className={styles.nav} aria-label="Sections">
-          {NAV.map((n) => (
+          {DESKTOP_NAV.map((n, i) => (
             <button
               key={n.id}
               type="button"
@@ -60,12 +79,18 @@ export default function Header() {
               data-active={active === n.id}
               onClick={() => go(n.id)}
             >
+              {i > 0 && <span className={styles.sep} aria-hidden="true" />}
               {n.label}
             </button>
           ))}
         </nav>
 
         <div className={styles.actions}>
+          <div className={styles.date}>
+            <span className={styles.dateWeekday}>{weekday}</span>
+            <span className={styles.dateSep} aria-hidden="true" />
+            {dateRest}
+          </div>
           <ThemeToggle />
           <div className={styles.menuWrap} ref={menuRef}>
             <button

@@ -5,6 +5,23 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-08-30
+
+### Added
+
+- Site-wide glassmorphism design system with tiered transparency (chrome / container / control surfaces), tokenized blur recipes, and solid fallbacks for `prefers-reduced-transparency`.
+- Floating segmented navbar: glass pill containers (brand, nav links, live date, theme), hash-synced section URLs, and cross-page navigation from standalone pages.
+- Branded 404 page, `/accessibility` statement, and a root error boundary with recovery screen.
+- Dribbble and Upwork profiles; grouped "Connect & Work With Me" section in Contact.
+- Automated accessibility gate: axe scans in the test suite; Person/WebSite JSON-LD; absolute Open Graph image; self-hosted fonts (Inter variable, Comforter Brush).
+- CI: Prettier format check, PR coverage for `dev`, Vercel preview deploys on PRs, Node 22.
+
+### Changed
+
+- Hero/about portraits converted to WebP (3.2 MB → 121 KB); LCP 13.6 s → ~4 s.
+- Security policy rewritten from the template to factual content; high-severity `npm audit` finding fixed.
+- Contact form errors wired to inputs (`aria-invalid`, `aria-describedby`).
+
 ## [Unreleased]
 
 ### Pending

@@ -15,11 +15,7 @@ export default function ProjectCard({ project, featured = false }) {
   return (
     <Card
       span={featured ? 12 : 4}
-      className={clsx(
-        styles.card,
-        featured && styles.featured,
-        highlight && styles.highlight,
-      )}
+      className={clsx(styles.card, featured && styles.featured, highlight && styles.highlight)}
     >
       <div className={styles.top}>
         <div>
@@ -62,12 +58,7 @@ function FlagshipCard({ project }) {
   return (
     <Card
       span={12}
-      className={clsx(
-        styles.card,
-        styles.featured,
-        styles.flagship,
-        styles.highlight,
-      )}
+      className={clsx(styles.card, styles.featured, styles.flagship, styles.highlight)}
     >
       <div className={styles.top}>
         <div>
@@ -90,12 +81,8 @@ function FlagshipCard({ project }) {
         {architecture && <Detail label="Architecture" text={architecture} />}
       </div>
 
-      {highlights?.length > 0 && (
-        <ListBlock label="Project Highlights" items={highlights} />
-      )}
-      {roadmap?.length > 0 && (
-        <ListBlock label="Future Roadmap" items={roadmap} />
-      )}
+      {highlights?.length > 0 && <ListBlock label="Project Highlights" items={highlights} />}
+      {roadmap?.length > 0 && <ListBlock label="Future Roadmap" items={roadmap} />}
       {lessons && <Detail label="Lessons Learned" text={lessons} />}
 
       <Stack stack={stack} />
@@ -140,22 +127,12 @@ function Links({ links }) {
   return (
     <div className={styles.links}>
       {links?.github && (
-        <a
-          className={styles.link}
-          href={links.github}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className={styles.link} href={links.github} target="_blank" rel="noopener noreferrer">
           <Icon name="github" size={16} /> Code
         </a>
       )}
       {links?.demo && (
-        <a
-          className={styles.link}
-          href={links.demo}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className={styles.link} href={links.demo} target="_blank" rel="noopener noreferrer">
           <Icon name="external" size={16} /> Live
         </a>
       )}
