@@ -49,6 +49,8 @@ export default function Header() {
       return;
     }
     scrollToSection(id);
+    // Keep the URL in sync with the section (no reload, no re-scroll).
+    window.history.pushState(null, "", id === "home" ? window.location.pathname : `/#${id}`);
     if (menuOpen) {
       setMenuOpen(false);
       // The focused panel button unmounts on close — return focus to the trigger.

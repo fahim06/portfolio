@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "./hooks/useTheme.jsx";
 import App from "./App.jsx";
@@ -56,5 +56,15 @@ describe("pathname routing", () => {
     await screen.findByRole("heading", { name: /tools of the trade/i });
     await waitFor(() => expect(spy).toHaveBeenCalled());
     spy.mockRestore();
+  });
+
+  it("updates the URL hash when a nav section is clicked on the home page", () => {
+    goTo("/");
+    renderApp();
+    fireEvent.click(screen.getByRole("button", { name: "About" }));
+    expect(window.location.hash).toBe("#about");
+    // Brand click returns to the bare home URL.
+    fireEvent.click(screen.getByRole("button", { name: /back to top/i }));
+    expect(window.location.hash).toBe("");
   });
 });
