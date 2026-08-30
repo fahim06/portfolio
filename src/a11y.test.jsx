@@ -21,7 +21,9 @@ async function renderForAxe(path, waitFor) {
       <App />
     </ThemeProvider>,
   );
-  if (waitFor) await screen.findByRole(...waitFor);
+  // Cold CI runners stream lazy chunks slowly — the contact button is the
+  // last of nine sections, so allow generous time for everything to mount.
+  if (waitFor) await screen.findByRole(...waitFor, { timeout: 8000 });
   return axe(document.body);
 }
 
