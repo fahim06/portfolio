@@ -53,8 +53,15 @@ describe("pathname routing", () => {
     const spy = vi.spyOn(Element.prototype, "scrollIntoView");
     goTo("/#about");
     renderApp();
-    await screen.findByRole("heading", { name: /tools of the trade/i });
-    await waitFor(() => expect(spy).toHaveBeenCalled());
+    // Cold CI runners resolve lazy chunks slowly — allow generous time for the
+    // section to mount and the hash hook to scroll to it.
+    await waitFor(
+      () => {
+        expect(screen.getByRole("heading", { name: /tools of the trade/i })).toBeTruthy();
+        expect(spy).toHaveBeenCalled();
+      },
+      { timeout: 8000 },
+    );
     spy.mockRestore();
   });
 
